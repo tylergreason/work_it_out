@@ -10,11 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_03_140040) do
+ActiveRecord::Schema.define(version: 2020_03_03_145920) do
 
   create_table "muscle_workouts", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "muscle_id"
+    t.integer "workout_id"
   end
 
   create_table "muscles", force: :cascade do |t|
@@ -26,6 +28,8 @@ ActiveRecord::Schema.define(version: 2020_03_03_140040) do
   create_table "routine_workouts", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "routine_id"
+    t.integer "workout_id"
   end
 
   create_table "routines", force: :cascade do |t|
@@ -34,11 +38,14 @@ ActiveRecord::Schema.define(version: 2020_03_03_140040) do
     t.string "date"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "user_id"
   end
 
   create_table "user_workouts", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "user_id"
+    t.integer "workout_id"
   end
 
   create_table "users", force: :cascade do |t|
