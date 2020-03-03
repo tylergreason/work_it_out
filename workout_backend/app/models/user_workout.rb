@@ -1,0 +1,2 @@
+class UserWorkout < ApplicationRecord
+end
