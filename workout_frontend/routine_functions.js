@@ -47,7 +47,6 @@ function renderRoutine(routine){
     // put workouts here when that's working  
     const routineWorkouts = routine.workouts; 
 
-
     routineCard.appendChild(routineName);
     routineCard.appendChild(routineDesc); 
     routineCard.appendChild(routineDate);
@@ -66,22 +65,26 @@ function deleteRoutine(routine){
     routine.parentElement.remove()
 }
 
-// id: 1
-// name: "Monday workout"
-// description: "Doloribus debitis voluptatem blanditiis et."
-// date: "2020-09-28"
-// created_at: "2020-03-04T13:42:30.615Z"
-// updated_at: "2020-03-04T13:42:30.615Z"
-// user_id: 1
-
 function newRoutineForm(){
     const newRoutineFormCard = document.createElement('div'); 
 
     const newRoutineName = document.createElement('input');
-    const newRoutineDesc = document.createElement('input');
+    newRoutineName.placeholder = "routine name"; 
+    const newRoutineDesc = document.createElement('textarea');
+    newRoutineDesc.placeholder = "description"
     const newRoutineDate = document.createElement('input');
-    newRoutineDate.type = "date"
+    newRoutineDate.type = "date";
+    const newRoutineMuscleSelection = document.createElement('div'); 
+    fetchMuscles(newRoutineMuscleSelection); 
+    
+    newRoutineFormCard.appendChild(newRoutineName);
+    newRoutineFormCard.appendChild(document.createElement('br'));  
+    newRoutineFormCard.appendChild(newRoutineDate); 
+    newRoutineFormCard.appendChild(document.createElement('br'));  
+    newRoutineFormCard.appendChild(newRoutineDesc); 
+    newRoutineFormCard.appendChild(document.createElement('br'));  
 
+    main.appendChild(newRoutineFormCard); 
 
 }
 

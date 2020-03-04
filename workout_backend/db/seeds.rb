@@ -20,7 +20,8 @@ random_muscles = ["Bicep", "Tricep", "Abs", "Neck", "Quadriceps", "Hamstrings", 
         description: Faker::Lorem.sentence(word_count: 10)
     )
     2.times do
-        new_workout.muscles << Muscle.create(name:random_muscles.sample)
+        random_muscle = Muscle.find_or_create_by(name:random_muscles.sample)
+        new_workout.muscles << random_muscle unless new_workout.muscles.include?(random_muscle)
     end
 end
 # create new users and give them routines

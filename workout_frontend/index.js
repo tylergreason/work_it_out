@@ -3,7 +3,8 @@ let user_id = undefined;
 let logged_username = undefined;   
 let userObject = {}; 
 const routinesURL = 'http://localhost:3000/routines/'
-const placeholderLoginValue = "kathrine_runolfsdottir"
+const musclesURL = 'http://localhost:3000/muscles/'
+const placeholderLoginValue = "quinton.doyle"
 window.onload = event => {
     main_event(); 
 }    
@@ -85,14 +86,15 @@ function login_button_listener(button){
 
 function render_main_page(){
     console.log('render main page fired')
+    newRoutineForm();
     renderRoutines(userObject); 
 }
 
 function render_navigation_div(){
     clear_main(); 
     // navigation div 
-    const navigation = document.createElement('ul'); 
-    const myRoutinesLI = document.createElement('li'); 
+    // const navigation = document.createElement('ul'); 
+    // const myRoutinesLI = document.createElement('li'); 
 
     
 }
@@ -101,6 +103,5 @@ function renderMyRoutinesButton(){
     const myRoutinesBtn = document.createElement('button')
     myRoutinesBtn.innerText = "My Routines" 
     myRoutinesBtn.addEventListener('click', function(e){
-
     })
 }
