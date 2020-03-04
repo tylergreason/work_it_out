@@ -1,5 +1,6 @@
 class RoutinesController < ApplicationController
-    def index 
-
+    def destroy 
+        routine = Routine.find(params[:id])
+        routine.delete
     end
 end

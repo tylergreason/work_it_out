@@ -1,7 +1,9 @@
 // placeholder user_id and logged_username for testing 
 let user_id = undefined; 
 let logged_username = undefined;   
-let user_object = {}; 
+let userObject = {}; 
+const routinesURL = 'http://localhost:3000/routines/'
+const placeholderLoginValue = "kenneth"
 window.onload = event => {
     main_event(); 
 }    
@@ -28,7 +30,7 @@ async function new_user (first_name, last_name, username, password){
     const resp = await data.json()
     .then((data) => {
         console.log('Success:', data);
-        user_object = data; 
+        userObject = data; 
         logged_username = data.username; 
         user_id = data.id; 
         console.log(`username is ${logged_username}`)
@@ -61,6 +63,7 @@ function check_login(){
     login_div.id = 'login_div'
     let username_text = document.createElement('input');
     username_text.id = "username_text"
+    username_text.value = placeholderLoginValue; 
     let username_button = document.createElement('button'); 
     username_button.innerText = "log in"
     // add event listener for submission 
@@ -77,14 +80,12 @@ function login_button_listener(button){
         let username_value = username_div.value; 
         // call new user with just username 
         new_user ('nil','nil',username_value, 'password'); 
-        // if (logged_username !== undefined){
-        //     main_event();
-        // }
-    })
+        })
 }
 
 function render_main_page(){
     console.log('render main page fired')
+    renderRoutines(userObject); 
 }
 
 function render_navigation_div(){

@@ -10,6 +10,7 @@ class UsersController < ApplicationController
         # byebug
         user = User.find_or_create_by(username: user_params["username"])
         render json: user, include: [:routines]
+        # render json: user, include: [:routines, include: [:workouts]]
     end
 
     def destroy 
