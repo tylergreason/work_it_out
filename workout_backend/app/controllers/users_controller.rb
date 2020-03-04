@@ -1,14 +1,15 @@
 class UsersController < ApplicationController
     def show  
         user = User.all.find(params[:id])
-        render json: user
+        render json: user, include: [:routines]
+        # render json: trainers, include: [:pokemons]
     end
 
     def create 
         # user = User.create(user_params)
         # byebug
         user = User.find_or_create_by(username: user_params["username"])
-        render json: user 
+        render json: user, include: [:routines]
     end
 
     def destroy 

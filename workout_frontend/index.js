@@ -1,6 +1,7 @@
 // placeholder user_id and logged_username for testing 
-let user_id = 61;     
-let logged_username = "test_username";   
+let user_id = undefined; 
+let logged_username = undefined;   
+let user_object = {}; 
 window.onload = event => {
     main_event(); 
 }    
@@ -27,6 +28,7 @@ async function new_user (first_name, last_name, username, password){
     const resp = await data.json()
     .then((data) => {
         console.log('Success:', data);
+        user_object = data; 
         logged_username = data.username; 
         user_id = data.id; 
         console.log(`username is ${logged_username}`)
@@ -98,6 +100,6 @@ function renderMyRoutinesButton(){
     const myRoutinesBtn = document.createElement('button')
     myRoutinesBtn.innerText = "My Routines" 
     myRoutinesBtn.addEventListener('click', function(e){
-        
+
     })
 }
