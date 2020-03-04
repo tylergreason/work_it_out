@@ -38,7 +38,6 @@ function renderRoutine(routine){
 }
 
 function deleteRoutine(routine){
-
     fetch(`${routinesURL}${routine.dataset.id}`, {
         method: 'DELETE',
         headers: {
@@ -55,3 +54,18 @@ function deleteRoutine(routine){
 // created_at: "2020-03-04T13:42:30.615Z"
 // updated_at: "2020-03-04T13:42:30.615Z"
 // user_id: 1
+
+function newRoutineForm(){
+    const newRoutineFormCard = document.createElement('div'); 
+
+    const newRoutineName = document.createElement('input');
+    const newRoutineDesc = document.createElement('input');
+    const newRoutineDate = document.createElement('input');
+    newRoutineDate.type = "date"
+
+
+}
+
+function newRoutine(){
+
+}
