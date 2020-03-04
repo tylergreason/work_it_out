@@ -4,6 +4,8 @@ function renderWorkouts(workouts){
         const workoutLi = document.createElement('li'); 
         workoutLi.appendChild(renderWorkout(workout)); 
         workoutLi.appendChild(renderMuscles(workout.muscles))
+        workoutLi.className = "workoutLi"
+        workoutLi.dataset.id = workout.id; 
         workoutList.appendChild(workoutLi); 
     })
     return workoutList; 
@@ -11,6 +13,7 @@ function renderWorkouts(workouts){
 
 function renderWorkout(workout){
     const workoutCard = document.createElement('div'); 
+    workoutCard.dataset.id = workout.id; 
     const workoutName = document.createElement('div'); 
     workoutName.innerText = workout.name; 
     const workoutDifficulty = document.createElement('div'); 
@@ -21,4 +24,16 @@ function renderWorkout(workout){
     workoutCard.appendChild(workoutDifficulty);
     workoutCard.appendChild(workoutDesc); 
     return workoutCard; 
+}
+
+function renderWorkoutsForNewRoutine(workouts){
+    const workoutList = document.createElement('ul'); 
+    workouts.forEach(function(workout){
+        const workoutLi = document.createElement('li'); 
+        workoutLi.appendChild(renderWorkout(workout)); 
+        workoutLi.appendChild(renderMuscles(workout.muscles))
+        addWorkoutToRoutineEvent(workoutLi); 
+        workoutList.appendChild(workoutLi); 
+    })
+    return workoutList; 
 }

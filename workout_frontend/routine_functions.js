@@ -43,7 +43,6 @@ function renderRoutine(routine){
     routineDeleteBtn.addEventListener('click',function(e){
         deleteRoutine(e.target); 
     })
-
     // put workouts here when that's working  
     const routineWorkouts = routine.workouts; 
 
@@ -75,7 +74,11 @@ function newRoutineForm(){
     const newRoutineDate = document.createElement('input');
     newRoutineDate.type = "date";
     const newRoutineMuscleSelection = document.createElement('div'); 
+    newRoutineMuscleSelection.id = "newRoutineMuscleSelection"
     fetchMuscles(newRoutineMuscleSelection); 
+    const newRoutineWorkoutsList = document.createElement('ul');
+    newRoutineWorkoutsList.id = "newRoutineWorkoutsList"
+
     
     newRoutineFormCard.appendChild(newRoutineName);
     newRoutineFormCard.appendChild(document.createElement('br'));  
@@ -83,9 +86,34 @@ function newRoutineForm(){
     newRoutineFormCard.appendChild(document.createElement('br'));  
     newRoutineFormCard.appendChild(newRoutineDesc); 
     newRoutineFormCard.appendChild(document.createElement('br'));  
-
+    newRoutineFormCard.appendChild(newRoutineWorkoutsList); 
+    
     main.appendChild(newRoutineFormCard); 
+}
 
+function addWorkoutToRoutineEvent(workout){
+    const newRoutineWorkoutsList = document.querySelector("#newRoutineWorkoutsList")
+    // debugger
+    workout.addEventListener('click',function(e){
+        if (checkIfIdPresent(newRoutineWorkoutsList,this.dataset.id).length === 0){
+            let newNode = this.cloneNode(true); 
+            newRoutineWorkoutsList.appendChild(newNode); 
+            removeWorkoutFromNewRoutineWorkoutListListener(newNode);
+        }
+    })
+}
+
+function checkIfIdPresent(node,id){
+    const arrayToCompare = Array.from(node.children); 
+
+    return arrayToCompare.filter( element => element.dataset.id === id)
+}
+
+function removeWorkoutFromNewRoutineWorkoutListListener(workout){
+    workout.addEventListener('click',function(e){
+        // debugger
+        this.parentElement.removeChild(this); 
+    })
 }
 
 function newRoutine(){

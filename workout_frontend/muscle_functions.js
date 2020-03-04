@@ -30,15 +30,12 @@ function fetchMuscles(div){
     // .then(data => console.log(data))
     .then(function(muscles){
         muscles.forEach(function(muscle){
-            div.appendChild(renderMuscle(muscle)); 
-            div.appendChild(renderWorkouts(muscle.workouts))
-            // debugger
-
+            const muscleWorkoutDiv = document.createElement('div'); 
+            muscleWorkoutDiv.appendChild(renderMuscle(muscle)); 
+            muscleWorkoutDiv.appendChild(renderWorkouts(muscle.workouts))
+            muscleWorkoutDiv.querySelectorAll(".workoutLi").forEach(workout => addWorkoutToRoutineEvent(workout))
+            div.appendChild(muscleWorkoutDiv)
         })
         main.appendChild(div); 
-        // const muscleWorkouts = renderWorkouts(muscle.workouts); 
-        // div.appendChild(muscle); 
-        // div.appendChild(muscleWorkouts); 
-
     })
 }
