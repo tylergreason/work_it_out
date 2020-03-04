@@ -5,11 +5,12 @@ day = ["Monday", "Tuesday", "Wednesday", "Thurday", "Friday", "Saturday", "Sunda
 random_muscles = ["Bicep", "Tricep", "Abs", "Neck", "Quadriceps", "Hamstrings", "Calves", "Pelvis", "Pectorals", "Lats", "Deltoids", "Upper back", "Lower back"]
 
 # delete tables 
-User.all.delete_all 
-Workout.all.delete_all
-Muscle.all.delete_all
-Routine.all.delete_all
+# User.all.delete_all 
+# Workout.all.delete_all
+# Muscle.all.delete_all
+# Routine.all.delete_all
 
+# rails db:reset before seeding 
 
 # create new workouts and give them muscles 
 20.times do 
