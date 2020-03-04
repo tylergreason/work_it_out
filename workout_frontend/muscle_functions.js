@@ -29,6 +29,7 @@ function fetchMuscles(div){
     .then(resp => resp.json())
     // .then(data => console.log(data))
     .then(function(muscles){
+        // debugger
         muscles.forEach(function(muscle){
             const muscleWorkoutDiv = document.createElement('div'); 
             muscleWorkoutDiv.appendChild(renderMuscle(muscle)); 

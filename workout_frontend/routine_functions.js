@@ -68,11 +68,18 @@ function newRoutineForm(){
     const newRoutineFormCard = document.createElement('div'); 
 
     const newRoutineName = document.createElement('input');
-    newRoutineName.placeholder = "routine name"; 
-    const newRoutineDesc = document.createElement('textarea');
-    newRoutineDesc.placeholder = "description"
+    newRoutineName.value = "routine name"; 
+    newRoutineName.id = "newRoutineName"; 
     const newRoutineDate = document.createElement('input');
     newRoutineDate.type = "date";
+    newRoutineDate.id = "newRoutineDate"; 
+    newRoutineDate.value = "2019-01-01"
+    const newRoutineDesc = document.createElement('textarea');
+    newRoutineDesc.value = "description"
+    newRoutineDesc.id = "newRoutineDesc"
+    const newRoutineSubmitBtn = document.createElement('button'); 
+    newRoutineSubmitBtn.innerText = "Submit routine" 
+
     const newRoutineMuscleSelection = document.createElement('div'); 
     newRoutineMuscleSelection.id = "newRoutineMuscleSelection"
     fetchMuscles(newRoutineMuscleSelection); 
@@ -85,6 +92,9 @@ function newRoutineForm(){
     newRoutineFormCard.appendChild(newRoutineDate); 
     newRoutineFormCard.appendChild(document.createElement('br'));  
     newRoutineFormCard.appendChild(newRoutineDesc); 
+    newRoutineFormCard.appendChild(document.createElement('br'));  
+    newRoutineFormCard.appendChild(newRoutineSubmitBtn); 
+    newRoutineSubmitBtnEvent(newRoutineSubmitBtn);
     newRoutineFormCard.appendChild(document.createElement('br'));  
     newRoutineFormCard.appendChild(newRoutineWorkoutsList); 
     
@@ -116,6 +126,39 @@ function removeWorkoutFromNewRoutineWorkoutListListener(workout){
     })
 }
 
-function newRoutine(){
+function newRoutineSubmitBtnEvent(button){
+    button.addEventListener('click',function(e){
+        e.preventDefault();
+        const newRoutineName = document.getElementById("newRoutineName");
+        const newRoutineDate = document.getElementById("newRoutineDate");
+        // debugger
+        const newRoutineDesc = document.getElementById("newRoutineDesc");
+        const newRoutineWorkoutsList = document.getElementById("newRoutineWorkoutsList")
+        const newRoutineWorkoutsArray = Array.from(newRoutineWorkoutsList.children)
+        const workoutIds = newRoutineWorkoutsArray.map(workout => workout.dataset.id)
 
+        newRoutine(newRoutineName.value,newRoutineDesc.value,newRoutineDate.value,workoutIds)
+    })
+}
+
+
+async function newRoutine(name,desc,date,workouts){
+        const objData = {
+            "user_id":user_id,
+            "name": name,
+            "description": desc,
+            "date": date, 
+            "workouts": workouts
+        };
+        const data = await fetch(`http://localhost:3000/routines/`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(objData)
+        })
+        const resp = await data.json()
+        .then((data) => {
+            console.log('Success:', data);
+        })
 }
