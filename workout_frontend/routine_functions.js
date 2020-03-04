@@ -1,13 +1,29 @@
 console.log("render functions was loaded correctly")
 
 // render all user's routines  
-function renderRoutines(user){
+function renderRoutines2(user){
     let routines = user.routines; 
     routines.forEach(function(routine){
         console.log(routine); 
         main.appendChild(renderRoutine(routine)) 
     })
 }
+
+function renderRoutines(user){
+    fetch(`${routinesURL}`, {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    })
+    .then(resp => resp.json())
+    .then(function(routines){
+        const userRoutines = routines.filter(routine => routine.user_id === user.id)
+        // debugger
+        userRoutines.forEach(routine => main.appendChild(renderRoutine(routine)))
+    })
+}
+
 
 function renderRoutine(routine){
     const routineCard = document.createElement('div')
