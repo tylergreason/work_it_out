@@ -37,7 +37,7 @@ function renderRoutine(routine){
     const routineDate = document.createElement('div'); 
     routineDate.innerText = routine.date; 
     const routineDeleteBtn = document.createElement('button'); 
-    routineDeleteBtn.innerText = 'delete'; 
+    routineDeleteBtn.innerText = 'delete routine'; 
     routineDeleteBtn.dataset.id = routine.id; 
 
     routineDeleteBtn.addEventListener('click',function(e){
@@ -45,10 +45,13 @@ function renderRoutine(routine){
     })
 
     // put workouts here when that's working  
+    const routineWorkouts = routine.workouts; 
+
 
     routineCard.appendChild(routineName);
     routineCard.appendChild(routineDesc); 
     routineCard.appendChild(routineDate);
+    routineCard.appendChild(renderWorkouts(routineWorkouts))
     routineCard.appendChild(routineDeleteBtn)
     return routineCard; 
 }

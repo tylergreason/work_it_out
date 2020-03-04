@@ -3,7 +3,7 @@ let user_id = undefined;
 let logged_username = undefined;   
 let userObject = {}; 
 const routinesURL = 'http://localhost:3000/routines/'
-const placeholderLoginValue = "kenneth"
+const placeholderLoginValue = "kathrine_runolfsdottir"
 window.onload = event => {
     main_event(); 
 }    
