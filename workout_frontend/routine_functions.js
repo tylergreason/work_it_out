@@ -1,13 +1,13 @@
 console.log("render functions was loaded correctly")
 
 // render all user's routines  
-function renderRoutines2(user){
-    let routines = user.routines; 
-    routines.forEach(function(routine){
-        console.log(routine); 
-        main.appendChild(renderRoutine(routine)) 
-    })
-}
+// function renderRoutines2(user){
+//     let routines = user.routines; 
+//     routines.forEach(function(routine){
+//         console.log(routine); 
+//         main.appendChild(renderRoutine(routine)) 
+//     })
+// }
 
 function renderRoutines(user){
     fetch(`${routinesURL}`, {
@@ -67,6 +67,8 @@ function deleteRoutine(routine){
 function newRoutineForm(){
     const newRoutineFormCard = document.createElement('div'); 
 
+    const newRoutineHeader = document.createElement('h2'); 
+    newRoutineHeader.innerText = 'New Routine'
     const newRoutineName = document.createElement('input');
     newRoutineName.value = "routine name"; 
     newRoutineName.id = "newRoutineName"; 
@@ -82,23 +84,23 @@ function newRoutineForm(){
 
     const newRoutineMuscleSelection = document.createElement('div'); 
     newRoutineMuscleSelection.id = "newRoutineMuscleSelection"
-    fetchMuscles(newRoutineMuscleSelection); 
+    fetchMusclesWithWorkouts(newRoutineMuscleSelection); 
     const newRoutineWorkoutsList = document.createElement('ul');
     newRoutineWorkoutsList.id = "newRoutineWorkoutsList"
 
-    
+    newRoutineFormCard.appendChild(newRoutineHeader); 
     newRoutineFormCard.appendChild(newRoutineName);
-    newRoutineFormCard.appendChild(document.createElement('br'));  
+    insertBreak(newRoutineFormCard);
     newRoutineFormCard.appendChild(newRoutineDate); 
-    newRoutineFormCard.appendChild(document.createElement('br'));  
+    insertBreak(newRoutineFormCard);
     newRoutineFormCard.appendChild(newRoutineDesc); 
-    newRoutineFormCard.appendChild(document.createElement('br'));  
+    insertBreak(newRoutineFormCard);
     newRoutineFormCard.appendChild(newRoutineSubmitBtn); 
     newRoutineSubmitBtnEvent(newRoutineSubmitBtn);
-    newRoutineFormCard.appendChild(document.createElement('br'));  
+    insertBreak(newRoutineFormCard);
     newRoutineFormCard.appendChild(newRoutineWorkoutsList); 
     
-    main.appendChild(newRoutineFormCard); 
+    return newRoutineFormCard; 
 }
 
 function addWorkoutToRoutineEvent(workout){

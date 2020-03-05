@@ -19,7 +19,7 @@ function renderMuscle(muscle){
     return muscleCard; 
 }
 
-function fetchMuscles(div){
+function fetchMusclesWithWorkouts(div){
     fetch(`${musclesURL}`, {
         method: 'GET',
         headers: {
@@ -39,4 +39,31 @@ function fetchMuscles(div){
         })
         main.appendChild(div); 
     })
+}
+
+function renderMuscleSelectBoxToId(id){
+    fetchJSONFromURL(musclesURL)
+    .then(function(muscles){    
+        const muscleSelectBox = document.createElement('div')
+        muscles.forEach(function(muscle){
+            muscleSelectBox.appendChild(createCheckboxWithName(muscle,muscle.name));
+        })
+        const appendTo = document.getElementById(id); 
+        appendTo.appendChild(muscleSelectBox); 
+    })
+}
+
+function returnCheckedMuscles(id){
+    const el = document.getElementById(id); 
+    const list = elementListToArray(el.children[0].children)
+    const checkedMuscleIds = []; 
+    //  iterate through list and return ids of elements that are checked 
+    list.forEach(function(element){
+        // debugger
+        const elementItems = elementListToArray(element.children); 
+        if (elementItems[0].checked === true) {
+            checkedMuscleIds.push(element.dataset.id); 
+        }
+    })
+    return checkedMuscleIds;
 }

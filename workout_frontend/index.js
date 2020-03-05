@@ -4,6 +4,7 @@ let logged_username = undefined;
 let userObject = {}; 
 const routinesURL = 'http://localhost:3000/routines/'
 const musclesURL = 'http://localhost:3000/muscles/'
+const workoutURL = 'http://localhost:3000/workouts'
 const placeholderLoginValue = "quinton.doyle"
 window.onload = event => {
     main_event(); 
@@ -86,22 +87,10 @@ function login_button_listener(button){
 
 function render_main_page(){
     console.log('render main page fired')
-    newRoutineForm();
-    renderRoutines(userObject); 
+    // running these functions when the user is logged in to test them quickly 
+    main.appendChild(newWorkoutForm());
+    main.appendChild(newRoutineForm());
+    // renderRoutines(userObject);
 }
 
-function render_navigation_div(){
-    clear_main(); 
-    // navigation div 
-    // const navigation = document.createElement('ul'); 
-    // const myRoutinesLI = document.createElement('li'); 
 
-    
-}
-
-function renderMyRoutinesButton(){
-    const myRoutinesBtn = document.createElement('button')
-    myRoutinesBtn.innerText = "My Routines" 
-    myRoutinesBtn.addEventListener('click', function(e){
-    })
-}

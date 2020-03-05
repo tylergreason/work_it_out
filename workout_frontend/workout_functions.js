@@ -37,3 +37,63 @@ function renderWorkoutsForNewRoutine(workouts){
     })
     return workoutList; 
 }
+
+function newWorkoutForm(){
+    const newWorkoutCard = document.createElement('div'); 
+
+    const newWorkoutHeader = document.createElement('h2')
+    newWorkoutHeader.innerText = "New Workout"
+    const newWorkoutName = document.createElement('input'); 
+    newWorkoutName.value = "name placeholder"; 
+    newWorkoutName.id = "newWorkoutName";
+    const newWorkoutDesc = document.createElement('textarea'); 
+    newWorkoutDesc.value = "description placeholder"; 
+    newWorkoutDesc.id = "newWorkoutDesc"; 
+    const difficulties = ["easy", "medium","hard"]
+    const newWorkoutDifficulty = document.createElement("select")
+    newWorkoutDifficulty.id = "newWorkoutDifficulty";
+    const newWorkoutSubmitBtn = document.createElement('button'); 
+    newWorkoutSubmitBtn.innerText = "submit" 
+    submitWorkoutEventListener(newWorkoutSubmitBtn); 
+
+    difficulties.forEach(function(difficulty){
+        const newOption = document.createElement("option"); 
+        newOption.text = difficulty;  
+        newWorkoutDifficulty.add(newOption); 
+    })
+
+    const muscleSelectDiv = document.createElement('div'); 
+    muscleSelectDiv.id = "muscleSelectDiv";
+    renderMuscleSelectBoxToId(muscleSelectDiv.id)
+    newWorkoutCard.appendChild(newWorkoutHeader); 
+    newWorkoutCard.appendChild(newWorkoutName); 
+    insertBreak(newWorkoutCard);
+    newWorkoutCard.appendChild(newWorkoutDifficulty); 
+    insertBreak(newWorkoutCard);
+    newWorkoutCard.appendChild(newWorkoutDesc); 
+    insertBreak(newWorkoutCard);
+    newWorkoutCard.appendChild(newWorkoutSubmitBtn)
+    newWorkoutCard.appendChild(muscleSelectDiv);
+    return newWorkoutCard; 
+}
+
+function createWorkout(name,difficulty,description,muscles){
+    const workoutObject = {
+        "name":name,
+        "difficulty":difficulty,
+        "description":description,
+        "muscles":muscles
+    }
+    postRequest(workoutURL,workoutObject)
+}
+
+function submitWorkoutEventListener(button){
+    button.addEventListener('click', function(e){
+        const newWorkoutName = document.getElementById("newWorkoutName").value; 
+        const newWorkoutDesc = document.getElementById("newWorkoutDesc").value; 
+        const newWorkoutDifficulty = document.getElementById("newWorkoutDifficulty").value; 
+        const newWorkoutMuscleIds = returnCheckedMuscles("muscleSelectDiv"); 
+        // debugger; 
+        createWorkout(newWorkoutName,newWorkoutDesc,newWorkoutDifficulty,newWorkoutMuscleIds); 
+    })
+}
