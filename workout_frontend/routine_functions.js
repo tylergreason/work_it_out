@@ -75,7 +75,7 @@ function newRoutineForm(){
     const newRoutineDate = document.createElement('input');
     newRoutineDate.type = "date";
     newRoutineDate.id = "newRoutineDate"; 
-    newRoutineDate.value = "2019-01-01"
+    newRoutineDate.value = parseDate();
     const newRoutineDesc = document.createElement('textarea');
     newRoutineDesc.value = "description"
     newRoutineDesc.id = "newRoutineDesc"

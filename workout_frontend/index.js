@@ -89,8 +89,8 @@ function render_main_page(){
     console.log('render main page fired')
     // running these functions when the user is logged in to test them quickly 
     main.appendChild(newWorkoutForm());
-    main.appendChild(newRoutineForm());
-    // renderRoutines(userObject);
+    // main.appendChild(newRoutineForm());
+    renderRoutines(userObject);
 }
 
 

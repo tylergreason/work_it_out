@@ -53,3 +53,18 @@ function deleteRequest(url,id){
         }
     }).then(resp => console.log(resp)); 
 }
+
+function parseDate(){
+    const date = new Date; 
+    let year = date.getFullYear(); 
+    let month = date.getMonth()+1; 
+    let dayDate = date.getDate(); 
+    // if day and month are less than 10, append a 0 to their beginning 
+    if (month < 10){
+        month = `0${month}`
+    }
+    if (dayDate < 10){
+        dayDate = `0${dayDate}`
+    }
+    return `${year}-${month}-${dayDate}`
+}
