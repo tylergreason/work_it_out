@@ -32,10 +32,16 @@ function renderRoutine(routine){
 
     const routineName = document.createElement('div'); 
     routineName.innerText = routine.name; 
+    routineName.id = `routineName${routine.id}`
+
     const routineDesc = document.createElement('div'); 
     routineDesc.innerText = routine.description; 
+    routineDesc.id = `routineDesc${routine.id}`
+
     const routineDate = document.createElement('div'); 
     routineDate.innerText = routine.date; 
+    routineDate.id = `routineDate${routine.id}`; 
+
     const routineDeleteBtn = document.createElement('button'); 
     routineDeleteBtn.innerText = 'delete routine'; 
     routineDeleteBtn.dataset.id = routine.id; 
@@ -43,14 +49,23 @@ function renderRoutine(routine){
     routineDeleteBtn.addEventListener('click',function(e){
         deleteRoutine(e.target); 
     })
+
+    const routineCopyBtn = document.createElement('button'); 
+    routineCopyBtn.innerText = "copy"; 
+    addCopyRoutineEventListener(routineCopyBtn); 
+
     // put workouts here when that's working  
     const routineWorkouts = routine.workouts; 
+    const routineWorkoutsList = renderWorkouts(routineWorkouts); 
+    routineWorkoutsList.id = `routineWorkoutsList${routine.id}`
 
+    
     routineCard.appendChild(routineName);
     routineCard.appendChild(routineDesc); 
     routineCard.appendChild(routineDate);
-    routineCard.appendChild(renderWorkouts(routineWorkouts))
+    routineCard.appendChild(routineWorkoutsList); 
     routineCard.appendChild(routineDeleteBtn)
+    routineCard.appendChild(routineCopyBtn); 
     return routineCard; 
 }
 
@@ -62,6 +77,20 @@ function deleteRoutine(routine){
         }
     })
     routine.parentElement.remove()
+}
+
+function addCopyRoutineEventListener(element){
+    element.addEventListener('click',function(e){
+        copyRoutines(e); 
+    })
+}
+
+function copyRoutines(element){
+    const routineName = document.querySelector(`#routineName${element.target.parentElement.dataset.id}`).innerText; 
+    const routineDesc = document.querySelector(`#routineDesc${element.target.parentElement.dataset.id}`).innerText; 
+    // const routineDate = document.querySelector(`#routineDate${element.target.parentElement.dataset.id}`).innerText; 
+    const routineDate = parseDate(); 
+    const routineWorkoutList = document.querySelector(`#routineWorkoutsList${element.target.parentElement.dataset.id}`)
 }
 
 function newRoutineForm(){
