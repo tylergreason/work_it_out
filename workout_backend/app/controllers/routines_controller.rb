@@ -24,8 +24,9 @@ class RoutinesController < ApplicationController
 
     def index 
         routines = Routine.all 
+        # byebug
         # render json: routines, include: [:workouts]
-        render :json => routines, :include => {:workouts => {:include => :muscles}}
+        render :json => routines.sort_by {|r| r.date}.reverse, :include => {:workouts => {:include => :muscles}}
     end
 
     private 

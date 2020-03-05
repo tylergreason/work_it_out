@@ -29,15 +29,14 @@ function fetchMusclesWithWorkouts(div){
     .then(resp => resp.json())
     // .then(data => console.log(data))
     .then(function(muscles){
-        // debugger
         muscles.forEach(function(muscle){
             const muscleWorkoutDiv = document.createElement('div'); 
             muscleWorkoutDiv.appendChild(renderMuscle(muscle)); 
             muscleWorkoutDiv.appendChild(renderWorkouts(muscle.workouts))
             muscleWorkoutDiv.querySelectorAll(".workoutLi").forEach(workout => addWorkoutToRoutineEvent(workout))
             div.appendChild(muscleWorkoutDiv)
+            // debugger
         })
-        main.appendChild(div); 
     })
 }
 

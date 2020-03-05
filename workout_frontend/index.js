@@ -2,6 +2,9 @@
 let user_id = undefined; 
 let logged_username = undefined;   
 let userObject = {}; 
+const userRoutinesDiv = document.querySelector("#userRoutines")
+const newRoutineDiv = document.querySelector("#newRoutineForm")
+const newWorkoutDiv = document.querySelector("#newWorkoutForm")
 const routinesURL = 'http://localhost:3000/routines/'
 const musclesURL = 'http://localhost:3000/muscles/'
 const workoutURL = 'http://localhost:3000/workouts'
@@ -88,9 +91,11 @@ function login_button_listener(button){
 function render_main_page(){
     console.log('render main page fired')
     // running these functions when the user is logged in to test them quickly 
-    // main.appendChild(newWorkoutForm());
+    newWorkoutDiv.appendChild(newWorkoutForm());
     // main.appendChild(newRoutineForm());
     renderRoutines(userObject);
+    newRoutineDiv.appendChild(newRoutineForm())
+
 }
 
 

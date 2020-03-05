@@ -20,7 +20,7 @@ function renderRoutines(user){
     .then(function(routines){
         const userRoutines = routines.filter(routine => routine.user_id === user.id)
         // debugger
-        userRoutines.forEach(routine => main.appendChild(renderRoutine(routine)))
+        userRoutines.forEach(routine => userRoutinesDiv.appendChild(renderRoutine(routine)))
     })
 }
 
@@ -87,37 +87,55 @@ function addCopyRoutineEventListener(element){
 
 function copyRoutines(element){
     const routineName = document.querySelector(`#routineName${element.target.parentElement.dataset.id}`).innerText; 
-    const routineDesc = document.querySelector(`#routineDesc${element.target.parentElement.dataset.id}`).innerText; 
     // const routineDate = document.querySelector(`#routineDate${element.target.parentElement.dataset.id}`).innerText; 
     const routineDate = parseDate(); 
+    const routineDesc = document.querySelector(`#routineDesc${element.target.parentElement.dataset.id}`).innerText; 
     const routineWorkoutList = document.querySelector(`#routineWorkoutsList${element.target.parentElement.dataset.id}`)
+    // debugger
+    main.appendChild(newRoutineForm(routineName,routineDate,routineDesc,routineWorkoutList))
 }
 
-function newRoutineForm(){
+function newRoutineForm(name,date,desc,workouts){
     const newRoutineFormCard = document.createElement('div'); 
 
     const newRoutineHeader = document.createElement('h2'); 
     newRoutineHeader.innerText = 'New Routine'
     const newRoutineName = document.createElement('input');
-    newRoutineName.value = "routine name"; 
+    if (name === undefined){
+        newRoutineName.value = "routine name"; 
+    }else{
+        newRoutineName.value = name;
+    }
     newRoutineName.id = "newRoutineName"; 
     const newRoutineDate = document.createElement('input');
     newRoutineDate.type = "date";
     newRoutineDate.id = "newRoutineDate"; 
-    newRoutineDate.value = parseDate();
+    if (date === undefined){
+        newRoutineDate.value = parseDate();
+    }else{
+        newRoutineDate.value = date; 
+    }
     const newRoutineDesc = document.createElement('textarea');
-    newRoutineDesc.value = "description"
+    if (desc === undefined){
+        newRoutineDesc.value = "description"
+    }else {
+        newRoutineDesc.value = desc; 
+    }
     newRoutineDesc.id = "newRoutineDesc"
     const newRoutineSubmitBtn = document.createElement('button'); 
     newRoutineSubmitBtn.innerText = "Submit routine" 
 
     const newRoutineMuscleSelection = document.createElement('div'); 
     newRoutineMuscleSelection.id = "newRoutineMuscleSelection"
-    fetchMusclesWithWorkouts(newRoutineMuscleSelection); 
+    
     const newRoutineWorkoutsList = document.createElement('ul');
+    if (workouts === undefined){
+    }else {
+        copyWorkouts(workouts,newRoutineWorkoutsList)
+    }
     newRoutineWorkoutsList.id = "newRoutineWorkoutsList"
-
-    newRoutineFormCard.appendChild(newRoutineHeader); 
+    // newRoutineFormCard.appendChild(newRoutineHeader); 
+    newRoutineFormCard.parentNode.append(newRoutineHeader)
     newRoutineFormCard.appendChild(newRoutineName);
     insertBreak(newRoutineFormCard);
     newRoutineFormCard.appendChild(newRoutineDate); 
@@ -129,6 +147,9 @@ function newRoutineForm(){
     insertBreak(newRoutineFormCard);
     newRoutineFormCard.appendChild(newRoutineWorkoutsList); 
     
+    // debugger
+    fetchMusclesWithWorkouts(newRoutineMuscleSelection); 
+    newRoutineFormCard.appendChild(newRoutineMuscleSelection); 
     return newRoutineFormCard; 
 }
 
@@ -145,8 +166,7 @@ function addWorkoutToRoutineEvent(workout){
 }
 
 function checkIfIdPresent(node,id){
-    const arrayToCompare = Array.from(node.children); 
-
+    let arrayToCompare = Array.from(node.children); 
     return arrayToCompare.filter( element => element.dataset.id === id)
 }
 
@@ -192,4 +212,12 @@ async function newRoutine(name,desc,date,workouts){
         .then((data) => {
             console.log('Success:', data);
         })
+}
+
+function copyWorkouts(workouts,list){
+    const workoutsArray = Array.from(workouts.children); 
+    workoutsArray.forEach(function(workout){
+        removeWorkoutFromNewRoutineWorkoutListListener(workout);
+        list.appendChild(workout); 
+    })
 }

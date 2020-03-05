@@ -68,3 +68,11 @@ function parseDate(){
     }
     return `${year}-${month}-${dayDate}`
 }
+
+function hideOrUnhide(div){
+    if (div.hidden === true){
+        div.hidden = false; 
+    }else{
+        div.hidden = true; 
+    }
+}
