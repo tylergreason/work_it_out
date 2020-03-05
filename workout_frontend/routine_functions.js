@@ -10,6 +10,8 @@ console.log("render functions was loaded correctly")
 // }
 
 function renderRoutines(user){
+    // clear routines div 
+    removeChildren(userRoutinesDiv);
     fetch(`${routinesURL}`, {
         method: 'GET',
         headers: {
@@ -23,7 +25,6 @@ function renderRoutines(user){
         userRoutines.forEach(routine => userRoutinesDiv.appendChild(renderRoutine(routine)))
     })
 }
-
 
 function renderRoutine(routine){
     const routineCard = document.createElement('div')
@@ -100,8 +101,9 @@ function copyRoutines(element){
     newRoutineName.value = routineName; 
     newRoutineDate.value = parseDate(); 
     newRoutineDesc.value = routineDesc; 
+    // debugger 
     copyWorkouts(routineWorkoutList,newRoutineWorkoutsList);
-
+    // console.log(routineWorkoutList.children);
 }
 
 function newRoutineForm(name,date,desc,workouts){
@@ -190,7 +192,7 @@ function checkIfIdPresent(node,id){
 
 function removeWorkoutFromNewRoutineWorkoutListListener(workout){
     workout.addEventListener('click',function(e){
-        // debugger
+        e.preventDefault();
         this.parentElement.removeChild(this); 
     })
 }
@@ -228,13 +230,17 @@ async function newRoutine(name,desc,date,workouts){
         const resp = await data.json()
         .then((data) => {
             console.log('Success:', data);
+            renderRoutines(userObject); 
         })
 }
 
 function copyWorkouts(workouts,list){
     const workoutsArray = Array.from(workouts.children); 
+    removeChildren(list); 
     workoutsArray.forEach(function(workout){
-        removeWorkoutFromNewRoutineWorkoutListListener(workout);
-        list.appendChild(workout); 
+        const workoutClone = workout.cloneNode(true); 
+        removeWorkoutFromNewRoutineWorkoutListListener(workoutClone);
+        // debugger 
+        list.appendChild(workoutClone); 
     })
 }
