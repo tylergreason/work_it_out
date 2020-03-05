@@ -39,10 +39,15 @@ function renderWorkoutsForNewRoutine(workouts){
 }
 
 function newWorkoutForm(){
-    const newWorkoutCard = document.createElement('div'); 
-
+    const newWorkoutFormBox = document.createElement('div'); 
     const newWorkoutHeader = document.createElement('h2')
     newWorkoutHeader.innerText = "New Workout"
+
+    const newWorkoutCard = document.createElement('div'); 
+    newWorkoutCard.hidden = true; 
+    
+    // add event listener to hide/unhide new workout form card 
+    addHideEventListener(newWorkoutHeader,newWorkoutCard); 
     const newWorkoutName = document.createElement('input'); 
     newWorkoutName.value = "name placeholder"; 
     newWorkoutName.id = "newWorkoutName";
@@ -65,7 +70,6 @@ function newWorkoutForm(){
     const muscleSelectDiv = document.createElement('div'); 
     muscleSelectDiv.id = "muscleSelectDiv";
     renderMuscleSelectBoxToId(muscleSelectDiv.id)
-    newWorkoutCard.appendChild(newWorkoutHeader); 
     newWorkoutCard.appendChild(newWorkoutName); 
     insertBreak(newWorkoutCard);
     newWorkoutCard.appendChild(newWorkoutDifficulty); 
@@ -74,7 +78,9 @@ function newWorkoutForm(){
     insertBreak(newWorkoutCard);
     newWorkoutCard.appendChild(newWorkoutSubmitBtn)
     newWorkoutCard.appendChild(muscleSelectDiv);
-    return newWorkoutCard; 
+    newWorkoutFormBox.appendChild(newWorkoutHeader); 
+    newWorkoutFormBox.appendChild(newWorkoutCard); 
+    return newWorkoutFormBox; 
 }
 
 function createWorkout(name,difficulty,description,muscles){

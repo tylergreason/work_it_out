@@ -76,3 +76,9 @@ function hideOrUnhide(div){
         div.hidden = true; 
     }
 }
+
+function addHideEventListener(nodeToListen, nodeToHide){
+    nodeToListen.addEventListener('click', function(e){
+        hideOrUnhide(nodeToHide); 
+    })
+}

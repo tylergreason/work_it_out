@@ -91,15 +91,31 @@ function copyRoutines(element){
     const routineDate = parseDate(); 
     const routineDesc = document.querySelector(`#routineDesc${element.target.parentElement.dataset.id}`).innerText; 
     const routineWorkoutList = document.querySelector(`#routineWorkoutsList${element.target.parentElement.dataset.id}`)
-    // debugger
-    main.appendChild(newRoutineForm(routineName,routineDate,routineDesc,routineWorkoutList))
+
+    const newRoutineName = document.querySelector("#newRoutineName"); 
+    const newRoutineDesc = document.querySelector("#newRoutineDesc"); 
+    const newRoutineDate = document.querySelector("#newRoutineDate"); 
+    const newRoutineWorkoutsList = document.querySelector("#newRoutineWorkoutsList"); 
+    // main.appendChild(newRoutineForm(routineName,routineDate,routineDesc,routineWorkoutList))
+    newRoutineName.value = routineName; 
+    newRoutineDate.value = parseDate(); 
+    newRoutineDesc.value = routineDesc; 
+    copyWorkouts(routineWorkoutList,newRoutineWorkoutsList);
+
 }
 
 function newRoutineForm(name,date,desc,workouts){
-    const newRoutineFormCard = document.createElement('div'); 
-
+    const newRoutineFormBox = document.createElement('div'); 
     const newRoutineHeader = document.createElement('h2'); 
     newRoutineHeader.innerText = 'New Routine'
+    newRoutineHeader.id = "newRoutineHeader"
+    const newRoutineFormCard = document.createElement('div'); 
+    
+    // hide/unhide form card when clicking header 
+    addHideEventListener(newRoutineHeader,newRoutineFormCard); 
+
+    newRoutineFormCard.id = "newRoutineFormCard"
+    newRoutineFormCard.hidden = true; 
     const newRoutineName = document.createElement('input');
     if (name === undefined){
         newRoutineName.value = "routine name"; 
@@ -134,8 +150,7 @@ function newRoutineForm(name,date,desc,workouts){
         copyWorkouts(workouts,newRoutineWorkoutsList)
     }
     newRoutineWorkoutsList.id = "newRoutineWorkoutsList"
-    // newRoutineFormCard.appendChild(newRoutineHeader); 
-    newRoutineFormCard.parentNode.append(newRoutineHeader)
+    
     newRoutineFormCard.appendChild(newRoutineName);
     insertBreak(newRoutineFormCard);
     newRoutineFormCard.appendChild(newRoutineDate); 
@@ -150,7 +165,10 @@ function newRoutineForm(name,date,desc,workouts){
     // debugger
     fetchMusclesWithWorkouts(newRoutineMuscleSelection); 
     newRoutineFormCard.appendChild(newRoutineMuscleSelection); 
-    return newRoutineFormCard; 
+
+    newRoutineFormBox.appendChild(newRoutineHeader); 
+    newRoutineFormBox.appendChild(newRoutineFormCard);
+    return newRoutineFormBox; 
 }
 
 function addWorkoutToRoutineEvent(workout){
@@ -191,7 +209,6 @@ function newRoutineSubmitBtnEvent(button){
         newRoutine(newRoutineName.value,newRoutineDesc.value,newRoutineDate.value,workoutIds)
     })
 }
-
 
 async function newRoutine(name,desc,date,workouts){
         const objData = {
