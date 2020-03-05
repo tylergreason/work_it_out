@@ -5,7 +5,7 @@ let userObject = {};
 const routinesURL = 'http://localhost:3000/routines/'
 const musclesURL = 'http://localhost:3000/muscles/'
 const workoutURL = 'http://localhost:3000/workouts'
-const placeholderLoginValue = "quinton.doyle"
+const placeholderLoginValue = "alfreda"
 window.onload = event => {
     main_event(); 
 }    

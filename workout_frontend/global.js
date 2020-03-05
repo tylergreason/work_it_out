@@ -44,3 +44,12 @@ function postRequest(url,data){
     })
     .then(resp => resp.json())
 }
+
+function deleteRequest(url,id){
+    fetch(`${url}/${id}`, {
+        method:'DELETE', 
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    }).then(resp => console.log(resp)); 
+}
