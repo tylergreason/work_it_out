@@ -87,11 +87,13 @@ function addCopyRoutineEventListener(element){
 }
 
 function copyRoutines(element){
-    const routineName = document.querySelector(`#routineName${element.target.parentElement.dataset.id}`).innerText; 
+    const id = element.target.parentElement.parentElement.dataset.id ; 
+    const routineName = document.querySelector(`#routineName${id}`).innerText; 
+    // debugger 
     // const routineDate = document.querySelector(`#routineDate${element.target.parentElement.dataset.id}`).innerText; 
     const routineDate = parseDate(); 
-    const routineDesc = document.querySelector(`#routineDesc${element.target.parentElement.dataset.id}`).innerText; 
-    const routineWorkoutList = document.querySelector(`#routineWorkoutsList${element.target.parentElement.dataset.id}`)
+    const routineDesc = document.querySelector(`#routineDesc${id}`).innerText; 
+    const routineWorkoutList = document.querySelector(`#routineWorkoutsList${id}`)
 
     const newRoutineName = document.querySelector("#newRoutineName"); 
     const newRoutineDesc = document.querySelector("#newRoutineDesc"); 
@@ -101,7 +103,6 @@ function copyRoutines(element){
     newRoutineName.value = routineName; 
     newRoutineDate.value = parseDate(); 
     newRoutineDesc.value = routineDesc; 
-    // debugger 
     copyWorkouts(routineWorkoutList,newRoutineWorkoutsList);
     if (newRoutineName.parentElement.hidden === true){
         newRoutineName.parentElement.hidden = false;
