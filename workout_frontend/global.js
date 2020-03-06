@@ -88,3 +88,9 @@ function removeChildren(node){
         node.removeChild(node.firstChild)
     }
 }
+
+function clear_main(){
+    while (main.firstChild){
+        main.removeChild(main.firstChild); 
+    }
+}

@@ -1,0 +1,24 @@
+
+
+body {
+    background-color: rgb(255, 202, 51);
+}
+
+#login_div{
+    margin: 0px auto; 
+}
+
+h2 {
+    font-family: 'josefin_sansthin';
+    font-weight: bold;
+    border: 1px solid black; 
+    border-radius: 3px;
+
+    /* margins and padding */
+    padding: 5px; 
+    margin: 5px; 
+    width: 50%;
+    
+    /* text alignment */
+    text-align: center;
+}
