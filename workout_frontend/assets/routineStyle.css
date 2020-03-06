@@ -1,14 +1,18 @@
 #userRoutines{
     display: grid; 
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(4, 1fr);
     grid-column-gap: 10px;
     grid-row-gap: 10px;
     /* grid-template-columns: 10% 25% 25% 25% 10%; */
-
     margin-left: 40px;
     margin-right: 40px;
+}
 
-    font-family: 'aganregular';
+#userRoutines .raised.ui.card{
+    /* min-height: 500px; */
+    height:100%;
+    max-height: 500px;
+    overflow-y: auto; 
 
 }
 
@@ -18,18 +22,15 @@
     border: 3px solid black; 
     border-radius: 5px;
 
-    padding: 5px;
-    max-height: 500px;
-    overflow-y: auto; 
     font-size: 0.8rem;
-    padding: 10px;
+    /* padding: 10px; */
 }
 
 .routineCard .routineName {
-    font-size: 2rem;
+    /* font-size: 2rem;
     /* text-decoration: underline; */
-    text-transform: uppercase;
-    font-weight: 900;
+    /* text-transform: uppercase;
+    font-weight: 900; */ 
 }
 
 .routineCard button {

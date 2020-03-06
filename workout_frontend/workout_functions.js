@@ -7,7 +7,7 @@ function renderWorkouts(workouts){
         workoutMuscles.innerText = `Muscles: ${workoutMusclesAsString(workout)}.`
         workoutLi.appendChild(workoutMuscles)
         // workoutLi.appendChild(renderMuscles(workout.muscles))
-        workoutLi.className = "workoutLi"
+        workoutLi.className = "item"
         workoutLi.dataset.id = workout.id; 
         workoutLi.className = "workoutLi";
         workoutList.appendChild(workoutLi); 

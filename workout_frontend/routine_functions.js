@@ -16,30 +16,32 @@ function renderRoutines(user){
 }
 
 function renderRoutine(routine){
+    const routineContent = document.createElement('div'); 
+    routineContent.className = "content"
     const routineCard = document.createElement('div')
     routineCard.dataset.id = routine.id; 
     routineCard.dataset.user_id = routine.user_id; 
-    routineCard.className = "routineCard"
+    routineCard.className = "raised card ui"
 
     const routineName = document.createElement('div'); 
     routineName.innerText = routine.name; 
     routineName.id = `routineName${routine.id}`
-    routineName.className = "routineName"; 
+    routineName.className = "header"; 
 
     const routineDesc = document.createElement('div'); 
     routineDesc.innerText = `About: ${routine.description}`; 
     routineDesc.id = `routineDesc${routine.id}`
     routineDesc.className = "routineDesc"; 
 
-    const routineDate = document.createElement('div'); 
+    const routineDate = document.createElement('span'); 
     routineDate.innerText = `Performed ${routine.date}`; 
     routineDate.id = `routineDate${routine.id}`; 
-    routineDate.className = "routineDate"; 
+    routineDate.className = "meta"; 
 
     const routineDeleteBtn = document.createElement('button'); 
     routineDeleteBtn.innerText = 'delete routine'; 
     routineDeleteBtn.dataset.id = routine.id; 
-    routineDeleteBtn.className = "routineDeleteBtn"; 
+    routineDeleteBtn.className = "ui button"; 
 
     routineDeleteBtn.addEventListener('click',function(e){
         deleteRoutine(e.target); 
@@ -55,14 +57,16 @@ function renderRoutine(routine){
     const routineWorkoutsList = renderWorkouts(routineWorkouts); 
     routineDeleteBtn.className = "routineDeleteBtn";
     routineWorkoutsList.id = `routineWorkoutsList${routine.id}`
+    // routineWorkoutsList.className = "content"
 
     
-    routineCard.appendChild(routineName);
-    routineCard.appendChild(routineDate);
-    routineCard.appendChild(routineDesc); 
-    routineCard.appendChild(routineDeleteBtn)
-    routineCard.appendChild(routineCopyBtn); 
-    routineCard.appendChild(routineWorkoutsList); 
+    routineContent.appendChild(routineName);
+    routineContent.appendChild(routineDate);
+    routineContent.appendChild(routineDesc); 
+    routineContent.appendChild(routineDeleteBtn)
+    routineContent.appendChild(routineCopyBtn); 
+    routineContent.appendChild(routineWorkoutsList); 
+    routineCard.appendChild(routineContent); 
     return routineCard; 
 }
 
@@ -109,6 +113,7 @@ function newRoutineForm(name,date,desc,workouts){
     const newRoutineHeader = document.createElement('h2'); 
     newRoutineHeader.innerText = 'New Routine'
     newRoutineHeader.id = "newRoutineHeader"
+    newRoutineHeader.className = "ui header"
     const newRoutineFormCard = document.createElement('div'); 
     
     // hide/unhide form card when clicking header 
