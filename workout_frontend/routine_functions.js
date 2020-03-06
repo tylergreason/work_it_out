@@ -114,7 +114,7 @@ function newRoutineForm(name,date,desc,workouts){
     const newRoutineHeader = document.createElement('h2'); 
     newRoutineHeader.innerText = 'New Routine'
     newRoutineHeader.id = "newRoutineHeader"
-    newRoutineHeader.className = "ui header"
+    newRoutineHeader.className = "ui left aligned header"
     const newRoutineFormCard = document.createElement('div'); 
     
     // hide/unhide form card when clicking header 
@@ -204,6 +204,7 @@ function removeWorkoutFromNewRoutineWorkoutListListener(workout){
 function newRoutineSubmitBtnEvent(button){
     button.addEventListener('click',function(e){
         e.preventDefault();
+        const newRoutineFormCard = document.querySelector("#newRoutineFormCard");
         const newRoutineName = document.getElementById("newRoutineName");
         const newRoutineDate = document.getElementById("newRoutineDate");
         // debugger
@@ -213,6 +214,12 @@ function newRoutineSubmitBtnEvent(button){
         const workoutIds = newRoutineWorkoutsArray.map(workout => workout.dataset.id)
 
         newRoutine(newRoutineName.value,newRoutineDesc.value,newRoutineDate.value,workoutIds)
+        newRoutineName.value = ""; 
+        newRoutineDesc.value = ""; 
+        newRoutineDate.value = parseDate(); 
+        removeChildren(newRoutineWorkoutsList)
+        hideOrUnhide(newRoutineFormCard); 
+
     })
 }
 

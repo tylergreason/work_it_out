@@ -25,7 +25,7 @@ With Work It Out, the user can:
 
 ## Model Wireframes 
 
-The arrows in the image below represent "has many" relationships (as in, the User model has many user_routines, and has many routines through user_routines). 
+The arrows in the image below represent "has many" relationships (as in, the User model has many user_workouts, and has many workouts through user_workouts). 
 
 <img src="wireframe.png">
 

@@ -8,7 +8,7 @@ const newWorkoutDiv = document.querySelector("#newWorkoutForm")
 const routinesURL = 'http://localhost:3000/routines/'
 const musclesURL = 'http://localhost:3000/muscles/'
 const workoutURL = 'http://localhost:3000/workouts'
-const placeholderLoginValue = "alfreda"
+const placeholderLoginValue = "calvin"
 window.onload = event => {
     main_event(); 
 }    
