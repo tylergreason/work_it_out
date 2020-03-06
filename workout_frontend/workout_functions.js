@@ -1,10 +1,12 @@
 function renderWorkouts(workouts){
     const workoutList = document.createElement('ul'); 
     workouts.forEach(function(workout){
-        debugger
         const workoutLi = document.createElement('li'); 
         workoutLi.appendChild(renderWorkout(workout)); 
-        workoutLi.appendChild(renderMuscles(workout.muscles))
+        const workoutMuscles = document.createElement('div'); 
+        workoutMuscles.innerText = `Muscles: ${workoutMusclesAsString(workout)}.`
+        workoutLi.appendChild(workoutMuscles)
+        // workoutLi.appendChild(renderMuscles(workout.muscles))
         workoutLi.className = "workoutLi"
         workoutLi.dataset.id = workout.id; 
         workoutLi.className = "workoutLi";
@@ -106,4 +108,8 @@ function submitWorkoutEventListener(button){
         // debugger; 
         createWorkout(newWorkoutName,newWorkoutDesc,newWorkoutDifficulty,newWorkoutMuscleIds); 
     })
+}
+
+function workoutMusclesAsString(workout){
+    return workout.muscles.map( muscle => muscle.name).join(", ")
 }
