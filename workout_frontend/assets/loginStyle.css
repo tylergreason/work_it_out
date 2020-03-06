@@ -1,0 +1,36 @@
+#login_div{
+    border: 3px solid black; 
+    border-radius: 5px;
+    
+    margin: 0px auto; 
+    padding: 10px;
+    text-align: center;
+
+    width: 50%;
+}
+
+/* #login-div  */
+#username_text {
+    background-color: var(--dark-bg-color);
+    border: none; 
+    text-align: center;
+    font-size: 1.5rem;
+}
+
+#username_text:focus {
+    outline:none; 
+    background-color: rgb(255, 215, 100);
+}
+
+#username_text ~ button {
+    background-color: var(--main-bg-color);
+    border: none; 
+    font-size: 1.3rem;
+    padding: 10px;
+}
+
+#username_text ~ button:focus {
+    outline:none; 
+    background-color: var(--bright-bg-color);
+    font-weight: 600;
+}

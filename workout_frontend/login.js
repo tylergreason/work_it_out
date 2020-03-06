@@ -1,6 +1,4 @@
 function checkLogin(){
-    // logged in variables 
-    // main div 
     const main = document.querySelector('#main') 
     let login_div = document.createElement('div'); 
     login_div.id = 'login_div'
@@ -8,10 +6,11 @@ function checkLogin(){
     username_text.id = "username_text"
     username_text.value = placeholderLoginValue; 
     let username_button = document.createElement('button'); 
-    username_button.innerText = "log in"
+    username_button.innerText = "login"
     // add event listener for submission 
     loginBtnListener(username_button)
     login_div.appendChild(username_text); 
+    insertBreak(login_div); 
     login_div.appendChild(username_button); 
     main.appendChild(login_div)
 }

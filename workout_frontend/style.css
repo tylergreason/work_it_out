@@ -1,12 +1,15 @@
-
+/* global variables */
+:root {
+    --main-bg-color: rgb(255, 208, 51);
+    --dark-bg-color: rgb(225, 179, 47);
+    --bright-bg-color: rgb(255, 215, 100); 
+}
 
 body {
-    background-color: rgb(255, 202, 51);
+    background-color: var(--main-bg-color);
 }
 
-#login_div{
-    margin: 0px auto; 
-}
+
 
 h2 {
     font-family: 'josefin_sansthin';
@@ -21,4 +24,11 @@ h2 {
     
     /* text alignment */
     text-align: center;
+}
+
+h1{
+    margin: 0 auto; 
+    text-align: center;
+    font-size: 3rem;
+    
 }
