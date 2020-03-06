@@ -1,19 +1,23 @@
 function renderWorkouts(workouts){
     const workoutList = document.createElement('ul'); 
     workouts.forEach(function(workout){
+        debugger
         const workoutLi = document.createElement('li'); 
         workoutLi.appendChild(renderWorkout(workout)); 
         workoutLi.appendChild(renderMuscles(workout.muscles))
         workoutLi.className = "workoutLi"
         workoutLi.dataset.id = workout.id; 
+        workoutLi.className = "workoutLi";
         workoutList.appendChild(workoutLi); 
     })
+    workoutList.className = "workoutList";
     return workoutList; 
 }
 
 function renderWorkout(workout){
     const workoutCard = document.createElement('div'); 
     workoutCard.dataset.id = workout.id; 
+    workoutCard.className = "workoutCard"; 
     const workoutName = document.createElement('div'); 
     workoutName.innerText = workout.name; 
     const workoutDifficulty = document.createElement('div'); 

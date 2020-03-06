@@ -1,0 +1,35 @@
+#userRoutines{
+    display: grid; 
+    grid-template-columns: repeat(3, 1fr);
+    grid-column-gap: 10px;
+    grid-row-gap: 10px;
+    /* grid-template-columns: 10% 25% 25% 25% 10%; */
+
+    margin-left: 40px;
+    margin-right: 40px;
+
+    font-family: 'aganregular';
+
+}
+
+.routineCard {
+    /* grid-column: 2/4; */
+    /* grid-column-end: 4; */
+    border: 3px solid black; 
+    border-radius: 5px;
+
+    padding: 5px;
+    max-height: 500px;
+    overflow-y: auto; 
+}
+
+.routineCard .routineName {
+    font-size: 2rem;
+    text-decoration: underline;
+    text-transform: uppercase;
+    font-weight: 900;
+}
+
+.routineCard .workoutList {
+    font-size: 0.8rem;
+}

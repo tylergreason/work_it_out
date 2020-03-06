@@ -5,6 +5,15 @@
     --bright-bg-color: rgb(255, 215, 100); 
 }
 
+@font-face {
+    font-family: 'aganregular';
+    src: url('agane_55_roman-webfont.woff2') format('woff2'),
+         url('agane_55_roman-webfont.woff') format('woff');
+    font-weight: normal;    
+    font-style: normal;
+}
+
+
 body {
     background-color: var(--main-bg-color);
 }
@@ -30,5 +39,5 @@ h1{
     margin: 0 auto; 
     text-align: center;
     font-size: 3rem;
-    
+
 }

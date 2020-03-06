@@ -1,14 +1,3 @@
-console.log("render functions was loaded correctly")
-
-// render all user's routines  
-// function renderRoutines2(user){
-//     let routines = user.routines; 
-//     routines.forEach(function(routine){
-//         console.log(routine); 
-//         main.appendChild(renderRoutine(routine)) 
-//     })
-// }
-
 function renderRoutines(user){
     // clear routines div 
     removeChildren(userRoutinesDiv);
@@ -30,22 +19,27 @@ function renderRoutine(routine){
     const routineCard = document.createElement('div')
     routineCard.dataset.id = routine.id; 
     routineCard.dataset.user_id = routine.user_id; 
+    routineCard.className = "routineCard"
 
     const routineName = document.createElement('div'); 
     routineName.innerText = routine.name; 
     routineName.id = `routineName${routine.id}`
+    routineName.className = "routineName"; 
 
     const routineDesc = document.createElement('div'); 
     routineDesc.innerText = routine.description; 
     routineDesc.id = `routineDesc${routine.id}`
+    routineDesc.className = "routineDesc"; 
 
     const routineDate = document.createElement('div'); 
     routineDate.innerText = routine.date; 
     routineDate.id = `routineDate${routine.id}`; 
+    routineDate.className = "routineDate"; 
 
     const routineDeleteBtn = document.createElement('button'); 
     routineDeleteBtn.innerText = 'delete routine'; 
     routineDeleteBtn.dataset.id = routine.id; 
+    routineDeleteBtn.className = "routineDeleteBtn"; 
 
     routineDeleteBtn.addEventListener('click',function(e){
         deleteRoutine(e.target); 
@@ -54,16 +48,18 @@ function renderRoutine(routine){
     const routineCopyBtn = document.createElement('button'); 
     routineCopyBtn.innerText = "copy"; 
     addCopyRoutineEventListener(routineCopyBtn); 
+    routineCopyBtn.className = "routineCopyBtn";
 
     // put workouts here when that's working  
     const routineWorkouts = routine.workouts; 
     const routineWorkoutsList = renderWorkouts(routineWorkouts); 
+    routineDeleteBtn.className = "routineDeleteBtn";
     routineWorkoutsList.id = `routineWorkoutsList${routine.id}`
 
     
     routineCard.appendChild(routineName);
-    routineCard.appendChild(routineDesc); 
     routineCard.appendChild(routineDate);
+    routineCard.appendChild(routineDesc); 
     routineCard.appendChild(routineWorkoutsList); 
     routineCard.appendChild(routineDeleteBtn)
     routineCard.appendChild(routineCopyBtn); 
@@ -103,7 +99,9 @@ function copyRoutines(element){
     newRoutineDesc.value = routineDesc; 
     // debugger 
     copyWorkouts(routineWorkoutList,newRoutineWorkoutsList);
-    // console.log(routineWorkoutList.children);
+    if (newRoutineName.parentElement.hidden === true){
+        newRoutineName.parentElement.hidden = false;
+    }
 }
 
 function newRoutineForm(name,date,desc,workouts){
