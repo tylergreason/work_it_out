@@ -22,10 +22,13 @@ function renderWorkout(workout){
     workoutCard.className = "workoutCard"; 
     const workoutName = document.createElement('div'); 
     workoutName.innerText = workout.name; 
+    workoutName.className = "workoutName"; 
     const workoutDifficulty = document.createElement('div'); 
     workoutDifficulty.innerText = `Difficulty: ${workout.difficulty}`; 
+    workoutDifficulty.className = "workoutDifficulty"; 
     const workoutDesc = document.createElement('div'); 
     workoutDesc.innerText = `Description: ${workout.description}`;
+    workoutDesc.className = "workoutDesc"; 
     workoutCard.appendChild(workoutName);
     workoutCard.appendChild(workoutDifficulty);
     workoutCard.appendChild(workoutDesc); 

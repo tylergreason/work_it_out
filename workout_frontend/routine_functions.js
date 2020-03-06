@@ -27,12 +27,12 @@ function renderRoutine(routine){
     routineName.className = "routineName"; 
 
     const routineDesc = document.createElement('div'); 
-    routineDesc.innerText = routine.description; 
+    routineDesc.innerText = `About: ${routine.description}`; 
     routineDesc.id = `routineDesc${routine.id}`
     routineDesc.className = "routineDesc"; 
 
     const routineDate = document.createElement('div'); 
-    routineDate.innerText = routine.date; 
+    routineDate.innerText = `Performed ${routine.date}`; 
     routineDate.id = `routineDate${routine.id}`; 
     routineDate.className = "routineDate"; 
 
@@ -60,9 +60,9 @@ function renderRoutine(routine){
     routineCard.appendChild(routineName);
     routineCard.appendChild(routineDate);
     routineCard.appendChild(routineDesc); 
-    routineCard.appendChild(routineWorkoutsList); 
     routineCard.appendChild(routineDeleteBtn)
     routineCard.appendChild(routineCopyBtn); 
+    routineCard.appendChild(routineWorkoutsList); 
     return routineCard; 
 }
 

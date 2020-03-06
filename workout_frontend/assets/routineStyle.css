@@ -21,15 +21,24 @@
     padding: 5px;
     max-height: 500px;
     overflow-y: auto; 
+    font-size: 0.8rem;
+    padding: 10px;
 }
 
 .routineCard .routineName {
     font-size: 2rem;
-    text-decoration: underline;
+    /* text-decoration: underline; */
     text-transform: uppercase;
     font-weight: 900;
 }
 
-.routineCard .workoutList {
-    font-size: 0.8rem;
+.routineCard button {
+    /* float: right; */
+    /* display:inline; */
+    width: 47%;
+    font-size: 1rem;
+    /* background-color: ; */
+    border: 5px solid var(--dark-bg-color);
+    border-radius: 5px;
+    margin: 0px 5px 0px 5px; 
 }

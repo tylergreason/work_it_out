@@ -16,6 +16,7 @@
 
 body {
     background-color: var(--main-bg-color);
+    font-family: 'aganregular';
 }
 
 
@@ -40,4 +41,18 @@ h1{
     text-align: center;
     font-size: 3rem;
 
+}
+
+button {
+    background-color: var(--main-bg-color);
+    border: none; 
+    font-size: 1.3rem;
+    padding: 10px;
+}
+
+button:focus,
+ button:hover{
+    outline:none; 
+    background-color: var(--bright-bg-color);
+    font-weight: 600;
 }
