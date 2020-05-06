@@ -13,8 +13,10 @@ function renderWorkouts(workouts){
 
 function renderWorkout(workout){
     const workoutCard = document.createElement('div'); 
+    workoutCard.classList.add('workout')
     workoutCard.dataset.id = workout.id; 
     const workoutName = document.createElement('div'); 
+    workoutName.classList.add('workout__name')
     workoutName.innerText = workout.name; 
     const workoutDifficulty = document.createElement('div'); 
     workoutDifficulty.innerText = `Difficulty: ${workout.difficulty}`; 
@@ -88,7 +90,8 @@ function createWorkout(name,difficulty,description,muscles){
         "name":name,
         "difficulty":difficulty,
         "description":description,
-        "muscles":muscles
+        "muscles":muscles,
+        "user":userObject.username
     }
     postRequest(workoutURL,workoutObject)
 }

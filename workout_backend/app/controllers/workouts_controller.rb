@@ -5,6 +5,7 @@ class WorkoutsController < ApplicationController
             muscle = Muscle.all.find_by(id:value)
             workout.muscles << muscle 
         end
+        byebug
         render :json => workout 
     end
 
