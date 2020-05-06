@@ -1,7 +1,4 @@
 class WorkoutsController < ApplicationController
-    
-
-
     def create 
         workout = Workout.create(workout_params)
         params[:muscles].each do |value|
