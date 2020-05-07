@@ -1,17 +1,25 @@
 .workout {
-  background-color: #f1faee;
   margin: 10px;
-  max-width: 400px;
+  width: 300px;
   -webkit-transition: 0.15s;
   transition: 0.15s;
-  width: 400px;
   border: 3px solid black;
   border-radius: 10px;
+  height: 400px;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (1fr)[10];
+      grid-template-columns: repeat(10, 1fr);
+  -ms-grid-rows: (1fr)[10];
+      grid-template-rows: repeat(10, 1fr);
+}
+
+.workout:hover {
+  border-color: #e63946;
 }
 
 .workout:hover .workout__desc, .workout:hover .workout__difficulty {
   padding-bottom: 14px;
-  background-color: #e63946;
   -webkit-transition: 0.15s;
   transition: 0.15s;
 }
@@ -33,7 +41,7 @@
 
 .workout__name {
   margin: 0px;
-  width: 400px;
+  width: 300px;
   background-color: #457b9d;
   color: #f1faee;
   text-align: center;
@@ -55,15 +63,54 @@
           align-items: center;
   -ms-flex-flow: wrap;
       flex-flow: wrap;
-  background-color: blue;
+  background-color: #a8dadc;
   list-style-type: none;
 }
 
-.muscles {
+.muscles--workoutCard {
   background-color: #a8dadc;
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 10;
+  grid-column: 1/11;
+  -ms-grid-row: 8;
+  -ms-grid-row-span: 3;
+  grid-row: 8/11;
+}
+
+.workout__name {
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 10;
+  grid-column: 1/11;
+  -ms-grid-row: 1;
+  -ms-grid-row-span: 1;
+  grid-row: 1/2;
+}
+
+.workout__difficulty {
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 10;
+  grid-column: 1/11;
+  -ms-grid-row: 2;
+  -ms-grid-row-span: 1;
+  grid-row: 2/3;
+}
+
+.workout__desc {
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 10;
+  grid-column: 1/11;
+  -ms-grid-row: 3;
+  -ms-grid-row-span: 5;
+  grid-row: 3/8;
 }
 
 .muscle__header {
   font-size: 2rem;
+}
+
+.outerDiv {
+  -webkit-transform: rotate(11deg);
+          transform: rotate(11deg);
+  background-color: red;
 }
 /*# sourceMappingURL=style.css.map */

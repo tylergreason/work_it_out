@@ -1,6 +1,8 @@
 $workoutBGColor: #f1faee;
 $workoutHighlightColor: #e63946; 
 $musclesBGC: #a8dadc; 
+$cardWidth: 300px;
+$cardHeight: 400px; 
 
 @mixin flexCenter(){
     display: flex; 
@@ -9,31 +11,38 @@ $musclesBGC: #a8dadc;
 }
 
 .workout {
-    background-color: $workoutBGColor;
+    // background-color: $workoutBGColor;
     margin: 10px;
     // padding: 5px; 
-    max-width: 400px;
+    width: $cardWidth;
     transition: 0.15s;
+    border: 3px solid black; 
+    border-radius: 10px;
+    height: $cardHeight;
+
+    // grid 
+    display: grid; 
+    grid-template-columns: repeat(10, 1fr);
+    grid-template-rows: repeat(10, 1fr);
     
     &:hover {
+        border-color: $workoutHighlightColor;
+
         // padding-top: 7px;
         .workout__desc, .workout__difficulty {
             // transition-timing-function: ease;
             padding-bottom: 14px;
-            background-color: $workoutHighlightColor;
+            // background-color: $workoutHighlightColor;
             transition: 0.15s;
         }
-        
         .workout__name {
             transition: 0.15s;
             font-size: 1.2rem;
-            // background-color: green;
         }
     }
-    width: 400px;
-    border: 3px solid black; 
-    border-radius: 10px;
 }
+
+
 
 .workout__desc, .workout__name, .workout__difficulty {
     transition: 0.15s; 
@@ -43,7 +52,7 @@ $musclesBGC: #a8dadc;
 }
 .workout__name {
     margin: 0px;
-    width: 400px; 
+    width: $cardWidth; 
     background-color: #457b9d;
     color: #f1faee; 
     text-align: center;
@@ -56,12 +65,32 @@ $musclesBGC: #a8dadc;
 #newRoutineWorkoutsList {
     @include flexCenter()
     flex-flow: wrap; 
-    background-color: blue; 
+    background-color: #a8dadc; 
     list-style-type: none;
 }
 
-.muscles {
+
+// muscle list in workout 
+.muscles--workoutCard {
     background-color: $musclesBGC;
+    grid-column: 1/11;
+    grid-row: 8/11;
+}
+
+//workout card grid formatting
+.workout__name {
+    grid-column: 1/11;
+    grid-row: 1/2;
+}
+
+.workout__difficulty {
+    grid-column: 1/11;
+    grid-row: 2/3;
+}
+
+.workout__desc {
+    grid-column: 1/11;
+    grid-row: 3/8;
 }
 
 .muscles__name {
@@ -70,4 +99,9 @@ $musclesBGC: #a8dadc;
 
 .muscle__header {
     font-size: 2rem;
+}
+
+.outerDiv {
+    transform: rotate(11deg);
+    background-color: red;
 }

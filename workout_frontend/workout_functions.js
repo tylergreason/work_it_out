@@ -20,10 +20,10 @@ function renderWorkout(workout){
     addClass(workoutName,'workout__name')
     workoutName.innerText = workout.name; 
     const workoutDifficulty = document.createElement('div'); 
-    workoutDifficulty.innerText = `Difficulty: ${workout.difficulty}`; 
+    workoutDifficulty.innerText = `${workout.difficulty}`; 
     addClass(workoutDifficulty,'workout__difficulty')
     const workoutDesc = document.createElement('div'); 
-    workoutDesc.innerText = `Description: ${workout.description}`;
+    workoutDesc.innerText = `${workout.description}`;
     addClass(workoutDesc,'workout__desc')
     workoutCard.appendChild(workoutName);
     workoutCard.appendChild(workoutDifficulty);
@@ -31,6 +31,7 @@ function renderWorkout(workout){
     // append muscle list to card 
     const muscles = renderMuscles(workout.muscles) 
     addClass(muscles,'muscles')
+    addClass(muscles,'muscles--workoutCard')
     workoutCard.appendChild(muscles);
     return workoutCard; 
 }
