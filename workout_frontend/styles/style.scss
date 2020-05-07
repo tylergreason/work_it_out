@@ -1,0 +1,73 @@
+$workoutBGColor: #f1faee;
+$workoutHighlightColor: #e63946; 
+$musclesBGC: #a8dadc; 
+
+@mixin flexCenter(){
+    display: flex; 
+    justify-content: center;
+    align-items: center;
+}
+
+.workout {
+    background-color: $workoutBGColor;
+    margin: 10px;
+    // padding: 5px; 
+    max-width: 400px;
+    transition: 0.15s;
+    
+    &:hover {
+        // padding-top: 7px;
+        .workout__desc, .workout__difficulty {
+            // transition-timing-function: ease;
+            padding-bottom: 14px;
+            background-color: $workoutHighlightColor;
+            transition: 0.15s;
+        }
+        
+        .workout__name {
+            transition: 0.15s;
+            font-size: 1.2rem;
+            // background-color: green;
+        }
+    }
+    width: 400px;
+    border: 3px solid black; 
+    border-radius: 10px;
+}
+
+.workout__desc, .workout__name, .workout__difficulty {
+    transition: 0.15s; 
+}
+.workout__desc, .workout__difficulty {
+    color: #1d3557; 
+}
+.workout__name {
+    margin: 0px;
+    width: 400px; 
+    background-color: #457b9d;
+    color: #f1faee; 
+    text-align: center;
+}
+
+.workouts {
+    list-style-type: none;
+}
+
+#newRoutineWorkoutsList {
+    @include flexCenter()
+    flex-flow: wrap; 
+    background-color: blue; 
+    list-style-type: none;
+}
+
+.muscles {
+    background-color: $musclesBGC;
+}
+
+.muscles__name {
+    // background-color: purple;
+}
+
+.muscle__header {
+    font-size: 2rem;
+}

@@ -1,7 +1,8 @@
+const newRoutineFormDiv = document.getElementById('newRoutineForm')
+
 function insertBreak(node){
     node.appendChild(document.createElement('br'))
 }
-
 
 function createCheckboxWithName(data, nameAttribute){
     const checkbox = document.createElement('input'); 
@@ -87,4 +88,12 @@ function removeChildren(node){
     while (node.firstChild){
         node.removeChild(node.firstChild)
     }
+}
+
+function addClass(div,className){
+    return div.classList.add(className)
+}
+
+function newDiv(){
+    return document.createElement('div');
 }

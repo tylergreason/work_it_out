@@ -15,7 +15,7 @@ random_muscles = ["Bicep", "Tricep", "Abs", "Neck", "Quadriceps", "Hamstrings", 
 # create new workouts and give them muscles 
 20.times do 
     new_workout = Workout.create(
-        name: "workout: " + Faker::Lorem.sentence(word_count: 3), 
+        name: Faker::Lorem.sentence(word_count: 3), 
         difficulty: difficulty_range.sample, 
         description: Faker::Lorem.sentence(word_count: 10)
     )

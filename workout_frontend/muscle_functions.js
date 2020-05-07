@@ -1,14 +1,16 @@
 function renderMuscles(muscles){
     const musclesCard = document.createElement('div'); 
-    const musclesHeader = document.createElement('div'); 
-    musclesHeader.innerText = "Muscles: "; 
+    const musclesListHeader = document.createElement('div'); 
+    musclesListHeader.innerText = "Muscles: "; 
+    addClass(musclesListHeader, 'muscles__header')
     const musclesList = document.createElement('ul')
+    addClass(musclesList, 'muscles__list')
     muscles.forEach(function(muscle){
         const muscleLi = document.createElement('li'); 
         muscleLi.appendChild(renderMuscle(muscle));
         musclesList.appendChild(muscleLi); 
     })
-    musclesCard.appendChild(musclesHeader)
+    musclesCard.appendChild(musclesListHeader)
     musclesCard.appendChild(musclesList); 
     return musclesCard; 
 }
@@ -16,7 +18,15 @@ function renderMuscles(muscles){
 function renderMuscle(muscle){
     const muscleCard = document.createElement('div'); 
     muscleCard.innerText = muscle.name; 
+    muscleCard.classList.add('muscles__name')
     return muscleCard; 
+}
+
+function renderMuscleHeader(muscle){
+    const muscleHeader = document.createElement('div'); 
+    muscleHeader.innerText = muscle.name; 
+    muscleHeader.classList.add('muscle__header')
+    return muscleHeader; 
 }
 
 function fetchMusclesWithWorkouts(div){
@@ -31,7 +41,7 @@ function fetchMusclesWithWorkouts(div){
     .then(function(muscles){
         muscles.forEach(function(muscle){
             const muscleWorkoutDiv = document.createElement('div'); 
-            muscleWorkoutDiv.appendChild(renderMuscle(muscle)); 
+            muscleWorkoutDiv.appendChild(renderMuscleHeader(muscle)); 
             muscleWorkoutDiv.appendChild(renderWorkouts(muscle.workouts))
             muscleWorkoutDiv.querySelectorAll(".workoutLi").forEach(workout => addWorkoutToRoutineEvent(workout))
             div.appendChild(muscleWorkoutDiv)

@@ -11,6 +11,8 @@ const workoutURL = 'http://localhost:3000/workouts'
 const placeholderLoginValue = "alfreda"
 window.onload = event => {
     main_event(); 
+    // use the function below to automatically log in as 'alfreda' to make testing faster 
+    new_user ('nil','nil','alfreda', 'password')
 }    
 function clear_main(){
     while (main.firstChild){
@@ -95,6 +97,8 @@ function render_main_page(){
     // main.appendChild(newRoutineForm());
     renderRoutines(userObject);
     newRoutineDiv.appendChild(newRoutineForm())
+    // the following line unhides the new routine form for dev purposes 
+    newRoutineFormCard.hidden = false 
 
 }
 

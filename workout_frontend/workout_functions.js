@@ -1,9 +1,10 @@
 function renderWorkouts(workouts){
     const workoutList = document.createElement('ul'); 
+    addClass(workoutList, 'workouts')
     workouts.forEach(function(workout){
         const workoutLi = document.createElement('li'); 
         workoutLi.appendChild(renderWorkout(workout)); 
-        workoutLi.appendChild(renderMuscles(workout.muscles))
+        // workoutLi.appendChild(renderMuscles(workout.muscles))
         workoutLi.className = "workoutLi"
         workoutLi.dataset.id = workout.id; 
         workoutList.appendChild(workoutLi); 
@@ -13,27 +14,34 @@ function renderWorkouts(workouts){
 
 function renderWorkout(workout){
     const workoutCard = document.createElement('div'); 
-    workoutCard.classList.add('workout')
+    addClass(workoutCard,'workout')
     workoutCard.dataset.id = workout.id; 
     const workoutName = document.createElement('div'); 
-    workoutName.classList.add('workout__name')
+    addClass(workoutName,'workout__name')
     workoutName.innerText = workout.name; 
     const workoutDifficulty = document.createElement('div'); 
     workoutDifficulty.innerText = `Difficulty: ${workout.difficulty}`; 
+    addClass(workoutDifficulty,'workout__difficulty')
     const workoutDesc = document.createElement('div'); 
     workoutDesc.innerText = `Description: ${workout.description}`;
+    addClass(workoutDesc,'workout__desc')
     workoutCard.appendChild(workoutName);
     workoutCard.appendChild(workoutDifficulty);
     workoutCard.appendChild(workoutDesc); 
+    // append muscle list to card 
+    const muscles = renderMuscles(workout.muscles) 
+    addClass(muscles,'muscles')
+    workoutCard.appendChild(muscles);
     return workoutCard; 
 }
+
+
 
 function renderWorkoutsForNewRoutine(workouts){
     const workoutList = document.createElement('ul'); 
     workouts.forEach(function(workout){
         const workoutLi = document.createElement('li'); 
         workoutLi.appendChild(renderWorkout(workout)); 
-        workoutLi.appendChild(renderMuscles(workout.muscles))
         addWorkoutToRoutineEvent(workoutLi); 
         workoutList.appendChild(workoutLi); 
     })
