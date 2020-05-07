@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAEA,AAAA,sBAAsB,CAAC;EACnB,gBAAgB,EAHJ,OAAO;CAItB",
+    "sources": [
+        "routineStyles.scss"
+    ],
+    "names": [],
+    "file": "routineStyles.css"
+}

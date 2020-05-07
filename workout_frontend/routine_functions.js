@@ -10,6 +10,7 @@ console.log("render functions was loaded correctly")
 // }
 
 function renderRoutines(user){
+    // change this to send username and have backend only return routines with that username
     // clear routines div 
     removeChildren(userRoutinesDiv);
     fetch(`${routinesURL}`, {
@@ -21,7 +22,6 @@ function renderRoutines(user){
     .then(resp => resp.json())
     .then(function(routines){
         const userRoutines = routines.filter(routine => routine.user_id === user.id)
-        // debugger
         userRoutines.forEach(routine => userRoutinesDiv.appendChild(renderRoutine(routine)))
     })
 }
@@ -107,7 +107,8 @@ function copyRoutines(element){
 }
 
 function newRoutineForm(name,date,desc,workouts){
-    const newRoutineFormBox = document.createElement('div'); 
+    const newRoutineContainer = document.createElement('div'); 
+    addClass(newRoutineContainer, 'newRoutine__container')
     const newRoutineHeader = document.createElement('h2'); 
     newRoutineHeader.innerText = 'New Routine'
     newRoutineHeader.id = "newRoutineHeader"
@@ -117,16 +118,19 @@ function newRoutineForm(name,date,desc,workouts){
     addHideEventListener(newRoutineHeader,newRoutineFormCard); 
 
     newRoutineFormCard.id = "newRoutineFormCard"
+    // hide routine form from the start 
     newRoutineFormCard.hidden = true; 
     const newRoutineName = document.createElement('input');
     if (name === undefined){
-        newRoutineName.value = "routine name"; 
+        newRoutineName.placeholder = "routine name"; 
     }else{
         newRoutineName.value = name;
     }
+    addClass(newRoutineName, 'newRoutine__name')
     newRoutineName.id = "newRoutineName"; 
     const newRoutineDate = document.createElement('input');
     newRoutineDate.type = "date";
+    addClass(newRoutineDate, 'newRoutine__date')
     newRoutineDate.id = "newRoutineDate"; 
     if (date === undefined){
         newRoutineDate.value = parseDate();
@@ -134,43 +138,50 @@ function newRoutineForm(name,date,desc,workouts){
         newRoutineDate.value = date; 
     }
     const newRoutineDesc = document.createElement('textarea');
+    
     if (desc === undefined){
-        newRoutineDesc.value = "description"
+        newRoutineDesc.placeholder = "description"
     }else {
         newRoutineDesc.value = desc; 
     }
+    addClass(newRoutineDesc, 'newRoutine__desc')
     newRoutineDesc.id = "newRoutineDesc"
     const newRoutineSubmitBtn = document.createElement('button'); 
     newRoutineSubmitBtn.innerText = "Submit routine" 
+    addClass(newRoutineSubmitBtn,'newRoutine__submit')
 
     const newRoutineMuscleSelection = document.createElement('div'); 
     newRoutineMuscleSelection.id = "newRoutineMuscleSelection"
-    
+    addClass(newRoutineMuscleSelection, 'newRoutine__muscles')
+
     const newRoutineWorkoutsList = document.createElement('ul');
-    if (workouts === undefined){
-    }else {
+    // if no workouts parameter was given, do nothing. Else, copy workouts given to the newRoutineWorkoutsList ul element made on the previous line. 
+    if (workouts !== undefined){
         copyWorkouts(workouts,newRoutineWorkoutsList)
     }
     newRoutineWorkoutsList.id = "newRoutineWorkoutsList"
-    
-    newRoutineFormCard.appendChild(newRoutineName);
+    addClass(newRoutineWorkoutsList, 'newRoutine__workouts')
+
+    // append elements to newRoutineFormCard
+    append(newRoutineName, newRoutineFormCard);
     insertBreak(newRoutineFormCard);
-    newRoutineFormCard.appendChild(newRoutineDate); 
+    append(newRoutineDate, newRoutineFormCard);    
     insertBreak(newRoutineFormCard);
-    newRoutineFormCard.appendChild(newRoutineDesc); 
+    append(newRoutineDesc,newRoutineFormCard); 
     insertBreak(newRoutineFormCard);
-    newRoutineFormCard.appendChild(newRoutineSubmitBtn); 
+    append(newRoutineSubmitBtn,newRoutineFormCard); 
+    // add submit event to button 
     newRoutineSubmitBtnEvent(newRoutineSubmitBtn);
     insertBreak(newRoutineFormCard);
-    newRoutineFormCard.appendChild(newRoutineWorkoutsList); 
-    
+    append(newRoutineWorkoutsList,newRoutineFormCard); 
+
     // debugger
     fetchMusclesWithWorkouts(newRoutineMuscleSelection); 
     newRoutineFormCard.appendChild(newRoutineMuscleSelection); 
 
-    newRoutineFormBox.appendChild(newRoutineHeader); 
-    newRoutineFormBox.appendChild(newRoutineFormCard);
-    return newRoutineFormBox; 
+    append(newRoutineHeader,newRoutineContainer); 
+    append(newRoutineFormCard,newRoutineContainer); 
+    return newRoutineContainer; 
 }
 
 function addWorkoutToRoutineEvent(workout){

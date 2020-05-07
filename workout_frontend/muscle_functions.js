@@ -44,8 +44,7 @@ function fetchMusclesWithWorkouts(div){
             muscleWorkoutDiv.appendChild(renderMuscleHeader(muscle)); 
             muscleWorkoutDiv.appendChild(renderWorkouts(muscle.workouts))
             muscleWorkoutDiv.querySelectorAll(".workoutLi").forEach(workout => addWorkoutToRoutineEvent(workout))
-            div.appendChild(muscleWorkoutDiv)
-            // debugger
+            append(muscleWorkoutDiv, div)
         })
     })
 }

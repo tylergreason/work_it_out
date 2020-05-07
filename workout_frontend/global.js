@@ -97,3 +97,7 @@ function addClass(div,className){
 function newDiv(){
     return document.createElement('div');
 }
+
+function append(from,to){
+    to.appendChild(from);
+}
