@@ -113,3 +113,21 @@ html, body {
 .hidden { 
     display: none; 
 }
+
+
+$newWorkoutBGC: #457b9d;
+.newWorkout {
+    background-color: $newWorkoutBGC;
+    padding: 10px;
+}
+
+.newWorkout__desc {
+    background-color: #f0f3bd;
+    border-color: black;
+    width: 40%;
+    height: 20%;
+}
+
+input[type='checkbox']{
+    background-color: blue;
+}

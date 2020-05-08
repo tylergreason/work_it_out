@@ -171,6 +171,7 @@ function newRoutineForm(name,date,desc,workouts){
 
     append(newRoutineHeader,newRoutineContainer); 
     append(newRoutineFormCard,newRoutineContainer); 
+    addClass(newRoutineFormCard,'hidden')
     return newRoutineContainer; 
 }
 

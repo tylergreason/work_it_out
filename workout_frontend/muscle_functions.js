@@ -64,18 +64,20 @@ function renderMuscleCard(muscle){
 function renderMuscleSelectBoxToId(id){
     fetchJSONFromURL(musclesURL)
     .then(function(muscles){    
-        const muscleSelectBox = document.createElement('div')
+        const muscleSelectBox = document.getElementById(id)
+        addClass(muscleSelectBox, 'newWorkout__muscles')
         muscles.forEach(function(muscle){
-            muscleSelectBox.appendChild(createCheckboxWithName(muscle,muscle.name));
+            // create checkbox for that muscle and append it to the muscle select box 
+            const checkbox = createCheckboxWithName(muscle,muscle.name); 
+            addClass(checkbox, 'muscle__checkbox')
+            append(checkbox, muscleSelectBox)
         })
-        const appendTo = document.getElementById(id); 
-        appendTo.appendChild(muscleSelectBox); 
     })
 }
 
 function returnCheckedMuscles(id){
     const el = document.getElementById(id); 
-    const list = elementListToArray(el.children[0].children)
+    const list = elementListToArray(el.children)
     const checkedMuscleIds = []; 
     //  iterate through list and return ids of elements that are checked 
     list.forEach(function(element){

@@ -50,47 +50,64 @@ function renderWorkoutsForNewRoutine(workouts){
 }
 
 function newWorkoutForm(){
-    const newWorkoutFormBox = document.createElement('div'); 
+    const newWorkoutContainer = document.createElement('div'); 
+    addClass(newWorkoutContainer, 'newWorkout')
     const newWorkoutHeader = document.createElement('h2')
     newWorkoutHeader.innerText = "New Workout"
+    addClass(newWorkoutHeader, 'newWorkout__header')
 
     const newWorkoutCard = document.createElement('div'); 
     
     // add event listener to hide/unhide new workout form card 
     addHideEventListener(newWorkoutHeader,newWorkoutCard); 
+
     const newWorkoutName = document.createElement('input'); 
-    newWorkoutName.value = "name placeholder"; 
+    newWorkoutName.placeholder = "name"; 
     newWorkoutName.id = "newWorkoutName";
+    addClass(newWorkoutName, 'newWorkout__name')
+
     const newWorkoutDesc = document.createElement('textarea'); 
-    newWorkoutDesc.value = "description placeholder"; 
+    newWorkoutDesc.placeholder = "description"; 
     newWorkoutDesc.id = "newWorkoutDesc"; 
+    addClass(newWorkoutDesc, 'newWorkout__desc')
+
+    // difficulties 
     const difficulties = ["easy", "medium","hard"]
     const newWorkoutDifficulty = document.createElement("select")
     newWorkoutDifficulty.id = "newWorkoutDifficulty";
-    const newWorkoutSubmitBtn = document.createElement('button'); 
-    newWorkoutSubmitBtn.innerText = "submit" 
-    submitWorkoutEventListener(newWorkoutSubmitBtn); 
-
+    addClass(newWorkoutDifficulty, 'newWorkout__difficulty')
+    
+    // difficulty select 
     difficulties.forEach(function(difficulty){
         const newOption = document.createElement("option"); 
         newOption.text = difficulty;  
+        addClass(newOption,'newWorkout__option--difficulty')
         newWorkoutDifficulty.add(newOption); 
     })
 
+    // submit new workout button 
+    const newWorkoutSubmitBtn = document.createElement('button'); 
+    newWorkoutSubmitBtn.innerText = "submit" 
+    addClass(newWorkoutSubmitBtn, 'newWorkout__submit')
+    submitWorkoutEventListener(newWorkoutSubmitBtn); 
+
     const muscleSelectDiv = document.createElement('div'); 
     muscleSelectDiv.id = "muscleSelectDiv";
+    addClass(muscleSelectDiv, 'newWorkout__muscles')
     renderMuscleSelectBoxToId(muscleSelectDiv.id)
-    newWorkoutCard.appendChild(newWorkoutName); 
+
+    append(newWorkoutName, newWorkoutCard)
     insertBreak(newWorkoutCard);
-    newWorkoutCard.appendChild(newWorkoutDifficulty); 
+    append(newWorkoutDifficulty,newWorkoutCard)
     insertBreak(newWorkoutCard);
-    newWorkoutCard.appendChild(newWorkoutDesc); 
+    append(newWorkoutDesc, newWorkoutCard)
     insertBreak(newWorkoutCard);
-    newWorkoutCard.appendChild(newWorkoutSubmitBtn)
-    newWorkoutCard.appendChild(muscleSelectDiv);
-    newWorkoutFormBox.appendChild(newWorkoutHeader); 
-    newWorkoutFormBox.appendChild(newWorkoutCard); 
-    return newWorkoutFormBox; 
+    append(newWorkoutSubmitBtn, newWorkoutCard)
+    append(muscleSelectDiv, newWorkoutCard)
+
+    append(newWorkoutHeader,newWorkoutContainer)
+    append(newWorkoutCard, newWorkoutContainer)
+    return newWorkoutContainer; 
 }
 
 function createWorkout(name,difficulty,description,muscles){
