@@ -61,32 +61,67 @@ function renderMuscleCard(muscle){
     return muscleCard;
 }
 
-function renderMuscleSelectBoxToId(id){
-    fetchJSONFromURL(musclesURL)
-    .then(function(muscles){    
-        const muscleSelectBox = document.getElementById(id)
-        addClass(muscleSelectBox, 'newWorkout__muscles')
-        muscles.forEach(function(muscle){
-            // create checkbox for that muscle and append it to the muscle select box 
-            const checkbox = createCheckboxWithName(muscle,muscle.name); 
-            addClass(checkbox, 'newWorkout__muscle')
-            append(checkbox, muscleSelectBox)
-        })
-    })
-}
+// function renderMuscleSelectBoxToId(id){
+//     fetchJSONFromURL(musclesURL)
+//     .then(function(muscles){    
+//         const muscleSelectBox = document.getElementById(id)
+//         addClass(muscleSelectBox, 'newWorkout__muscles')
+//         muscles.forEach(function(muscle){
+//             // create checkbox for that muscle and append it to the muscle select box 
+//             const checkbox = createCheckboxWithName(muscle,muscle.name); 
+//             addClass(checkbox, 'newWorkout__muscle')
+//             append(checkbox, muscleSelectBox)
+//         })
+//     })
+// }
 
 function returnCheckedMuscles(id){
+    // find the element to check and assign its children to an array 
     const el = document.getElementById(id); 
     const list = elementListToArray(el.children)
+    // empty array to store checked muscles in 
     const checkedMuscleIds = []; 
     //  iterate through list and return ids of elements that are checked 
     list.forEach(function(element){
-        const elementItems = elementListToArray(element.children); 
-        console.log(elementItems)
-        if (elementItems[0].checked === true) {
+        // see if the muscle contains the 'selected' class and add its id to the list if it does 
+        if (element.classList.contains('newWorkout__muscle--selected')) {
             checkedMuscleIds.push(element.dataset.id); 
         }
     })
     return checkedMuscleIds;
 }
+
+function renderMuscleSelectBoxToId(id){
+    fetchJSONFromURL(musclesURL)
+    .then(function(muscles){    
+        // find the element to append muscles to by the id given 
+        const muscleSelectBox = document.getElementById(id)
+        addClass(muscleSelectBox, 'newWorkout__muscles')
+        muscles.forEach(function(muscle){
+            // create checkbox for that muscle and append it to the muscle select box 
+            const muscleSelect = renderNewWorkoutMuscleName(muscle); 
+            addClass(muscleSelect, 'newWorkout__muscle')
+            append(muscleSelect, muscleSelectBox)
+        })
+    })
+}
+
+// function to make clickable name for new workout muscle selection 
+function renderNewWorkoutMuscleName(muscle){
+    //make span for the name 
+    const muscleSelect = newElement('span'); 
+    addClass(muscleSelect, 'newWorkout__muscle')
+    muscleSelect.innerText = muscle.name;
+    muscleSelect.dataset.id = muscle.id; 
+    // add on click to toggle 'selected' modifier 
+    muscleSelect.addEventListener('click',function(e){
+        e.target.classList.toggle('newWorkout__muscle--selected')
+    })
+    return muscleSelect;
+}
+
+
+
+
+
 

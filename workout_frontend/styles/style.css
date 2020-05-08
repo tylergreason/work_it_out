@@ -182,7 +182,7 @@ html, body {
   padding: 0px;
 }
 
-.newWorkout__muscle {
+.newWorkout__muscles {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -190,11 +190,22 @@ html, body {
   -webkit-box-direction: normal;
       -ms-flex-flow: row wrap;
           flex-flow: row wrap;
-  font-size: 2rem;
+  font-size: 1.5rem;
 }
 
-.newWorkout__muscle input {
+.newWorkout__muscles input {
   height: 2rem;
+}
+
+.newWorkout__muscle {
+  padding: 5px;
+  margin: 5px;
+  background-color: grey;
+  border-radius: 10px;
+}
+
+.newWorkout__muscle--selected {
+  background-color: white;
 }
 
 .hidden {

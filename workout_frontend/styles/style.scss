@@ -160,16 +160,24 @@ $newWorkoutBGC: #457b9d;
     padding: 0px;
 }
 
-.newWorkout__muscle {
+.newWorkout__muscles {
     display: flex; 
     flex-flow: row wrap;
-    font-size: 2rem;
+    font-size: 1.5rem;
     input{ 
         height: 2rem;
-
     }
 }
 
+.newWorkout__muscle {
+    padding: 5px; 
+    margin: 5px; 
+    background-color: grey; 
+    border-radius: 10px; 
+}
+.newWorkout__muscle--selected {
+    background-color: white; 
+}
 
 
 .hidden { 
