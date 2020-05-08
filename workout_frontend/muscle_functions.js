@@ -69,7 +69,7 @@ function renderMuscleSelectBoxToId(id){
         muscles.forEach(function(muscle){
             // create checkbox for that muscle and append it to the muscle select box 
             const checkbox = createCheckboxWithName(muscle,muscle.name); 
-            addClass(checkbox, 'muscle__checkbox')
+            addClass(checkbox, 'newWorkout__muscle')
             append(checkbox, muscleSelectBox)
         })
     })
@@ -81,8 +81,8 @@ function returnCheckedMuscles(id){
     const checkedMuscleIds = []; 
     //  iterate through list and return ids of elements that are checked 
     list.forEach(function(element){
-        // debugger
         const elementItems = elementListToArray(element.children); 
+        console.log(elementItems)
         if (elementItems[0].checked === true) {
             checkedMuscleIds.push(element.dataset.id); 
         }

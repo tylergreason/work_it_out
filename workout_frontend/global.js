@@ -96,6 +96,17 @@ function newDiv(){
     return document.createElement('div');
 }
 
+function newElement(type){
+    return document.createElement(type)
+}
+
 function append(from,to){
     to.appendChild(from);
+}
+
+function barbellIcon(){
+    const barbell = newElement('span')
+    addClass(barbell,'fa-dumbbell');
+    addClass(barbell,'fas');
+    return barbell;
 }

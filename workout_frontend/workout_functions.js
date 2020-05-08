@@ -19,9 +19,7 @@ function renderWorkout(workout){
     const workoutName = document.createElement('div'); 
     addClass(workoutName,'workout__name')
     workoutName.innerText = workout.name; 
-    const workoutDifficulty = document.createElement('div'); 
-    workoutDifficulty.innerText = `${workout.difficulty}`; 
-    addClass(workoutDifficulty,'workout__difficulty')
+    const workoutDifficulty = renderWorkoutDifficulty(workout.difficulty);  
     const workoutDesc = document.createElement('div'); 
     workoutDesc.innerText = `${workout.description}`;
     addClass(workoutDesc,'workout__desc')
@@ -36,6 +34,28 @@ function renderWorkout(workout){
     return workoutCard; 
 }
 
+function renderWorkoutDifficulty(difficulty){
+    // make div to return 
+    const workoutDifficulty = newElement('div'); 
+    addClass(workoutDifficulty, 'workout__difficulty'); 
+
+    if (difficulty === 'easy'){
+        append(barbellIcon(),workoutDifficulty)
+    }else if(difficulty === 'medium'){
+        append(barbellIcon(),workoutDifficulty)
+        append(barbellIcon(),workoutDifficulty)
+    }else if (difficulty === 'hard'){
+        append(barbellIcon(),workoutDifficulty)
+        append(barbellIcon(),workoutDifficulty)
+        append(barbellIcon(),workoutDifficulty)
+    }else{
+        const noDifficulty = newElement('div'); 
+        noDifficulty.innerText = 'No difficulty listed'; 
+        addClass(noDifficulty, 'workout__difficulty--no-difficulty'); 
+        append(noDifficulty, workoutDifficulty);
+    }
+    return workoutDifficulty; 
+}
 
 
 function renderWorkoutsForNewRoutine(workouts){
@@ -56,21 +76,21 @@ function newWorkoutForm(){
     newWorkoutHeader.innerText = "New Workout"
     addClass(newWorkoutHeader, 'newWorkout__header')
 
+    // add element to push new workout details in that will be a flex container
     const newWorkoutCard = document.createElement('div'); 
+    addClass(newWorkoutCard,'newWorkout__card')
     
-    // add event listener to hide/unhide new workout form card 
-    addHideEventListener(newWorkoutHeader,newWorkoutCard); 
-
+    
     const newWorkoutName = document.createElement('input'); 
     newWorkoutName.placeholder = "name"; 
     newWorkoutName.id = "newWorkoutName";
     addClass(newWorkoutName, 'newWorkout__name')
-
+    
     const newWorkoutDesc = document.createElement('textarea'); 
     newWorkoutDesc.placeholder = "description"; 
     newWorkoutDesc.id = "newWorkoutDesc"; 
     addClass(newWorkoutDesc, 'newWorkout__desc')
-
+    
     // difficulties 
     const difficulties = ["easy", "medium","hard"]
     const newWorkoutDifficulty = document.createElement("select")
@@ -84,29 +104,35 @@ function newWorkoutForm(){
         addClass(newOption,'newWorkout__option--difficulty')
         newWorkoutDifficulty.add(newOption); 
     })
-
+    
     // submit new workout button 
     const newWorkoutSubmitBtn = document.createElement('button'); 
-    newWorkoutSubmitBtn.innerText = "submit" 
+    newWorkoutSubmitBtn.innerText = "submit workout" 
     addClass(newWorkoutSubmitBtn, 'newWorkout__submit')
     submitWorkoutEventListener(newWorkoutSubmitBtn); 
-
+    
     const muscleSelectDiv = document.createElement('div'); 
     muscleSelectDiv.id = "muscleSelectDiv";
     addClass(muscleSelectDiv, 'newWorkout__muscles')
     renderMuscleSelectBoxToId(muscleSelectDiv.id)
-
-    append(newWorkoutName, newWorkoutCard)
-    insertBreak(newWorkoutCard);
-    append(newWorkoutDifficulty,newWorkoutCard)
-    insertBreak(newWorkoutCard);
-    append(newWorkoutDesc, newWorkoutCard)
-    insertBreak(newWorkoutCard);
-    append(newWorkoutSubmitBtn, newWorkoutCard)
-    append(muscleSelectDiv, newWorkoutCard)
-
+    
+    // make a div to put workout details into, that will be in a flex container with the muscle selection list 
+    const newWorkoutDetails = document.createElement('div'); 
+    addClass(newWorkoutDetails, 'newWorkout__details')
+    append(newWorkoutName, newWorkoutDetails)
+    insertBreak(newWorkoutDetails);
+    append(newWorkoutDifficulty,newWorkoutDetails)
+    insertBreak(newWorkoutDetails);
+    append(newWorkoutDesc, newWorkoutDetails)
+    insertBreak(newWorkoutDetails);
     append(newWorkoutHeader,newWorkoutContainer)
-    append(newWorkoutCard, newWorkoutContainer)
+    append(newWorkoutDetails, newWorkoutCard)
+    append(newWorkoutSubmitBtn, newWorkoutDetails)
+    append(muscleSelectDiv, newWorkoutCard)
+    append(newWorkoutCard,newWorkoutContainer)
+
+    // add event listener to hide/unhide new workout form card 
+    addHideEventListener(newWorkoutHeader,newWorkoutCard); 
     return newWorkoutContainer; 
 }
 

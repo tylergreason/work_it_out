@@ -100,6 +100,11 @@ html, body {
   grid-row: 2/3;
 }
 
+.workout__difficulty .fa-dumbbell {
+  -webkit-transform: rotate(-45deg);
+          transform: rotate(-45deg);
+}
+
 .workout__desc {
   -ms-grid-column: 1;
   -ms-grid-column-span: 10;
@@ -126,23 +131,73 @@ html, body {
           justify-content: center;
 }
 
-.hidden {
-  display: none;
-}
-
 .newWorkout {
   background-color: #457b9d;
+}
+
+.newWorkout__card {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: row wrap;
+          flex-flow: row wrap;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.newWorkout__details, .newWorkout__muscles {
   padding: 10px;
+  width: 45%;
+  margin: 5px;
+  border: 1px solid black;
+}
+
+.newWorkout__details {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: column;
+          flex-flow: column;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
 }
 
 .newWorkout__desc {
   background-color: #f0f3bd;
   border-color: black;
-  width: 40%;
-  height: 20%;
+  width: 90%;
+  height: 80%;
+  margin: auto auto;
 }
 
-input[type='checkbox'] {
-  background-color: blue;
+.newWorkout__header {
+  text-align: center;
+  border: 1px solid black;
+  padding: 0px;
+}
+
+.newWorkout__muscle {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: row wrap;
+          flex-flow: row wrap;
+  font-size: 2rem;
+}
+
+.newWorkout__muscle input {
+  height: 2rem;
+}
+
+.hidden {
+  display: none;
 }
 /*# sourceMappingURL=style.css.map */

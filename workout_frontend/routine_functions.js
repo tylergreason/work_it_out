@@ -102,6 +102,7 @@ function newRoutineForm(name,date,desc,workouts){
     const newRoutineHeader = document.createElement('h2'); 
     newRoutineHeader.innerText = 'New Routine'
     newRoutineHeader.id = "newRoutineHeader"
+    addClass(newRoutineHeader, 'newRoutine__header')
     const newRoutineFormCard = document.createElement('div'); 
     
     // hide/unhide form card when clicking header 
