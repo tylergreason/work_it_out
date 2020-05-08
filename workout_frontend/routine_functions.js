@@ -165,7 +165,7 @@ function newRoutineForm(name,date,desc,workouts){
     insertBreak(newRoutineFormCard);
     append(newRoutineWorkoutsList,newRoutineFormCard); 
 
-    // debugger
+    // add muscles with their workouts 
     fetchMusclesWithWorkouts(newRoutineMuscleSelection); 
     newRoutineFormCard.appendChild(newRoutineMuscleSelection); 
 

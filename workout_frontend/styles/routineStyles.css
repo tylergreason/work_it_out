@@ -7,4 +7,33 @@
   -webkit-transition: 3s;
   transition: 3s;
 }
+
+.newRoutine__muscles {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: column wrap;
+          flex-flow: column wrap;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+}
+
+.newRoutine__muscle {
+  border: 5px solid black;
+  border-radius: 10px;
+  margin: 10px;
+  background-color: #e05661;
+}
+
+.newRoutine__muscle .muscle__header {
+  background-color: white;
+  margin-top: 0px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  margin-bottom: 0px;
+  border-radius: 4px 4px 0px 0px;
+}
 /*# sourceMappingURL=routineStyles.css.map */

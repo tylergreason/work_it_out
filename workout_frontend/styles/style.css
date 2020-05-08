@@ -110,7 +110,7 @@ html, body {
 }
 
 .muscle__header {
-  font-size: 2rem;
+  text-align: center;
 }
 
 .muscle__workouts {
@@ -121,6 +121,9 @@ html, body {
   -webkit-box-direction: normal;
       -ms-flex-flow: row wrap;
           flex-flow: row wrap;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 
 .hidden {

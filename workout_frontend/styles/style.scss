@@ -100,12 +100,14 @@ html, body {
 }
 
 .muscle__header {
-    font-size: 2rem;
+    text-align: center;
 }
+
 
 .muscle__workouts {
     display: flex;
     flex-flow: row wrap;
+    justify-content: center;
 }
 
 .hidden { 

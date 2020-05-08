@@ -23,7 +23,7 @@ function renderMuscle(muscle){
 }
 
 function renderMuscleHeader(muscle){
-    const muscleHeader = document.createElement('h3'); 
+    const muscleHeader = document.createElement('h2'); 
     muscleHeader.innerText = muscle.name; 
     addClass(muscleHeader,'muscle__header')
     return muscleHeader; 
@@ -41,7 +41,7 @@ function fetchMusclesWithWorkouts(div){
     .then(function(muscles){
         muscles.forEach(function(muscle){
             const muscleCard = renderMuscleCard(muscle)
-            addClass(muscleCard, 'newRoutineMuscle')
+            addClass(muscleCard, 'newRoutine__muscle')
             append(muscleCard, div)
         })
     })
@@ -52,13 +52,14 @@ function renderMuscleCard(muscle){
     addClass(muscleCard, 'muscle')
     const muscleHeader = renderMuscleHeader(muscle)
     const muscleWorkouts = renderWorkoutsForNewRoutine(muscle.workouts)
+    muscleHeader.toToggle = muscleWorkouts
     append(muscleHeader,muscleCard)
     append(muscleWorkouts,muscleCard)
     addHideEventListener(muscleHeader, muscleWorkouts)
     // hide muscle workouts by default 
     addClass(muscleWorkouts,'hidden')
     return muscleCard;
-    }
+}
 
 function renderMuscleSelectBoxToId(id){
     fetchJSONFromURL(musclesURL)
