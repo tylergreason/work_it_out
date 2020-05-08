@@ -1,15 +1,17 @@
 $workoutBGColor: #f1faee;
 $workoutHighlightColor: #e63946; 
 $musclesBGC: #a8dadc; 
-$cardWidth: 300px;
-$cardHeight: 400px; 
+$cardWidth: 200px;
+$cardHeight: 300px; 
 
 @mixin flexCenter(){
     display: flex; 
     justify-content: center;
     align-items: center;
 }
-
+html, body {
+    margin: 0;
+}
 .workout {
     // background-color: $workoutBGColor;
     margin: 10px;
@@ -19,7 +21,7 @@ $cardHeight: 400px;
     border: 3px solid black; 
     border-radius: 10px;
     height: $cardHeight;
-
+    font-size: 1rem;
     // grid 
     display: grid; 
     grid-template-columns: repeat(10, 1fr);
@@ -101,7 +103,11 @@ $cardHeight: 400px;
     font-size: 2rem;
 }
 
-.outerDiv {
-    transform: rotate(11deg);
-    background-color: red;
+.muscle__workouts {
+    display: flex;
+    flex-flow: row wrap;
+}
+
+.hidden { 
+    display: none; 
 }

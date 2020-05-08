@@ -29,7 +29,7 @@ function renderWorkout(workout){
     workoutCard.appendChild(workoutDifficulty);
     workoutCard.appendChild(workoutDesc); 
     // append muscle list to card 
-    const muscles = renderMuscles(workout.muscles) 
+    const muscles = renderWorkoutMuscles(workout) 
     addClass(muscles,'muscles')
     addClass(muscles,'muscles--workoutCard')
     workoutCard.appendChild(muscles);
@@ -39,14 +39,14 @@ function renderWorkout(workout){
 
 
 function renderWorkoutsForNewRoutine(workouts){
-    const workoutList = document.createElement('ul'); 
+    const workoutsContainer = document.createElement('div'); 
+    addClass(workoutsContainer, 'muscle__workouts')
     workouts.forEach(function(workout){
-        const workoutLi = document.createElement('li'); 
-        workoutLi.appendChild(renderWorkout(workout)); 
-        addWorkoutToRoutineEvent(workoutLi); 
-        workoutList.appendChild(workoutLi); 
+        const workoutCard = renderWorkout(workout); 
+        addWorkoutToRoutineEvent(workoutCard);
+        append(workoutCard, workoutsContainer)
     })
-    return workoutList; 
+    return workoutsContainer; 
 }
 
 function newWorkoutForm(){
@@ -55,7 +55,6 @@ function newWorkoutForm(){
     newWorkoutHeader.innerText = "New Workout"
 
     const newWorkoutCard = document.createElement('div'); 
-    newWorkoutCard.hidden = true; 
     
     // add event listener to hide/unhide new workout form card 
     addHideEventListener(newWorkoutHeader,newWorkoutCard); 
@@ -112,6 +111,20 @@ function submitWorkoutEventListener(button){
         const newWorkoutDifficulty = document.getElementById("newWorkoutDifficulty").value; 
         const newWorkoutMuscleIds = returnCheckedMuscles("muscleSelectDiv"); 
         // debugger; 
-        createWorkout(newWorkoutName,newWorkoutDesc,newWorkoutDifficulty,newWorkoutMuscleIds); 
+        createWorkout(newWorkoutName,newWorkoutDifficulty,newWorkoutDesc,newWorkoutMuscleIds); 
     })
+}
+
+function renderWorkoutMuscles(workout){
+    // make div to hold muscles 
+    const workoutMuscles = document.createElement('ul') 
+    addClass(workoutMuscles, 'workout__muscles')
+    // iterate through workout muscles and make li for each
+    workout.muscles.forEach(muscle => {
+        const workoutMuscle = document.createElement('li')
+        workoutMuscle.innerText = muscle.name; 
+        //append the muscle li to the workoutMuscles list 
+        return append(workoutMuscle, workoutMuscles)
+    })
+    return workoutMuscles; 
 }

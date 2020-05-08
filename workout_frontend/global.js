@@ -71,15 +71,13 @@ function parseDate(){
 }
 
 function hideOrUnhide(div){
-    if (div.hidden === true){
-        div.hidden = false; 
-    }else{
-        div.hidden = true; 
-    }
+    div.classList.toggle('hidden')
 }
 
 function addHideEventListener(nodeToListen, nodeToHide){
     nodeToListen.addEventListener('click', function(e){
+        e.preventDefault();
+        console.log(nodeToHide)
         hideOrUnhide(nodeToHide); 
     })
 }

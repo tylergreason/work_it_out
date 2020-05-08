@@ -18,14 +18,14 @@ function renderMuscles(muscles){
 function renderMuscle(muscle){
     const muscleCard = document.createElement('div'); 
     muscleCard.innerText = muscle.name; 
-    muscleCard.classList.add('muscles__name')
+    muscleCard.classList.add('muscle__name')
     return muscleCard; 
 }
 
 function renderMuscleHeader(muscle){
-    const muscleHeader = document.createElement('div'); 
+    const muscleHeader = document.createElement('h3'); 
     muscleHeader.innerText = muscle.name; 
-    muscleHeader.classList.add('muscle__header')
+    addClass(muscleHeader,'muscle__header')
     return muscleHeader; 
 }
 
@@ -40,14 +40,25 @@ function fetchMusclesWithWorkouts(div){
     // .then(data => console.log(data))
     .then(function(muscles){
         muscles.forEach(function(muscle){
-            const muscleWorkoutDiv = document.createElement('div'); 
-            muscleWorkoutDiv.appendChild(renderMuscleHeader(muscle)); 
-            muscleWorkoutDiv.appendChild(renderWorkouts(muscle.workouts))
-            muscleWorkoutDiv.querySelectorAll(".workoutLi").forEach(workout => addWorkoutToRoutineEvent(workout))
-            append(muscleWorkoutDiv, div)
+            const muscleCard = renderMuscleCard(muscle)
+            addClass(muscleCard, 'newRoutineMuscle')
+            append(muscleCard, div)
         })
     })
 }
+
+function renderMuscleCard(muscle){
+    const muscleCard = newDiv() 
+    addClass(muscleCard, 'muscle')
+    const muscleHeader = renderMuscleHeader(muscle)
+    const muscleWorkouts = renderWorkoutsForNewRoutine(muscle.workouts)
+    append(muscleHeader,muscleCard)
+    append(muscleWorkouts,muscleCard)
+    addHideEventListener(muscleHeader, muscleWorkouts)
+    // hide muscle workouts by default 
+    addClass(muscleWorkouts,'hidden')
+    return muscleCard;
+    }
 
 function renderMuscleSelectBoxToId(id){
     fetchJSONFromURL(musclesURL)
@@ -75,3 +86,4 @@ function returnCheckedMuscles(id){
     })
     return checkedMuscleIds;
 }
+

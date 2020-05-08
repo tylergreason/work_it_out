@@ -1,11 +1,16 @@
+html, body {
+  margin: 0;
+}
+
 .workout {
   margin: 10px;
-  width: 300px;
+  width: 200px;
   -webkit-transition: 0.15s;
   transition: 0.15s;
   border: 3px solid black;
   border-radius: 10px;
-  height: 400px;
+  height: 300px;
+  font-size: 1rem;
   display: -ms-grid;
   display: grid;
   -ms-grid-columns: (1fr)[10];
@@ -41,7 +46,7 @@
 
 .workout__name {
   margin: 0px;
-  width: 300px;
+  width: 200px;
   background-color: #457b9d;
   color: #f1faee;
   text-align: center;
@@ -108,9 +113,17 @@
   font-size: 2rem;
 }
 
-.outerDiv {
-  -webkit-transform: rotate(11deg);
-          transform: rotate(11deg);
-  background-color: red;
+.muscle__workouts {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: row wrap;
+          flex-flow: row wrap;
+}
+
+.hidden {
+  display: none;
 }
 /*# sourceMappingURL=style.css.map */

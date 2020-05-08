@@ -3,3 +3,8 @@ $newRoutineBGC: #e63946;
 .newRoutine__container {
     background-color: $newRoutineBGC;
 }
+
+.newRoutine__workouts { 
+    min-height: 400px;
+    transition: 3s;
+}

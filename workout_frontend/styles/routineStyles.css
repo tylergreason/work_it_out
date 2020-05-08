@@ -1,4 +1,10 @@
 .newRoutine__container {
   background-color: #e63946;
 }
+
+.newRoutine__workouts {
+  min-height: 400px;
+  -webkit-transition: 3s;
+  transition: 3s;
+}
 /*# sourceMappingURL=routineStyles.css.map */

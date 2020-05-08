@@ -1,14 +1,3 @@
-console.log("render functions was loaded correctly")
-
-// render all user's routines  
-// function renderRoutines2(user){
-//     let routines = user.routines; 
-//     routines.forEach(function(routine){
-//         console.log(routine); 
-//         main.appendChild(renderRoutine(routine)) 
-//     })
-// }
-
 function renderRoutines(user){
     // change this to send username and have backend only return routines with that username
     // clear routines div 
@@ -21,6 +10,7 @@ function renderRoutines(user){
     })
     .then(resp => resp.json())
     .then(function(routines){
+        console.log(routines) 
         const userRoutines = routines.filter(routine => routine.user_id === user.id)
         userRoutines.forEach(routine => userRoutinesDiv.appendChild(renderRoutine(routine)))
     })
@@ -118,8 +108,8 @@ function newRoutineForm(name,date,desc,workouts){
     addHideEventListener(newRoutineHeader,newRoutineFormCard); 
 
     newRoutineFormCard.id = "newRoutineFormCard"
-    // hide routine form from the start 
-    newRoutineFormCard.hidden = true; 
+
+    
     const newRoutineName = document.createElement('input');
     if (name === undefined){
         newRoutineName.placeholder = "routine name"; 
@@ -185,9 +175,10 @@ function newRoutineForm(name,date,desc,workouts){
 }
 
 function addWorkoutToRoutineEvent(workout){
+    // onClick function for adding workout to a new routine 
     const newRoutineWorkoutsList = document.querySelector("#newRoutineWorkoutsList")
-    // debugger
     workout.addEventListener('click',function(e){
+        console.log(this)
         if (checkIfIdPresent(newRoutineWorkoutsList,this.dataset.id).length === 0){
             let newNode = this.cloneNode(true); 
             newRoutineWorkoutsList.appendChild(newNode); 
@@ -253,5 +244,16 @@ function copyWorkouts(workouts,list){
         removeWorkoutFromNewRoutineWorkoutListListener(workoutClone);
         // debugger 
         list.appendChild(workoutClone); 
+    })
+}
+
+function hideMuscleWorkoutsListener(){
+    //find each muscle__header in the newRoutine form and add the click listener to hide its children 
+    const muscleHeaders = Array.from(document.getElementsByClassName('muscle__header'))
+    console.log(muscleHeaders)
+    muscleHeaders.forEach(header => {
+        console.log(header)
+        console.log(header.children[0])
+        addHideEventListener(header, header.children[0])
     })
 }
