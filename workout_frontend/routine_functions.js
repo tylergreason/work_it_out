@@ -5,7 +5,9 @@ function renderRoutines(user){
     fetch(`${routinesURL}`, {
         method: 'GET',
         headers: {
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json',
+            // include username to let backend filter routines by user 
+            'user': userObject.username
         }
     })
     .then(resp => resp.json())
