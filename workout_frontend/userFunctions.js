@@ -2,14 +2,16 @@
 let userRoutines = ''
 
 function renderUserRoutines(user){
+    console.log('render user routines fired ')
     const userRoutinesHeader = renderUserRoutinesHeader()
     const userRoutinesContainer = renderUserRoutinesContainer()
     append(userRoutinesHeader, userRoutinesDiv)
     append(userRoutinesContainer, userRoutinesDiv)
     addHideEventListener(userRoutinesHeader,userRoutinesContainer)
     // render current user's routines 
-    // clear routines div 
-    // removeChildren(userRoutinesDiv);
+    // clear routines container
+    // const userRoutinesContainer = document.getElementById('userRoutines__container')
+    removeChildren(userRoutinesContainer);
     fetch(`${routinesURL}`, {
         method: 'GET',
         headers: {

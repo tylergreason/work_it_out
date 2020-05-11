@@ -1,11 +1,11 @@
 function renderWorkouts(workouts){
-    const workoutList = document.createElement('ul'); 
+    const workoutList = document.createElement('div'); 
     addClass(workoutList, 'workouts')
     workouts.forEach(function(workout){
-        const workoutLi = document.createElement('li'); 
-        workoutLi.appendChild(renderWorkout(workout)); 
+        const workoutLi = renderWorkout(workout); 
+        // workoutLi.appendChild(renderWorkout(workout)); 
         // workoutLi.appendChild(renderMuscles(workout.muscles))
-        workoutLi.className = "workoutLi"
+        addClass(workoutLi,'workoutLi')
         workoutLi.dataset.id = workout.id; 
         workoutList.appendChild(workoutLi); 
     })

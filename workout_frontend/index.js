@@ -9,12 +9,12 @@ const newWorkoutDiv = document.querySelector("#newWorkoutForm")
 const routinesURL = 'http://localhost:3000/routines/'
 const musclesURL = 'http://localhost:3000/muscles/'
 const workoutURL = 'http://localhost:3000/workouts'
-const placeholderLoginValue = "alfreda"; 
+const placeholderLoginValue = "venice_rutherford"; 
 
 window.onload = event => {
     main_event(); 
     // use the function below to automatically log in as 'alfreda' to make testing faster 
-    new_user ('nil','nil','federico.osinski', 'password')
+    new_user ('nil','nil',placeholderLoginValue, 'password')
 }    
 function clear_main(){
     while (main.firstChild){

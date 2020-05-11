@@ -24,23 +24,8 @@ function renderRoutine(routine){
     routineDate.id = `routineDate${routine.id}`; 
     addClass(routineDate, 'userRoutine__date')
 
-    const routineDeleteBtn = document.createElement('button'); 
-    routineDeleteBtn.innerText = 'delete routine'; 
-    routineDeleteBtn.dataset.id = routine.id; 
-    addClass(routineDeleteBtn, 'userRoutine__button')
-    addClass(routineDeleteBtn, 'userRoutine__button--delete')
-
-    routineDeleteBtn.addEventListener('click',function(e){
-        deleteRoutine(e.target); 
-    })
-
+    const routineDeleteBtn = routineDeleteButton(routine) 
     const routineCopyBtn = routineCopyButton(routine);
-    // add copy icon to button 
-    // append(copyIcon(), routineCopyBtn)
-    // routineCopyBtn.innerText = `Copy Routine`; 
-    // addCopyRoutineEventListener(routineCopyBtn); 
-    // addClass(routineCopyBtn, 'userRoutine__button')
-    // addClass(routineCopyBtn, 'userRoutine__button--copy')
 
     const routineWorkouts = renderWorkouts(routine.workouts); 
     routineWorkouts.id = `routineWorkoutsList${routine.id}`
@@ -63,38 +48,80 @@ function deleteRoutine(routine){
             'Content-Type': 'application/json'
         }
     })
-    routine.parentElement.remove()
+    // routine.parentElement.remove()
+    renderUserRoutines(userObject)
+}
+
+
+function routineCopyButton(routine){ 
+    const routineCopyBtn = document.createElement('button'); 
+    // give it the id of the routine for copying 
+    routineCopyBtn.dataset.id = routine.id; 
+    routineCopyBtn.innerText = 'Copy Routine'
+    // add on click listener for copying routine 
+    addCopyRoutineEventListener(routineCopyBtn); 
+    
+    addClass(routineCopyBtn, 'userRoutine__button')
+    addClass(routineCopyBtn, 'userRoutine__button--copy')
+
+    return routineCopyBtn
+}
+
+function routineDeleteButton(routine){
+    const routineDeleteBtn = newElement('button'); 
+    routineDeleteBtn.innerText = 'Delete Routine'; 
+    routineDeleteBtn.dataset.id = routine.id; 
+    addClass(routineDeleteBtn, 'userRoutine__button')
+    addClass(routineDeleteBtn, 'userRoutine__button--delete')
+
+    routineDeleteBtn.addEventListener('click',function(e){
+        deleteRoutine(e.target); 
+    })
+    return routineDeleteBtn;
+}
+
+
+function routineCopyButtonOLD(routine){ 
+    
+    const routineCopyBtn = document.createElement('div'); 
+    // give it the id of the routine for copying 
+    routineCopyBtn.dataset.id = routine.id; 
+    
+    /*
+        everything below was for a fancier button with an icon and all. It was taking waaaaaay too much time to get right so I went back to using a regular button for the time being. Might come back to this later. Took a while, so I wanted to save the code. 
+    */ 
+
+
+    // const routineCopyBtn = document.createElement('div'); 
+    // // give it the id of the routine for copying 
+    // routineCopyBtn.dataset.id = routine.id; 
+
+    // // add copy icon to button 
+    // const copyIconDiv = copyIcon(); 
+    // append(copyIconDiv, routineCopyBtn)
+    // addClass(copyIconDiv, 'routineCopyButton__icon')
+    
+    // // create a div with button text to append to routineCopyButton 
+    // const text = newElement('div'); 
+    // text.innerText = "Copy Routine" 
+    // addClass(text, 'routineCopyButton__text')
+    // append(text, routineCopyBtn)
+    
+    // // add on click listener for copying routine 
+    // addCopyRoutineEventListener(routineCopyBtn); 
+    
+    // addClass(routineCopyBtn, 'userRoutine__button')
+    // addClass(routineCopyBtn, 'userRoutine__button--copy')
+    return routineCopyBtn;
 }
 
 function addCopyRoutineEventListener(element){
     element.addEventListener('click',function(e){
+        console.log(element.dataset.id)
+        // e.preventDefault();
         copyRoutines(e); 
     })
 }
-
-function routineCopyButton(routine){ 
-    const routineCopyBtn = document.createElement('div'); 
-    // give it the id of the routine for copying 
-    routineCopyBtn.dataset.id = routine.id; 
-
-    // add copy icon to button 
-    const copyIconDiv = copyIcon(); 
-    append(copyIconDiv, routineCopyBtn)
-    addClass(copyIconDiv, 'routineCopyButton__icon')
-
-    // create a div with button text to append to routineCopyButton 
-    const text = newElement('div'); 
-    text.innerText = "Copy Routine" 
-    addClass(text, 'routineCopyButton__text')
-    append(text, routineCopyBtn)
-
-    // add on click listener for copying routine 
-    addCopyRoutineEventListener(routineCopyBtn); 
-    addClass(routineCopyBtn, 'userRoutine__button')
-    addClass(routineCopyBtn, 'userRoutine__button--copy')
-    return routineCopyBtn;
-}
-
 
 function copyRoutines(element){
     const routineName = document.querySelector(`#routineName${element.target.parentElement.dataset.id}`).innerText; 

@@ -35,6 +35,33 @@
   text-transform: capitalize;
 }
 
+.userRoutine__button {
+  margin: 10px;
+  width: 40%;
+  height: 2rem;
+  max-height: 2rem;
+  font-size: 1.2rem;
+  border: 3px solid black;
+  border-radius: 5px;
+}
+
+.userRoutine__button--copy {
+  background-color: #3a86ff;
+}
+
+.userRoutine__button--copy:hover {
+  background-color: white;
+}
+
+.userRoutine__button--delete {
+  background-color: #e76f51;
+}
+
+.userRoutine__button--delete:hover {
+  background-color: red;
+  color: white;
+}
+
 .userRoutine__date {
   text-align: center;
   margin: auto auto;
@@ -49,6 +76,9 @@
   -webkit-box-direction: normal;
       -ms-flex-flow: row wrap;
           flex-flow: row wrap;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 
 .userRoutines__header {
