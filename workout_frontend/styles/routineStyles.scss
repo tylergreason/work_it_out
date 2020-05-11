@@ -1,6 +1,12 @@
 $newRoutineBGC: #e63946;
 $newRoutineMuscleBGC : #e05661;
 
+@mixin centerHeader {
+    text-align: center; 
+    padding: 5px; 
+    border: 3px solid black; 
+}
+
 .newRoutine__container {
     background-color: $newRoutineBGC;
 }
@@ -17,7 +23,7 @@ $newRoutineMuscleBGC : #e05661;
 }
 
 .newRoutine__muscle {
-    border: 5px solid black;
+    border: 3px solid black;
     border-radius: 10px;
     margin: 10px;
     background-color: $newRoutineMuscleBGC;
@@ -33,5 +39,5 @@ $newRoutineMuscleBGC : #e05661;
 }
 
 .newRoutine__header {
-    text-align: center;
+    @include centerHeader();
 }

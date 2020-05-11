@@ -22,7 +22,7 @@
 }
 
 .newRoutine__muscle {
-  border: 5px solid black;
+  border: 3px solid black;
   border-radius: 10px;
   margin: 10px;
   background-color: #e05661;
@@ -39,5 +39,7 @@
 
 .newRoutine__header {
   text-align: center;
+  padding: 5px;
+  border: 3px solid black;
 }
 /*# sourceMappingURL=routineStyles.css.map */

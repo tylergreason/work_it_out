@@ -3,16 +3,18 @@ let user_id = undefined;
 let logged_username = undefined;   
 let userObject = {}; 
 const userRoutinesDiv = document.querySelector("#userRoutines")
+addClass(userRoutinesDiv,'userRoutines')
 const newRoutineDiv = document.querySelector("#newRoutineForm")
 const newWorkoutDiv = document.querySelector("#newWorkoutForm")
 const routinesURL = 'http://localhost:3000/routines/'
 const musclesURL = 'http://localhost:3000/muscles/'
 const workoutURL = 'http://localhost:3000/workouts'
-const placeholderLoginValue = "alfreda"
+const placeholderLoginValue = "alfreda"; 
+
 window.onload = event => {
     main_event(); 
     // use the function below to automatically log in as 'alfreda' to make testing faster 
-    new_user ('nil','nil','alfreda', 'password')
+    new_user ('nil','nil','federico.osinski', 'password')
 }    
 function clear_main(){
     while (main.firstChild){
@@ -91,15 +93,10 @@ function login_button_listener(button){
 }
 
 function render_main_page(){
-    console.log('render main page fired')
-    // running these functions when the user is logged in to test them quickly 
+    // render the elements that should be on the main page 
+    newRoutineDiv.appendChild(newRoutineForm());
     newWorkoutDiv.appendChild(newWorkoutForm());
-    // main.appendChild(newRoutineForm());
-    renderRoutines(userObject);
-    newRoutineDiv.appendChild(newRoutineForm())
-    // the following line unhides the new routine form for dev purposes 
-    newRoutineFormCard.hidden = false 
-
+    renderUserRoutines(userObject);
 }
 
 

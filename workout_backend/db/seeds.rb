@@ -33,7 +33,7 @@ end
         password: "password"
     )
     # create routines, give them workouts, then give them users 
-    3.times do 
+    30.times do 
         new_routine = Routine.create(name: day.sample + " routine", description: Faker::Lorem.sentence(word_count: 5), date: Faker::Date.in_date_period)
         5.times do 
             new_routine.workouts << Workout.all.sample

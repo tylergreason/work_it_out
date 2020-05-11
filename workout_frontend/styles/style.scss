@@ -4,17 +4,24 @@ $musclesBGC: #a8dadc;
 $cardWidth: 200px;
 $cardHeight: 300px; 
 
+
+
 @mixin flexCenter(){
     display: flex; 
     justify-content: center;
     align-items: center;
 }
 
-@mixin centerHeader(){
-
+@mixin centerHeader {
+    text-align: center; 
+    padding: 5px; 
+    border: 3px solid black; 
 }
+
+
 html, body {
     margin: 0;
+    font-family: 'Open Sans', sans-serif;
 }
 .workout {
     // background-color: $workoutBGColor;
@@ -155,9 +162,7 @@ $newWorkoutBGC: #457b9d;
 }
 
 .newWorkout__header { 
-    text-align: center;  
-    border: 1px solid black;
-    padding: 0px;
+    @include centerHeader()
 }
 
 .newWorkout__muscles {

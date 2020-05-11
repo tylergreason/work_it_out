@@ -110,3 +110,17 @@ function barbellIcon(){
     addClass(barbell,'fas');
     return barbell;
 }
+
+function copyIcon(){
+    const copy = newElement('i');
+    addClass(copy,'fas'); 
+    addClass(copy,'fa-copy'); 
+    return copy; 
+}
+
+function trashIcon(){
+    const trash = newElement('i');
+    addClass(trash, 'fas'); 
+    addClass(trash, 'fa-trash-alt'); 
+    return trash; 
+}

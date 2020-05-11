@@ -1,5 +1,6 @@
 html, body {
   margin: 0;
+  font-family: 'Open Sans', sans-serif;
 }
 
 .workout {
@@ -178,8 +179,8 @@ html, body {
 
 .newWorkout__header {
   text-align: center;
-  border: 1px solid black;
-  padding: 0px;
+  padding: 5px;
+  border: 3px solid black;
 }
 
 .newWorkout__muscles {

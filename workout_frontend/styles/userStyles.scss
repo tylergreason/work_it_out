@@ -1,0 +1,53 @@
+@mixin centerHeader {
+    text-align: center; 
+    padding: 5px; 
+    border: 3px solid black; 
+}
+
+$userRoutineBGC: #e9c46a;
+
+.userRoutines {
+    background-color: #3a86ff;
+    .userRoutines__container {
+        display: flex; 
+        flex-flow: row wrap;
+    }
+}
+
+.userRoutine {
+    border: 3px solid black;
+    margin: 10px; 
+    flex: 1 45%;
+    background-color: $userRoutineBGC;
+}
+
+.userRoutine__details {
+    background-color: white;
+    text-align: center;
+    min-height: 10%;
+
+    .userRoutine__name {
+        text-align: center;
+        border-bottom: 3px solid black;
+        width: 40%;
+        margin: auto auto;
+        text-transform: capitalize;
+    }
+    .userRoutine__desc {
+    }
+}
+
+.userRoutine__date {
+    text-align: center;
+    margin: auto auto;
+    font-size: 0.8rem;
+}
+
+.userRoutine__workouts {
+    display: flex; 
+    flex-flow: row wrap; 
+}
+
+.userRoutines__header {
+    @include centerHeader();
+}

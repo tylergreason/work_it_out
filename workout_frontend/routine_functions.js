@@ -1,64 +1,58 @@
-function renderRoutines(user){
-    // change this to send username and have backend only return routines with that username
-    // clear routines div 
-    removeChildren(userRoutinesDiv);
-    fetch(`${routinesURL}`, {
-        method: 'GET',
-        headers: {
-            'Content-Type': 'application/json',
-            // include username to let backend filter routines by user 
-            'user': userObject.username
-        }
-    })
-    .then(resp => resp.json())
-    .then(function(routines){
-        console.log(routines) 
-        const userRoutines = routines.filter(routine => routine.user_id === user.id)
-        userRoutines.forEach(routine => userRoutinesDiv.appendChild(renderRoutine(routine)))
-    })
-}
-
 function renderRoutine(routine){
     const routineCard = document.createElement('div')
     routineCard.dataset.id = routine.id; 
     routineCard.dataset.user_id = routine.user_id; 
+    addClass(routineCard,'userRoutine')
 
-    const routineName = document.createElement('div'); 
+    // element to hold name, date, and description for styling. 
+    const userRoutineDetails = newElement('div'); 
+    addClass(userRoutineDetails, 'userRoutine__details')
+
+
+    const routineName = document.createElement('h2'); 
     routineName.innerText = routine.name; 
     routineName.id = `routineName${routine.id}`
+    addClass(routineName, 'userRoutine__name')
 
     const routineDesc = document.createElement('div'); 
     routineDesc.innerText = routine.description; 
     routineDesc.id = `routineDesc${routine.id}`
+    addClass(routineDesc, 'userRoutine__desc')
 
     const routineDate = document.createElement('div'); 
     routineDate.innerText = routine.date; 
     routineDate.id = `routineDate${routine.id}`; 
+    addClass(routineDate, 'userRoutine__date')
 
     const routineDeleteBtn = document.createElement('button'); 
     routineDeleteBtn.innerText = 'delete routine'; 
     routineDeleteBtn.dataset.id = routine.id; 
+    addClass(routineDeleteBtn, 'userRoutine__button')
+    addClass(routineDeleteBtn, 'userRoutine__button--delete')
 
     routineDeleteBtn.addEventListener('click',function(e){
         deleteRoutine(e.target); 
     })
 
-    const routineCopyBtn = document.createElement('button'); 
-    routineCopyBtn.innerText = "copy"; 
-    addCopyRoutineEventListener(routineCopyBtn); 
+    const routineCopyBtn = routineCopyButton(routine);
+    // add copy icon to button 
+    // append(copyIcon(), routineCopyBtn)
+    // routineCopyBtn.innerText = `Copy Routine`; 
+    // addCopyRoutineEventListener(routineCopyBtn); 
+    // addClass(routineCopyBtn, 'userRoutine__button')
+    // addClass(routineCopyBtn, 'userRoutine__button--copy')
 
-    // put workouts here when that's working  
-    const routineWorkouts = routine.workouts; 
-    const routineWorkoutsList = renderWorkouts(routineWorkouts); 
-    routineWorkoutsList.id = `routineWorkoutsList${routine.id}`
+    const routineWorkouts = renderWorkouts(routine.workouts); 
+    routineWorkouts.id = `routineWorkoutsList${routine.id}`
+    addClass(routineWorkouts, 'userRoutine__workouts')
 
-    
-    routineCard.appendChild(routineName);
-    routineCard.appendChild(routineDesc); 
-    routineCard.appendChild(routineDate);
-    routineCard.appendChild(routineWorkoutsList); 
-    routineCard.appendChild(routineDeleteBtn)
-    routineCard.appendChild(routineCopyBtn); 
+    append(routineName, userRoutineDetails)
+    append(routineDate,userRoutineDetails)
+    append(routineDesc, userRoutineDetails)
+    append(routineDeleteBtn, userRoutineDetails)
+    append(routineCopyBtn, userRoutineDetails)
+    append(userRoutineDetails, routineCard)
+    routineCard.appendChild(routineWorkouts); 
     return routineCard; 
 }
 
@@ -77,6 +71,30 @@ function addCopyRoutineEventListener(element){
         copyRoutines(e); 
     })
 }
+
+function routineCopyButton(routine){ 
+    const routineCopyBtn = document.createElement('div'); 
+    // give it the id of the routine for copying 
+    routineCopyBtn.dataset.id = routine.id; 
+
+    // add copy icon to button 
+    const copyIconDiv = copyIcon(); 
+    append(copyIconDiv, routineCopyBtn)
+    addClass(copyIconDiv, 'routineCopyButton__icon')
+
+    // create a div with button text to append to routineCopyButton 
+    const text = newElement('div'); 
+    text.innerText = "Copy Routine" 
+    addClass(text, 'routineCopyButton__text')
+    append(text, routineCopyBtn)
+
+    // add on click listener for copying routine 
+    addCopyRoutineEventListener(routineCopyBtn); 
+    addClass(routineCopyBtn, 'userRoutine__button')
+    addClass(routineCopyBtn, 'userRoutine__button--copy')
+    return routineCopyBtn;
+}
+
 
 function copyRoutines(element){
     const routineName = document.querySelector(`#routineName${element.target.parentElement.dataset.id}`).innerText; 
@@ -236,7 +254,8 @@ async function newRoutine(name,desc,date,workouts){
         const resp = await data.json()
         .then((data) => {
             console.log('Success:', data);
-            renderRoutines(userObject); 
+            // add routine to user routines list 
+            renderUserRoutines(userObject)
         })
 }
 
