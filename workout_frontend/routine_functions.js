@@ -57,6 +57,8 @@ function routineCopyButton(routine){
     const routineCopyBtn = document.createElement('button'); 
     // give it the id of the routine for copying 
     routineCopyBtn.dataset.id = routine.id; 
+    //give the copy button the routine as an attribute so it can easily be copied 
+    routineCopyBtn.routine = routine; 
     routineCopyBtn.innerText = 'Copy Routine'
     // add on click listener for copying routine 
     addCopyRoutineEventListener(routineCopyBtn); 
@@ -117,30 +119,31 @@ function routineCopyButtonOLD(routine){
 
 function addCopyRoutineEventListener(element){
     element.addEventListener('click',function(e){
-        console.log(element.dataset.id)
-        // e.preventDefault();
-        copyRoutines(e); 
+        console.log(element.routine)
+        // use the element's routine attribute 
+        copyRoutines(element.routine); 
     })
 }
 
-function copyRoutines(element){
-    const routineName = document.querySelector(`#routineName${element.target.parentElement.dataset.id}`).innerText; 
-    // const routineDate = document.querySelector(`#routineDate${element.target.parentElement.dataset.id}`).innerText; 
-    const routineDate = parseDate(); 
-    const routineDesc = document.querySelector(`#routineDesc${element.target.parentElement.dataset.id}`).innerText; 
-    const routineWorkoutList = document.querySelector(`#routineWorkoutsList${element.target.parentElement.dataset.id}`)
+function copyRoutines(routine){
+    // get routine data from parameter
+    const routineName = routine.name;
+    const routineDesc = routine.description; 
+    const routineWorkoutList = routine.workouts; 
 
+    // find fields where the data will be copied to 
     const newRoutineName = document.querySelector("#newRoutineName"); 
     const newRoutineDesc = document.querySelector("#newRoutineDesc"); 
     const newRoutineDate = document.querySelector("#newRoutineDate"); 
     const newRoutineWorkoutsList = document.querySelector("#newRoutineWorkoutsList"); 
-    // main.appendChild(newRoutineForm(routineName,routineDate,routineDesc,routineWorkoutList))
-    newRoutineName.value = routineName; 
+
+    // set routine parameter data to new routine fields 
+    newRoutineName.value = routineName;
+    // make the date today's date  
     newRoutineDate.value = parseDate(); 
     newRoutineDesc.value = routineDesc; 
-    // debugger 
+    // copy the workouts from this routine to the new routine form workout list 
     copyWorkouts(routineWorkoutList,newRoutineWorkoutsList);
-    // console.log(routineWorkoutList.children);
 }
 
 function newRoutineForm(name,date,desc,workouts){
@@ -287,13 +290,15 @@ async function newRoutine(name,desc,date,workouts){
 }
 
 function copyWorkouts(workouts,list){
-    const workoutsArray = Array.from(workouts.children); 
+    // clear the workout list 
     removeChildren(list); 
-    workoutsArray.forEach(function(workout){
-        const workoutClone = workout.cloneNode(true); 
+    workouts.forEach(function(workout){
+        // make a workout card
+        const workoutClone = renderWorkout(workout); 
+        // add the listener for removing this workout from the new workout list 
         removeWorkoutFromNewRoutineWorkoutListListener(workoutClone);
-        // debugger 
-        list.appendChild(workoutClone); 
+        // append the copied workout to the new routine workouts list 
+        append(workoutClone, list);
     })
 }
 
