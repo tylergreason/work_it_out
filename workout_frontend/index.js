@@ -96,7 +96,8 @@ function render_main_page(){
     // render the elements that should be on the main page 
     newRoutineDiv.appendChild(newRoutineForm());
     newWorkoutDiv.appendChild(newWorkoutForm());
-    renderUserRoutines(userObject);
+    renderUserContainer(userObject); 
+    // renderUserRoutines(userObject);
 }
 
 

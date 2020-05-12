@@ -144,7 +144,8 @@ function createWorkout(name,difficulty,description,muscles){
         "muscles":muscles,
         "user":userObject.username
     }
-    postRequest(workoutURL,workoutObject)
+    // postRequest(workoutURL,workoutObject)
+    postWorkout(workoutObject); 
 }
 
 function submitWorkoutEventListener(button){
@@ -170,4 +171,21 @@ function renderWorkoutMuscles(workout){
         return append(workoutMuscle, workoutMuscles)
     })
     return workoutMuscles; 
+}
+
+function postWorkout(workout){
+    fetch(`${workoutURL}`,{
+        method:'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(workout)
+    })
+    .then(resp => resp.json())
+    .then(rerenderNewRoutineDiv)
+}
+
+function rerenderNewRoutineDiv(promise){
+    removeChildren(newRoutineDiv) 
+    newRoutineDiv.appendChild(newRoutineForm())
 }

@@ -42,14 +42,15 @@ function renderRoutine(routine){
 }
 
 function deleteRoutine(routine){
-    fetch(`${routinesURL}${routine.dataset.id}`, {
+    fetch(`${routinesURL}${routine.id}`, {
         method: 'DELETE',
         headers: {
             'Content-Type': 'application/json'
         }
     })
-    // routine.parentElement.remove()
-    renderUserRoutines(userObject)
+    
+    // supply routine's id for optimistic rendering 
+    renderUserRoutines(userObject,routine.id)
 }
 
 
@@ -77,7 +78,7 @@ function routineDeleteButton(routine){
     addClass(routineDeleteBtn, 'userRoutine__button--delete')
 
     routineDeleteBtn.addEventListener('click',function(e){
-        deleteRoutine(e.target); 
+        deleteRoutine(routine); 
     })
     return routineDeleteBtn;
 }

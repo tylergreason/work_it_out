@@ -1,5 +1,7 @@
 .userRoutines {
   background-color: #3a86ff;
+  width: 50%;
+  margin: auto;
 }
 
 .userRoutines .userRoutines__container {
@@ -38,8 +40,7 @@
 .userRoutine__button {
   margin: 10px;
   width: 40%;
-  height: 2rem;
-  max-height: 2rem;
+  min-height: 2rem;
   font-size: 1.2rem;
   border: 3px solid black;
   border-radius: 5px;
