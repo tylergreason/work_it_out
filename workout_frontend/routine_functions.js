@@ -120,9 +120,13 @@ function routineCopyButtonOLD(routine){
 
 function addCopyRoutineEventListener(element){
     element.addEventListener('click',function(e){
-        console.log(element.routine)
         // use the element's routine attribute 
         copyRoutines(element.routine); 
+
+        // change the page to the new routine form 
+        hideAllAndShow(newRoutineDiv)
+        // scroll to the top of the window to see copied routine's details  
+        window.scrollTo(0,0)
     })
 }
 
@@ -154,6 +158,7 @@ function newRoutineForm(name,date,desc,workouts){
     newRoutineHeader.innerText = 'New Routine'
     newRoutineHeader.id = "newRoutineHeader"
     addClass(newRoutineHeader, 'newRoutine__header')
+    addClass(newRoutineHeader, 'header')
     const newRoutineFormCard = document.createElement('div'); 
     
     // hide/unhide form card when clicking header 
@@ -263,6 +268,11 @@ function newRoutineSubmitBtnEvent(button){
         const workoutIds = newRoutineWorkoutsArray.map(workout => workout.dataset.id)
 
         newRoutine(newRoutineName.value,newRoutineDesc.value,newRoutineDate.value,workoutIds)
+
+        // change the page to the user routine's div
+        hideAllAndShow(userRoutinesDiv)
+        // scroll to the top of the window to see the new routine's details 
+        window.scrollTo(0,0)
     })
 }
 

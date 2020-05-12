@@ -50,6 +50,7 @@ function renderUserRoutinesHeader(){
     const userRoutinesHeader = newElement('h2'); 
     userRoutinesHeader.innerText = 'My Routines'; 
     addClass(userRoutinesHeader, 'userRoutines__header'); 
+    addClass(userRoutinesHeader, 'header')
     return userRoutinesHeader; 
     // append(userRoutinesHeader, userRoutinesDiv);
     // const userRoutinesContainer = document.getElementById('userRoutines__container')

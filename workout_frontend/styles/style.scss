@@ -4,6 +4,7 @@ $musclesBGC: #a8dadc;
 $cardWidth: 200px;
 $cardHeight: 300px; 
 
+$newRoutineBGC: #e63946;
 
 
 @mixin flexCenter(){
@@ -23,6 +24,11 @@ html, body {
     margin: 0;
     font-family: 'Open Sans', sans-serif;
     line-height: 1.2;
+}
+
+body {
+    margin: 20px; 
+    background: rgb(200,200,255);
 }
 
 .workout {
@@ -198,6 +204,29 @@ nav {
     font-size: 0;
     button {
         margin: 0;
-        height: 2rem; 
+        // height: 2rem; 
+        border: none;
+        padding: 10px; 
+        font-size: 2rem;
+        &:focus {
+            outline: 0;
+        }
     }
+
+    .navbar__button--newRoutine {
+        background: $newRoutineBGC;
+    }
+
+    .navbar__button--newWorkout {
+        background: #457b9d; 
+    }
+
+    .navbar__button--userRoutines {
+        background: #3a86ff;
+    }
+}
+
+// hide headers for testing 
+.header {
+    display: none; 
 }

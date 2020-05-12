@@ -72,9 +72,11 @@ function renderWorkoutsForNewRoutine(workouts){
 function newWorkoutForm(){
     const newWorkoutContainer = document.createElement('div'); 
     addClass(newWorkoutContainer, 'newWorkout')
+
     const newWorkoutHeader = document.createElement('h2')
     newWorkoutHeader.innerText = "New Workout"
     addClass(newWorkoutHeader, 'newWorkout__header')
+    addClass(newWorkoutHeader, 'header')
 
     // add element to push new workout details in that will be a flex container
     const newWorkoutCard = document.createElement('div'); 
@@ -92,7 +94,7 @@ function newWorkoutForm(){
     addClass(newWorkoutDesc, 'newWorkout__desc')
     
     // difficulties 
-    const difficulties = ["easy", "medium","hard"]
+    const difficulties = ['easy', "medium","hard"]
     const newWorkoutDifficulty = document.createElement("select")
     newWorkoutDifficulty.id = "newWorkoutDifficulty";
     addClass(newWorkoutDifficulty, 'newWorkout__difficulty')

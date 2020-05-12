@@ -4,6 +4,11 @@ html, body {
   line-height: 1.2;
 }
 
+body {
+  margin: 20px;
+  background: #c8c8ff;
+}
+
 .workout {
   margin: 10px;
   width: 200px;
@@ -221,6 +226,28 @@ nav {
 
 nav button {
   margin: 0;
-  height: 2rem;
+  border: none;
+  padding: 10px;
+  font-size: 2rem;
+}
+
+nav button:focus {
+  outline: 0;
+}
+
+nav .navbar__button--newRoutine {
+  background: #e63946;
+}
+
+nav .navbar__button--newWorkout {
+  background: #457b9d;
+}
+
+nav .navbar__button--userRoutines {
+  background: #3a86ff;
+}
+
+.header {
+  display: none;
 }
 /*# sourceMappingURL=style.css.map */
