@@ -1,6 +1,5 @@
 .userRoutines {
   background-color: #3a86ff;
-  width: 50%;
   margin: auto;
 }
 
@@ -86,5 +85,6 @@
   text-align: center;
   padding: 5px;
   border: 3px solid black;
+  margin: 0px;
 }
 /*# sourceMappingURL=userStyles.css.map */

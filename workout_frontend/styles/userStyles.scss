@@ -13,7 +13,6 @@ $userRoutineDeleteC: #e76f51;
         display: flex; 
         flex-flow: row wrap;
     }
-    width: 50%;
     margin: auto; 
 }
 
@@ -82,4 +81,5 @@ $userRoutineDeleteC: #e76f51;
 
 .userRoutines__header {
     @include centerHeader();
+    margin: 0px;
 }

@@ -157,7 +157,7 @@ function newRoutineForm(name,date,desc,workouts){
     const newRoutineFormCard = document.createElement('div'); 
     
     // hide/unhide form card when clicking header 
-    addHideEventListener(newRoutineHeader,newRoutineFormCard); 
+    // addHideEventListener(newRoutineHeader,newRoutineFormCard); 
 
     newRoutineFormCard.id = "newRoutineFormCard"
 
@@ -223,7 +223,6 @@ function newRoutineForm(name,date,desc,workouts){
 
     append(newRoutineHeader,newRoutineContainer); 
     append(newRoutineFormCard,newRoutineContainer); 
-    addClass(newRoutineFormCard,'hidden')
     return newRoutineContainer; 
 }
 

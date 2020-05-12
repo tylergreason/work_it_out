@@ -165,6 +165,7 @@ $newWorkoutBGC: #457b9d;
 
 .newWorkout__header { 
     @include centerHeader()
+    margin: 0px; 
 }
 
 .newWorkout__muscles {
@@ -189,4 +190,14 @@ $newWorkoutBGC: #457b9d;
 
 .hidden { 
     display: none; 
+}
+
+nav {
+    // setting font size to 0 so buttons don't have whitespace between them 
+    // see this article for reference: https://css-tricks.com/fighting-the-space-between-inline-block-elements/
+    font-size: 0;
+    button {
+        margin: 0;
+        height: 2rem; 
+    }
 }

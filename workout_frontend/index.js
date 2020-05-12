@@ -85,10 +85,10 @@ function check_login(){
 function login_button_listener(button){
     button.addEventListener('click', function(e){
         e.preventDefault(); 
-        let username_div = document.querySelector("#username_text"); 
-        let username_value = username_div.value; 
+        let usernameDiv = document.querySelector("#username_text"); 
+        let usernameValue = usernameDiv.value; 
         // call new user with just username 
-        new_user ('nil','nil',username_value, 'password'); 
+        new_user ('nil','nil',usernameValue, 'password'); 
         })
 }
 
@@ -97,7 +97,8 @@ function render_main_page(){
     newRoutineDiv.appendChild(newRoutineForm());
     newWorkoutDiv.appendChild(newWorkoutForm());
     renderUserContainer(userObject); 
-    // renderUserRoutines(userObject);
+    // render navbar 
+    navbarButtons(); 
 }
 
 
