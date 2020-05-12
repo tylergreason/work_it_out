@@ -13,10 +13,16 @@ $newRoutineMuscleBGC : #e05661;
 
 .newRoutine__workouts { 
     min-height: 400px;
-    transition: 3s;
+    .workout {
+        &:hover {
+            background: red; 
+        }
+    }
 }
 
 .newRoutine__muscles {
+    align-self: flex-end; 
+
     display: flex;
     flex-flow: column wrap;
     justify-content: flex-start;
@@ -41,4 +47,69 @@ $newRoutineMuscleBGC : #e05661;
 .newRoutine__header {
     @include centerHeader();
     margin: 0px; 
+}
+
+
+@mixin newRoutineDetails(){
+    height: 2rem;   
+    font-size: 2rem;
+    margin-top: 10px;
+    background: #fcbf49;
+    border: none; 
+    border-radius: 10px;
+    border-bottom: 5px solid white;
+    padding: 5px;
+    transition: 0.15s; 
+    &:hover {
+        background: white; 
+        border-bottom: 5px solid #fcbf49;
+    }
+}
+
+.newRoutine__details {
+    display: flex; 
+    flex-flow: column; 
+    width: 50%;
+    margin: auto; 
+
+    .newRoutine__name, .newRoutine__date, .newRoutine__submit, .newRoutine__desc { 
+        @include newRoutineDetails()
+    }
+    .newRoutine__submit {
+        width: 50%;
+        margin: auto; 
+        margin-top: 15px;
+        font-size: 1.2rem;
+
+        // color 
+        // border: 3px solid black;
+        // border-radius: 5px;
+    }
+    .newRoutine__desc { 
+        height: 15rem; 
+        font-size: 1.5rem;
+    }
+
+}
+
+#newRoutineFormCard {
+    padding:10px; 
+}
+
+#newRoutineWorkoutsList {
+    display: flex; 
+    justify-content: center;
+    align-items: center;
+    flex-flow: wrap; 
+    background-color: #eae2b7; 
+    list-style-type: none;
+
+    .workout{
+        &:hover{
+            cursor: pointer;
+            .workout__name, .workout__muscles {
+                // background: red;
+            }
+        }
+    } 
 }

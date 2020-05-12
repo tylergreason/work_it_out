@@ -24,8 +24,8 @@ function renderWorkout(workout){
     workoutDesc.innerText = `${workout.description}`;
     addClass(workoutDesc,'workout__desc')
     workoutCard.appendChild(workoutName);
-    workoutCard.appendChild(workoutDifficulty);
     workoutCard.appendChild(workoutDesc); 
+    workoutCard.appendChild(workoutDifficulty);
     // append muscle list to card 
     const muscles = renderWorkoutMuscles(workout) 
     addClass(muscles,'muscles')
@@ -163,17 +163,32 @@ function submitWorkoutEventListener(button){
 
 function renderWorkoutMuscles(workout){
     // make div to hold muscles 
-    const workoutMuscles = document.createElement('ul') 
+    const workoutMuscles = newElement('div')
     addClass(workoutMuscles, 'workout__muscles')
     // iterate through workout muscles and make li for each
     workout.muscles.forEach(muscle => {
-        const workoutMuscle = document.createElement('li')
+        const workoutMuscle = document.createElement('div')
         workoutMuscle.innerText = muscle.name; 
+        addClass(workoutMuscle, 'workout__muscle')
         //append the muscle li to the workoutMuscles list 
         return append(workoutMuscle, workoutMuscles)
     })
     return workoutMuscles; 
 }
+
+// function renderWorkoutMuscles(workout){
+//     // make div to hold muscles 
+//     const workoutMuscles = document.createElement('ul') 
+//     addClass(workoutMuscles, 'workout__muscles')
+//     // iterate through workout muscles and make li for each
+//     workout.muscles.forEach(muscle => {
+//         const workoutMuscle = document.createElement('li')
+//         workoutMuscle.innerText = muscle.name; 
+//         //append the muscle li to the workoutMuscles list 
+//         return append(workoutMuscle, workoutMuscles)
+//     })
+//     return workoutMuscles; 
+// }
 
 function postWorkout(workout){
     fetch(`${workoutURL}`,{

@@ -6,17 +6,17 @@ html, body {
 
 body {
   margin: 20px;
-  background: #c8c8ff;
+  background: #fcbf49;
 }
 
 .workout {
   margin: 10px;
-  width: 200px;
+  width: 300px;
   -webkit-transition: 0.15s;
   transition: 0.15s;
   border: 3px solid black;
   border-radius: 10px;
-  height: 300px;
+  height: 400px;
   font-size: 1rem;
   display: -ms-grid;
   display: grid;
@@ -24,14 +24,10 @@ body {
       grid-template-columns: repeat(10, 1fr);
   -ms-grid-rows: (1fr)[10];
       grid-template-rows: repeat(10, 1fr);
-}
-
-.workout:hover {
-  border-color: #e63946;
+  background: #f77f00;
 }
 
 .workout:hover .workout__desc, .workout:hover .workout__difficulty {
-  padding-bottom: 14px;
   -webkit-transition: 0.15s;
   transition: 0.15s;
 }
@@ -39,7 +35,34 @@ body {
 .workout:hover .workout__name {
   -webkit-transition: 0.15s;
   transition: 0.15s;
-  font-size: 1.2rem;
+}
+
+.workout .workout__muscles {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: row wrap;
+          flex-flow: row wrap;
+  background: #f77f00;
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 10;
+  grid-column: 1/11;
+  -ms-grid-row: 7;
+  -ms-grid-row-span: 4;
+  grid-row: 7/11;
+  border-radius: 0 0 10px 10px;
+}
+
+.workout .workout__muscle {
+  font-size: 1rem;
+  height: 1rem;
+  border: 2px solid black;
+  border-radius: 10%;
+  padding: 3px;
+  margin: 3px;
+  background: white;
 }
 
 .workout__desc, .workout__name, .workout__difficulty {
@@ -47,46 +70,19 @@ body {
   transition: 0.15s;
 }
 
-.workout__desc, .workout__difficulty {
-  color: #1d3557;
-}
-
 .workout__name {
   margin: 0px;
-  width: 200px;
+  width: 300px;
   background-color: #457b9d;
+  background: #f77f00;
   color: #f1faee;
   text-align: center;
+  font-size: 1.2rem;
+  border-radius: 10px 10px 0px 0px;
 }
 
 .workouts {
   list-style-type: none;
-}
-
-#newRoutineWorkoutsList {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -ms-flex-flow: wrap;
-      flex-flow: wrap;
-  background-color: #a8dadc;
-  list-style-type: none;
-}
-
-.muscles--workoutCard {
-  background-color: #a8dadc;
-  -ms-grid-column: 1;
-  -ms-grid-column-span: 10;
-  grid-column: 1/11;
-  -ms-grid-row: 8;
-  -ms-grid-row-span: 3;
-  grid-row: 8/11;
 }
 
 .workout__name {
@@ -98,27 +94,43 @@ body {
   grid-row: 1/2;
 }
 
-.workout__difficulty {
-  -ms-grid-column: 1;
-  -ms-grid-column-span: 10;
-  grid-column: 1/11;
-  -ms-grid-row: 2;
-  -ms-grid-row-span: 1;
-  grid-row: 2/3;
-}
-
-.workout__difficulty .fa-dumbbell {
-  -webkit-transform: rotate(-45deg);
-          transform: rotate(-45deg);
-}
-
 .workout__desc {
   -ms-grid-column: 1;
   -ms-grid-column-span: 10;
   grid-column: 1/11;
-  -ms-grid-row: 3;
+  -ms-grid-row: 2;
   -ms-grid-row-span: 5;
-  grid-row: 3/8;
+  grid-row: 2/7;
+  background: white;
+}
+
+.workout__difficulty {
+  color: white;
+  -ms-grid-column: 8;
+  -ms-grid-column-span: 3;
+  grid-column: 8/11;
+  -ms-grid-row: 6;
+  -ms-grid-row-span: 1;
+  grid-row: 6/7;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: row;
+          flex-flow: row;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  border-radius: 10px 0px 0px 0px;
+  background: #fcbf49;
+}
+
+.workout__difficulty .fa-dumbbell {
+  color: white;
+  -webkit-transform: rotate(45deg);
+          transform: rotate(45deg);
+  margin: 5px;
 }
 
 .muscle__header {
@@ -233,6 +245,10 @@ nav button {
 
 nav button:focus {
   outline: 0;
+}
+
+nav button:hover {
+  cursor: pointer;
 }
 
 nav .navbar__button--newRoutine {

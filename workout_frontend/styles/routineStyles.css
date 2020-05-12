@@ -4,11 +4,15 @@
 
 .newRoutine__workouts {
   min-height: 400px;
-  -webkit-transition: 3s;
-  transition: 3s;
+}
+
+.newRoutine__workouts .workout:hover {
+  background: red;
 }
 
 .newRoutine__muscles {
+  -ms-flex-item-align: end;
+      align-self: flex-end;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -42,5 +46,71 @@
   padding: 5px;
   border: 3px solid black;
   margin: 0px;
+}
+
+.newRoutine__details {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: column;
+          flex-flow: column;
+  width: 50%;
+  margin: auto;
+}
+
+.newRoutine__details .newRoutine__name, .newRoutine__details .newRoutine__date, .newRoutine__details .newRoutine__submit, .newRoutine__details .newRoutine__desc {
+  height: 2rem;
+  font-size: 2rem;
+  margin-top: 10px;
+  background: #fcbf49;
+  border: none;
+  border-radius: 10px;
+  border-bottom: 5px solid white;
+  padding: 5px;
+  -webkit-transition: 0.15s;
+  transition: 0.15s;
+}
+
+.newRoutine__details .newRoutine__name:hover, .newRoutine__details .newRoutine__date:hover, .newRoutine__details .newRoutine__submit:hover, .newRoutine__details .newRoutine__desc:hover {
+  background: white;
+  border-bottom: 5px solid #fcbf49;
+}
+
+.newRoutine__details .newRoutine__submit {
+  width: 50%;
+  margin: auto;
+  margin-top: 15px;
+  font-size: 1.2rem;
+}
+
+.newRoutine__details .newRoutine__desc {
+  height: 15rem;
+  font-size: 1.5rem;
+}
+
+#newRoutineFormCard {
+  padding: 10px;
+}
+
+#newRoutineWorkoutsList {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-flow: wrap;
+      flex-flow: wrap;
+  background-color: #eae2b7;
+  list-style-type: none;
+}
+
+#newRoutineWorkoutsList .workout:hover {
+  cursor: pointer;
 }
 /*# sourceMappingURL=routineStyles.css.map */

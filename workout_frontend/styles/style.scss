@@ -1,10 +1,14 @@
 $workoutBGColor: #f1faee;
 $workoutHighlightColor: #e63946; 
 $musclesBGC: #a8dadc; 
-$cardWidth: 200px;
-$cardHeight: 300px; 
-
+$cardWidth: 300px;
+$cardHeight: 400px; 
+$workoutBorderRadius: 10px; 
 $newRoutineBGC: #e63946;
+
+$bodyBGC: #fcbf49;
+
+$workoutCardColor: #f77f00; 
 
 
 @mixin flexCenter(){
@@ -28,7 +32,7 @@ html, body {
 
 body {
     margin: 20px; 
-    background: rgb(200,200,255);
+    background: $bodyBGC;
 }
 
 .workout {
@@ -38,28 +42,46 @@ body {
     width: $cardWidth;
     transition: 0.15s;
     border: 3px solid black; 
-    border-radius: 10px;
+    border-radius: $workoutBorderRadius;
     height: $cardHeight;
     font-size: 1rem;
     // grid 
     display: grid; 
     grid-template-columns: repeat(10, 1fr);
     grid-template-rows: repeat(10, 1fr);
-    
+    background: $workoutCardColor;
     &:hover {
-        border-color: $workoutHighlightColor;
-
-        // padding-top: 7px;
         .workout__desc, .workout__difficulty {
             // transition-timing-function: ease;
-            padding-bottom: 14px;
+            // padding-bottom: 14px;
             // background-color: $workoutHighlightColor;
             transition: 0.15s;
         }
         .workout__name {
             transition: 0.15s;
-            font-size: 1.2rem;
+            // font-size: 1.2rem;
         }
+    }
+
+    .workout__muscles {
+        display: flex; 
+        flex-flow: row wrap;
+        background: $workoutCardColor;
+        grid-column: 1/11;
+        grid-row: 7/11;
+        border-radius: 0 0 $workoutBorderRadius $workoutBorderRadius;
+    }
+    .workout__muscle {
+        $fontSize: 1rem; 
+        font-size: $fontSize;
+        height: $fontSize;
+        border: 2px solid black; 
+        border-radius: 10%;
+        padding: 3px; 
+        margin: 3px;
+        
+        background: white;  
+
     }
 }
 
@@ -68,35 +90,23 @@ body {
 .workout__desc, .workout__name, .workout__difficulty {
     transition: 0.15s; 
 }
-.workout__desc, .workout__difficulty {
-    color: #1d3557; 
-}
+
 .workout__name {
     margin: 0px;
     width: $cardWidth; 
     background-color: #457b9d;
+    background: $workoutCardColor;
+
     color: #f1faee; 
     text-align: center;
+    font-size: 1.2rem;
+    border-radius: $workoutBorderRadius $workoutBorderRadius 0px 0px; 
 }
 
 .workouts {
     list-style-type: none;
 }
 
-#newRoutineWorkoutsList {
-    @include flexCenter()
-    flex-flow: wrap; 
-    background-color: #a8dadc; 
-    list-style-type: none;
-}
-
-
-// muscle list in workout 
-.muscles--workoutCard {
-    background-color: $musclesBGC;
-    grid-column: 1/11;
-    grid-row: 8/11;
-}
 
 //workout card grid formatting
 .workout__name {
@@ -104,17 +114,30 @@ body {
     grid-row: 1/2;
 }
 
-.workout__difficulty {
-    grid-column: 1/11;
-    grid-row: 2/3;
-    .fa-dumbbell {
-        transform: rotate(-45deg)
-    }
-}
 
 .workout__desc {
     grid-column: 1/11;
-    grid-row: 3/8;
+    grid-row: 2/7;
+    background: white; 
+}
+
+.workout__difficulty {
+    color: white; 
+    grid-column: 8/11;
+    grid-row: 6/7;
+    display: flex; 
+    flex-flow: row; 
+    align-items: center;
+    border-radius: $workoutBorderRadius 0px 0px 0px; 
+
+    .fa-dumbbell {
+        color: white; 
+            // padding-bottom: 0px; 
+        // text-align: center; 
+        transform: rotate(45deg);
+        margin: 5px;
+    }
+    background: $bodyBGC;
 }
 
 .muscles__name {
@@ -151,6 +174,7 @@ $newWorkoutBGC: #457b9d;
     // border for testing 
     border: 1px solid black;
 }
+
 
 .newWorkout__details {
     display: flex;
@@ -211,6 +235,9 @@ nav {
         &:focus {
             outline: 0;
         }
+        &:hover{
+            cursor: pointer; 
+        }
     }
 
     .navbar__button--newRoutine {
@@ -230,3 +257,11 @@ nav {
 .header {
     display: none; 
 }
+
+// workout cards in the new routine div 
+.muscle__workouts .workout{
+    &:hover {
+        // background-color: green;
+    }
+}
+

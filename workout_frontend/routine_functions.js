@@ -166,15 +166,20 @@ function newRoutineForm(name,date,desc,workouts){
 
     newRoutineFormCard.id = "newRoutineFormCard"
 
-    
+    // div to hold new routine details 
+    const newRoutineDetails = newElement('div'); 
+    addClass(newRoutineDetails, 'newRoutine__details') 
+
     const newRoutineName = document.createElement('input');
     if (name === undefined){
-        newRoutineName.placeholder = "routine name"; 
+        newRoutineName.placeholder = "Routine name"; 
     }else{
         newRoutineName.value = name;
     }
     addClass(newRoutineName, 'newRoutine__name')
     newRoutineName.id = "newRoutineName"; 
+    append(newRoutineName, newRoutineDetails); 
+
     const newRoutineDate = document.createElement('input');
     newRoutineDate.type = "date";
     addClass(newRoutineDate, 'newRoutine__date')
@@ -184,18 +189,24 @@ function newRoutineForm(name,date,desc,workouts){
     }else{
         newRoutineDate.value = date; 
     }
+    append(newRoutineDate, newRoutineDetails)
+
     const newRoutineDesc = document.createElement('textarea');
     
     if (desc === undefined){
-        newRoutineDesc.placeholder = "description"
+        newRoutineDesc.placeholder = "Description"
     }else {
         newRoutineDesc.value = desc; 
     }
     addClass(newRoutineDesc, 'newRoutine__desc')
     newRoutineDesc.id = "newRoutineDesc"
+    append(newRoutineDesc, newRoutineDetails)
+
     const newRoutineSubmitBtn = document.createElement('button'); 
-    newRoutineSubmitBtn.innerText = "Submit routine" 
+    newRoutineSubmitBtn.innerText = "Submit Routine" 
     addClass(newRoutineSubmitBtn,'newRoutine__submit')
+    newRoutineSubmitBtnEvent(newRoutineSubmitBtn)
+    append(newRoutineSubmitBtn, newRoutineDetails)
 
     const newRoutineMuscleSelection = document.createElement('div'); 
     newRoutineMuscleSelection.id = "newRoutineMuscleSelection"
@@ -210,16 +221,7 @@ function newRoutineForm(name,date,desc,workouts){
     addClass(newRoutineWorkoutsList, 'newRoutine__workouts')
 
     // append elements to newRoutineFormCard
-    append(newRoutineName, newRoutineFormCard);
-    insertBreak(newRoutineFormCard);
-    append(newRoutineDate, newRoutineFormCard);    
-    insertBreak(newRoutineFormCard);
-    append(newRoutineDesc,newRoutineFormCard); 
-    insertBreak(newRoutineFormCard);
-    append(newRoutineSubmitBtn,newRoutineFormCard); 
-    // add submit event to button 
-    newRoutineSubmitBtnEvent(newRoutineSubmitBtn);
-    insertBreak(newRoutineFormCard);
+    append(newRoutineDetails, newRoutineFormCard)
     append(newRoutineWorkoutsList,newRoutineFormCard); 
 
     // add muscles with their workouts 
