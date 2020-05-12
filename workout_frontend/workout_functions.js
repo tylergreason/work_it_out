@@ -31,7 +31,21 @@ function renderWorkout(workout){
     addClass(muscles,'muscles')
     addClass(muscles,'muscles--workoutCard')
     workoutCard.appendChild(muscles);
+
+    // add warning div 
+    const warning = workoutWarning(); 
+    append(warning, workoutCard);
+    // hide by default 
+    // warning.style.display = 'none';
+
     return workoutCard; 
+}
+
+function workoutWarning(){
+    // make div that shows an add/remove warning for the new routine div 
+    const warning = newElement('div'); 
+    addClass(warning, 'workout__warning')
+    return warning; 
 }
 
 function renderWorkoutDifficulty(difficulty){
@@ -94,18 +108,20 @@ function newWorkoutForm(){
     addClass(newWorkoutDesc, 'newWorkout__desc')
     
     // difficulties 
-    const difficulties = ['easy', "medium","hard"]
-    const newWorkoutDifficulty = document.createElement("select")
+    const newWorkoutDifficulty = workoutDifficultySelect()
     newWorkoutDifficulty.id = "newWorkoutDifficulty";
-    addClass(newWorkoutDifficulty, 'newWorkout__difficulty')
+
+    // const difficulties = ['easy', "medium","hard"]
+    // const newWorkoutDifficulty = document.createElement("select")
+    // addClass(newWorkoutDifficulty, 'newWorkout__difficulty')
     
-    // difficulty select 
-    difficulties.forEach(function(difficulty){
-        const newOption = document.createElement("option"); 
-        newOption.text = difficulty;  
-        addClass(newOption,'newWorkout__option--difficulty')
-        newWorkoutDifficulty.add(newOption); 
-    })
+    // // difficulty select 
+    // difficulties.forEach(function(difficulty){
+    //     const newOption = document.createElement("option"); 
+    //     newOption.text = difficulty;  
+    //     addClass(newOption,'newWorkout__option--difficulty')
+    //     newWorkoutDifficulty.add(newOption); 
+    // })
     
     // submit new workout button 
     const newWorkoutSubmitBtn = document.createElement('button'); 
@@ -148,6 +164,70 @@ function createWorkout(name,difficulty,description,muscles){
     }
     // postRequest(workoutURL,workoutObject)
     postWorkout(workoutObject); 
+}
+
+function workoutDifficultySelect(){
+    // make div to hold them 
+    const workoutDifficultySelectContainer = newElement('div'); 
+    addClass(workoutDifficultySelectContainer, 'newWorkout__difficultySelectContainer')
+
+    // create options 
+    const easyOption = workoutDifficultyOption('easy'); 
+    const mediumOption = workoutDifficultyOption('medium'); 
+    const hardOption = workoutDifficultyOption('hard'); 
+    append(easyOption,workoutDifficultySelectContainer)
+    append(mediumOption,workoutDifficultySelectContainer)
+    append(hardOption,workoutDifficultySelectContainer)
+    return workoutDifficultySelectContainer 
+}
+
+function workoutDifficultyOption(difficulty){
+    // create an option to render to difficulty select div 
+    const option = newElement('div')
+    append(barbellIcon(), option); 
+
+    // add difficulty text to div 
+    const optionDifficultyText = newElement('div'); 
+    optionDifficultyText.innerText = difficulty; 
+    addClass(optionDifficultyText, 'newWorkout__difficulty__text') 
+    append(optionDifficultyText, option)
+
+    // attach difficulty param as attribute of div 
+    option.difficulty = difficulty;
+    // add unique class to option 
+    addClass(option, difficulty);
+    addClass(option, 'newWorkout__difficulty__option')
+
+    // add event listener for selecting option 
+    option.addEventListener('click', function(){
+        this.parentElement.value = difficulty; 
+        difficultyClick(difficulty)
+    })
+    return option;  
+}
+
+function difficultyClick(diff){
+    // use diff (difficulty) string to modulate what class the difficulty options have 
+    // find the list of elements that are difficulty selections 
+    const list = Array.from(document.getElementsByClassName('newWorkout__difficulty__option')); 
+
+    // removed all highlighted classes from the difficulty options 
+    list.forEach(option => option.classList.remove('beforeHighlighted'))
+    list.forEach(option => option.classList.remove('highlighted'))
+
+
+    // check for easy, medium, and hard arguments and change the highlighting on the options 
+    if (diff === 'easy'){
+        addClass(list[0],'highlighted'); 
+    } else if (diff === 'medium'){
+        addClass(list[0],'beforeHighlighted'); 
+        addClass(list[1],'highlighted'); 
+
+    }else if (diff === 'hard'){
+        addClass(list[0],'beforeHighlighted'); 
+        addClass(list[1],'beforeHighlighted'); 
+        addClass(list[2],'highlighted'); 
+    }
 }
 
 function submitWorkoutEventListener(button){

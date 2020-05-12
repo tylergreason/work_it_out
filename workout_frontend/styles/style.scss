@@ -5,7 +5,7 @@ $cardWidth: 300px;
 $cardHeight: 400px; 
 $workoutBorderRadius: 10px; 
 $newRoutineBGC: #e63946;
-
+$newWorkoutBGC: #457b9d;
 $bodyBGC: #fcbf49;
 
 $workoutCardColor: #f77f00; 
@@ -61,6 +61,24 @@ body {
             transition: 0.15s;
             // font-size: 1.2rem;
         }
+    }
+
+    .workout__warning {
+        grid-column: 1/11; 
+        grid-row: 5;
+        text-align: center;
+        font-size: 2rem;
+        z-index: 0; 
+        opacity: 0%;
+        border: 3px solid black; 
+        border-radius: $workoutBorderRadius;
+        &:active {
+            background: blue; 
+        }
+        width: 50%; 
+        height: 100%;
+        margin: auto;
+
     }
 
     .workout__muscles {
@@ -156,8 +174,6 @@ body {
 }
 
 
-
-$newWorkoutBGC: #457b9d;
 .newWorkout {
     background-color: $newWorkoutBGC;
 }
@@ -185,7 +201,7 @@ $newWorkoutBGC: #457b9d;
 .newWorkout__desc {
     background-color: #f0f3bd;
     border-color: black;
-    width: 90%;
+    width: 100%;
     height: 80%;
     margin: auto auto;
 }
@@ -258,10 +274,69 @@ nav {
     display: none; 
 }
 
-// workout cards in the new routine div 
-.muscle__workouts .workout{
-    &:hover {
-        // background-color: green;
-    }
-}
+.newWorkout__difficultySelectContainer {
+    $optionHighlightColor: $newWorkoutBGC;
+    $highlightedScale: 1.1;
 
+    display: flex; 
+    flex-flow: row;
+
+    background: white;
+    border-radius: 10px;
+
+    &:hover {
+        cursor: pointer; 
+
+        // change all options to appear highlighted
+        // works in conjunction with changing all the following siblings 
+        // see .newWorkout__diff... &:hover, below 
+        .newWorkout__difficulty__option {
+            background:$optionHighlightColor; 
+            transform: scale(1); 
+
+        }
+    }
+
+    .newWorkout__difficulty__option {
+        transition: 0.15s; 
+        text-align: center; 
+        margin: 5px; 
+        border: 3px solid black; 
+        border-radius: $workoutBorderRadius;
+        padding: 5px; 
+        background: white;
+        color: black; 
+        &:hover {
+            // transform: scale(1.2); 
+            color: white; 
+            background: $optionHighlightColor;
+
+            // options previous to the currently hovered option 
+            ~ .newWorkout__difficulty__option {
+                background: white;
+                color: black; 
+                transform: scale(1); 
+            }
+        }
+        .fa-dumbbell {
+            font-size: 3rem;
+        }
+
+        .newWorkout__difficulty__text {
+            text-transform: uppercase;
+        }
+    }
+    // class for the difficulty options being selected ('highlighted') 
+    .highlighted {
+        transform: scale($highlightedScale);
+        background: $optionHighlightColor;
+        .newWorkout__difficulty__text {
+            border-bottom: 2px solid black;
+        }
+    }
+    // class for the difficulty options previous to the highlighted option  
+    .beforeHighlighted {
+        background: $optionHighlightColor;
+    }
+
+}

@@ -11,15 +11,6 @@ $newRoutineMuscleBGC : #e05661;
     background-color: $newRoutineBGC;
 }
 
-.newRoutine__workouts { 
-    min-height: 400px;
-    .workout {
-        &:hover {
-            background: red; 
-        }
-    }
-}
-
 .newRoutine__muscles {
     align-self: flex-end; 
 
@@ -96,6 +87,23 @@ $newRoutineMuscleBGC : #e05661;
     padding:10px; 
 }
 
+@mixin workoutWarning(){
+    &:hover{
+        cursor: pointer;
+        .workout__warning {
+            transition: 0.15s;
+            display: block;
+            // background: red; 
+            &::before {
+                // content: "Remove";
+                color: black;
+                z-index: 5;
+            }
+            opacity: 100%;
+        }
+    }
+}
+
 #newRoutineWorkoutsList {
     display: flex; 
     justify-content: center;
@@ -103,13 +111,35 @@ $newRoutineMuscleBGC : #e05661;
     flex-flow: wrap; 
     background-color: #eae2b7; 
     list-style-type: none;
+    min-height: 450px; 
+    border: 3px solid white; 
+    border-radius: 10px;
 
     .workout{
+        @include workoutWarning(); 
         &:hover{
             cursor: pointer;
-            .workout__name, .workout__muscles {
-                // background: red;
+            .workout__warning {
+                background: red; 
+                &::before {
+                    content: "Remove";
+                }
             }
         }
     } 
+}
+
+
+.muscle__workouts {
+    .workout {
+        @include workoutWarning();
+        &:hover {
+            .workout__warning {
+                background: lightblue;
+                &::before {
+                    content: "Add";
+                }
+            }
+        }
+    }
 }
