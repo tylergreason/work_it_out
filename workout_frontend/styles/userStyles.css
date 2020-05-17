@@ -25,7 +25,6 @@
 .userRoutine__details {
   background-color: white;
   text-align: center;
-  min-height: 10%;
 }
 
 .userRoutine__details .userRoutine__name {
@@ -76,9 +75,14 @@
   -webkit-box-direction: normal;
       -ms-flex-flow: row wrap;
           flex-flow: row wrap;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.userRoutine__workouts .workout {
+  -ms-flex-negative: 5;
+      flex-shrink: 5;
 }
 
 .userRoutines__header {

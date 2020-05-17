@@ -44,7 +44,7 @@ body {
   -ms-grid-row: 5;
   grid-row: 5;
   text-align: center;
-  font-size: 2rem;
+  font-size: 1.5rem;
   z-index: 0;
   opacity: 0%;
   border: 3px solid black;
@@ -86,12 +86,12 @@ body {
   background: white;
 }
 
-.workout__desc, .workout__name, .workout__difficulty {
+.workout .workout__desc, .workout .workout__name, .workout .workout__difficulty {
   -webkit-transition: 0.15s;
   transition: 0.15s;
 }
 
-.workout__name {
+.workout .workout__name {
   margin: 0px;
   width: 300px;
   background-color: #457b9d;
@@ -100,10 +100,6 @@ body {
   text-align: center;
   font-size: 1.2rem;
   border-radius: 10px 10px 0px 0px;
-}
-
-.workouts {
-  list-style-type: none;
 }
 
 .workout__name {
@@ -175,7 +171,7 @@ body {
   background-color: #457b9d;
 }
 
-.newWorkout__card {
+.newWorkout .newWorkout__card {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -188,14 +184,13 @@ body {
           justify-content: center;
 }
 
-.newWorkout__details, .newWorkout__muscles {
+.newWorkout .newWorkout__details, .newWorkout .newWorkout__muscles {
   padding: 10px;
   width: 45%;
   margin: 5px;
-  border: 1px solid black;
 }
 
-.newWorkout__details {
+.newWorkout .newWorkout__details {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -208,7 +203,25 @@ body {
           justify-content: space-between;
 }
 
-.newWorkout__desc {
+.newWorkout .newWorkout__details .newWorkout__desc, .newWorkout .newWorkout__details .newWorkout__submit, .newWorkout .newWorkout__details .newWorkout__name {
+  background: lightblue;
+  height: 2rem;
+  width: 100%;
+  font-size: 1.5rem;
+  border: none;
+  border-bottom: 5px solid white;
+  border-radius: 10px;
+  -webkit-transition: 0.15s;
+  transition: 0.15s;
+}
+
+.newWorkout .newWorkout__details .newWorkout__desc:hover, .newWorkout .newWorkout__details .newWorkout__desc:focus, .newWorkout .newWorkout__details .newWorkout__submit:hover, .newWorkout .newWorkout__details .newWorkout__submit:focus, .newWorkout .newWorkout__details .newWorkout__name:hover, .newWorkout .newWorkout__details .newWorkout__name:focus {
+  background: white;
+  border-color: lightblue;
+  outline: 0;
+}
+
+.newWorkout .newWorkout__desc {
   background-color: #f0f3bd;
   border-color: black;
   width: 100%;
@@ -216,14 +229,14 @@ body {
   margin: auto auto;
 }
 
-.newWorkout__header {
+.newWorkout .newWorkout__header {
   text-align: center;
   padding: 5px;
   border: 3px solid black;
   margin: 0px;
 }
 
-.newWorkout__muscles {
+.newWorkout .newWorkout__muscles {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -232,21 +245,101 @@ body {
       -ms-flex-flow: row wrap;
           flex-flow: row wrap;
   font-size: 1.5rem;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
-.newWorkout__muscles input {
-  height: 2rem;
-}
-
-.newWorkout__muscle {
+.newWorkout .newWorkout__muscle {
   padding: 5px;
   margin: 5px;
   background-color: grey;
   border-radius: 10px;
 }
 
-.newWorkout__muscle--selected {
+.newWorkout .newWorkout__muscle--selected {
   background-color: white;
+}
+
+.newWorkout .newWorkout__difficultySelectContainer {
+  width: 70%;
+  margin: auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: row;
+          flex-flow: row;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  background: white;
+  border-radius: 10px;
+}
+
+.newWorkout .newWorkout__difficultySelectContainer:hover {
+  cursor: pointer;
+}
+
+.newWorkout .newWorkout__difficultySelectContainer:hover .newWorkout__difficulty__option {
+  background: #457b9d;
+  -webkit-transform: scale(1);
+          transform: scale(1);
+}
+
+.newWorkout .newWorkout__difficultySelectContainer .newWorkout__difficulty__option {
+  -webkit-transition: 0.15s;
+  transition: 0.15s;
+  text-align: center;
+  margin: 5px;
+  border: 3px solid black;
+  border-radius: 10px;
+  padding: 5px;
+  background: white;
+  color: black;
+}
+
+.newWorkout .newWorkout__difficultySelectContainer .newWorkout__difficulty__option:hover {
+  color: white;
+  background: #457b9d;
+}
+
+.newWorkout .newWorkout__difficultySelectContainer .newWorkout__difficulty__option:hover ~ .newWorkout__difficulty__option {
+  background: white;
+  -webkit-transform: scale(1);
+          transform: scale(1);
+}
+
+.newWorkout .newWorkout__difficultySelectContainer .newWorkout__difficulty__option .fa-dumbbell {
+  font-size: 3rem;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+}
+
+.newWorkout .newWorkout__difficultySelectContainer .newWorkout__difficulty__option .fa-dumbbell:hover {
+  -webkit-transition: 0.2s;
+  transition: 0.2s;
+  -webkit-transform: rotate(45deg);
+          transform: rotate(45deg);
+}
+
+.newWorkout .newWorkout__difficultySelectContainer .newWorkout__difficulty__option .newWorkout__difficulty__text {
+  text-transform: uppercase;
+}
+
+.newWorkout .newWorkout__difficultySelectContainer .highlighted {
+  -webkit-transform: scale(1.1);
+          transform: scale(1.1);
+  background: #457b9d;
+}
+
+.newWorkout .newWorkout__difficultySelectContainer .highlighted .newWorkout__difficulty__text {
+  border-bottom: 2px solid black;
+}
+
+.newWorkout .newWorkout__difficultySelectContainer .beforeHighlighted {
+  background: #457b9d;
 }
 
 .hidden {
@@ -286,73 +379,5 @@ nav .navbar__button--userRoutines {
 
 .header {
   display: none;
-}
-
-.newWorkout__difficultySelectContainer {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-flow: row;
-          flex-flow: row;
-  background: white;
-  border-radius: 10px;
-}
-
-.newWorkout__difficultySelectContainer:hover {
-  cursor: pointer;
-}
-
-.newWorkout__difficultySelectContainer:hover .newWorkout__difficulty__option {
-  background: #457b9d;
-  -webkit-transform: scale(1);
-          transform: scale(1);
-}
-
-.newWorkout__difficultySelectContainer .newWorkout__difficulty__option {
-  -webkit-transition: 0.15s;
-  transition: 0.15s;
-  text-align: center;
-  margin: 5px;
-  border: 3px solid black;
-  border-radius: 10px;
-  padding: 5px;
-  background: white;
-  color: black;
-}
-
-.newWorkout__difficultySelectContainer .newWorkout__difficulty__option:hover {
-  color: white;
-  background: #457b9d;
-}
-
-.newWorkout__difficultySelectContainer .newWorkout__difficulty__option:hover ~ .newWorkout__difficulty__option {
-  background: white;
-  color: black;
-  -webkit-transform: scale(1);
-          transform: scale(1);
-}
-
-.newWorkout__difficultySelectContainer .newWorkout__difficulty__option .fa-dumbbell {
-  font-size: 3rem;
-}
-
-.newWorkout__difficultySelectContainer .newWorkout__difficulty__option .newWorkout__difficulty__text {
-  text-transform: uppercase;
-}
-
-.newWorkout__difficultySelectContainer .highlighted {
-  -webkit-transform: scale(1.1);
-          transform: scale(1.1);
-  background: #457b9d;
-}
-
-.newWorkout__difficultySelectContainer .highlighted .newWorkout__difficulty__text {
-  border-bottom: 2px solid black;
-}
-
-.newWorkout__difficultySelectContainer .beforeHighlighted {
-  background: #457b9d;
 }
 /*# sourceMappingURL=style.css.map */

@@ -98,12 +98,12 @@ function newWorkoutForm(){
     
     
     const newWorkoutName = document.createElement('input'); 
-    newWorkoutName.placeholder = "name"; 
+    newWorkoutName.placeholder = "Workout Name"; 
     newWorkoutName.id = "newWorkoutName";
     addClass(newWorkoutName, 'newWorkout__name')
     
     const newWorkoutDesc = document.createElement('textarea'); 
-    newWorkoutDesc.placeholder = "description"; 
+    newWorkoutDesc.placeholder = "Workout Description"; 
     newWorkoutDesc.id = "newWorkoutDesc"; 
     addClass(newWorkoutDesc, 'newWorkout__desc')
     
@@ -125,7 +125,7 @@ function newWorkoutForm(){
     
     // submit new workout button 
     const newWorkoutSubmitBtn = document.createElement('button'); 
-    newWorkoutSubmitBtn.innerText = "submit workout" 
+    newWorkoutSubmitBtn.innerText = "Submit Workout" 
     addClass(newWorkoutSubmitBtn, 'newWorkout__submit')
     submitWorkoutEventListener(newWorkoutSubmitBtn); 
     

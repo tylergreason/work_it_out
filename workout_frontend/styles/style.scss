@@ -67,7 +67,7 @@ body {
         grid-column: 1/11; 
         grid-row: 5;
         text-align: center;
-        font-size: 2rem;
+        font-size: 1.5rem;
         z-index: 0; 
         opacity: 0%;
         border: 3px solid black; 
@@ -101,29 +101,27 @@ body {
         background: white;  
 
     }
+    .workout__desc, .workout__name, .workout__difficulty {
+        transition: 0.15s; 
+    }
+    
+    .workout__name {
+        margin: 0px;
+        width: $cardWidth; 
+        background-color: #457b9d;
+        background: $workoutCardColor;
+    
+        color: #f1faee; 
+        text-align: center;
+        font-size: 1.2rem;
+        border-radius: $workoutBorderRadius $workoutBorderRadius 0px 0px; 
+    }
 }
 
 
 
-.workout__desc, .workout__name, .workout__difficulty {
-    transition: 0.15s; 
-}
 
-.workout__name {
-    margin: 0px;
-    width: $cardWidth; 
-    background-color: #457b9d;
-    background: $workoutCardColor;
 
-    color: #f1faee; 
-    text-align: center;
-    font-size: 1.2rem;
-    border-radius: $workoutBorderRadius $workoutBorderRadius 0px 0px; 
-}
-
-.workouts {
-    list-style-type: none;
-}
 
 
 //workout card grid formatting
@@ -176,64 +174,147 @@ body {
 
 .newWorkout {
     background-color: $newWorkoutBGC;
-}
-.newWorkout__card {
-    display: flex; 
-    flex-flow: row wrap; 
-    justify-content: center;
-}
+    .newWorkout__card {
+        display: flex; 
+        flex-flow: row wrap; 
+        justify-content: center;
+    }
+    
+    .newWorkout__details, .newWorkout__muscles { 
+        padding: 10px; 
+        width: 45%;
+        margin: 5px; 
+    }
+    
+    
+    .newWorkout__details {
+        display: flex;
+        flex-flow: column; 
+        justify-content: space-between;
+        .newWorkout__desc, .newWorkout__submit, .newWorkout__name {
+            background: lightblue; 
+            height: 2rem; 
+            width: 100%; 
+            font-size: 1.5rem;
+            border: none;
+            border-bottom: 5px solid white;
+            border-radius: 10px;
+            transition: 0.15s; 
 
-.newWorkout__details, .newWorkout__muscles { 
-    padding: 10px; 
-    width: 45%;
-    margin: 5px; 
-    // border for testing 
-    border: 1px solid black;
-}
-
-
-.newWorkout__details {
-    display: flex;
-    flex-flow: column; 
-    justify-content: space-between;
-}
-
-.newWorkout__desc {
-    background-color: #f0f3bd;
-    border-color: black;
-    width: 100%;
-    height: 80%;
-    margin: auto auto;
-}
-
-.newWorkout__submit {
-}
-
-.newWorkout__header { 
-    @include centerHeader()
-    margin: 0px; 
-}
-
-.newWorkout__muscles {
-    display: flex; 
-    flex-flow: row wrap;
-    font-size: 1.5rem;
-    input{ 
-        height: 2rem;
+            &:hover, &:focus { 
+                background: white;
+                border-color: lightblue;
+                outline: 0; 
+            }
+        }
+    }
+    
+    .newWorkout__desc {
+        background-color: #f0f3bd;
+        border-color: black;
+        width: 100%;
+        height: 80%;
+        margin: auto auto;
+    }
+    
+    .newWorkout__header { 
+        @include centerHeader()
+        margin: 0px; 
+    }
+    
+    .newWorkout__muscles {
+        display: flex; 
+        flex-flow: row wrap;
+        font-size: 1.5rem;
+        align-items: center;
+    }
+    
+    .newWorkout__muscle {
+        padding: 5px; 
+        margin: 5px; 
+        background-color: grey; 
+        border-radius: 10px; 
+    }
+    .newWorkout__muscle--selected {
+        background-color: white; 
+    }
+    .newWorkout__difficultySelectContainer {
+        // center div 
+        width: 70%; 
+        margin: auto; 
+        $optionHighlightColor: $newWorkoutBGC;
+        $highlightedScale: 1.1;
+    
+        display: flex; 
+        flex-flow: row;
+        justify-content: center;
+        background: white;
+        border-radius: 10px;
+    
+        &:hover {
+            cursor: pointer; 
+    
+            // change all options to appear highlighted
+            // works in conjunction with changing all the following siblings 
+            // see .newWorkout__diff... &:hover, below 
+            .newWorkout__difficulty__option {
+                background:$optionHighlightColor; 
+                transform: scale(1); 
+    
+            }
+        }
+    
+        .newWorkout__difficulty__option {
+            transition: 0.15s; 
+            text-align: center; 
+            margin: 5px; 
+            border: 3px solid black; 
+            border-radius: $workoutBorderRadius;
+            padding: 5px; 
+            background: white;
+            color: black; 
+            &:hover {
+                // transform: scale(1.2); 
+                color: white; 
+                background: $optionHighlightColor;
+    
+                // options previous to the currently hovered option 
+                ~ .newWorkout__difficulty__option {
+                    background: white;
+                    // color: black; 
+                    transform: scale(1); 
+                }
+            }
+            .fa-dumbbell {
+                font-size: 3rem;
+                    transition: 0.5s;
+                    &:hover {
+                    transition: 0.2s;
+                    transform: rotate(45deg)
+                }
+            }
+    
+            .newWorkout__difficulty__text {
+                text-transform: uppercase;
+            }
+        }
+        // class for the difficulty options being selected ('highlighted') 
+        .highlighted {
+            transform: scale($highlightedScale);
+            background: $optionHighlightColor;
+            .newWorkout__difficulty__text {
+                border-bottom: 2px solid black;
+            }
+        }
+        // class for the difficulty options previous to the highlighted option  
+        .beforeHighlighted {
+            background: $optionHighlightColor;
+        }
+    
     }
 }
-
-.newWorkout__muscle {
-    padding: 5px; 
-    margin: 5px; 
-    background-color: grey; 
-    border-radius: 10px; 
-}
-.newWorkout__muscle--selected {
-    background-color: white; 
-}
-
-
+    
+    
 .hidden { 
     display: none; 
 }
@@ -274,69 +355,4 @@ nav {
     display: none; 
 }
 
-.newWorkout__difficultySelectContainer {
-    $optionHighlightColor: $newWorkoutBGC;
-    $highlightedScale: 1.1;
 
-    display: flex; 
-    flex-flow: row;
-
-    background: white;
-    border-radius: 10px;
-
-    &:hover {
-        cursor: pointer; 
-
-        // change all options to appear highlighted
-        // works in conjunction with changing all the following siblings 
-        // see .newWorkout__diff... &:hover, below 
-        .newWorkout__difficulty__option {
-            background:$optionHighlightColor; 
-            transform: scale(1); 
-
-        }
-    }
-
-    .newWorkout__difficulty__option {
-        transition: 0.15s; 
-        text-align: center; 
-        margin: 5px; 
-        border: 3px solid black; 
-        border-radius: $workoutBorderRadius;
-        padding: 5px; 
-        background: white;
-        color: black; 
-        &:hover {
-            // transform: scale(1.2); 
-            color: white; 
-            background: $optionHighlightColor;
-
-            // options previous to the currently hovered option 
-            ~ .newWorkout__difficulty__option {
-                background: white;
-                color: black; 
-                transform: scale(1); 
-            }
-        }
-        .fa-dumbbell {
-            font-size: 3rem;
-        }
-
-        .newWorkout__difficulty__text {
-            text-transform: uppercase;
-        }
-    }
-    // class for the difficulty options being selected ('highlighted') 
-    .highlighted {
-        transform: scale($highlightedScale);
-        background: $optionHighlightColor;
-        .newWorkout__difficulty__text {
-            border-bottom: 2px solid black;
-        }
-    }
-    // class for the difficulty options previous to the highlighted option  
-    .beforeHighlighted {
-        background: $optionHighlightColor;
-    }
-
-}

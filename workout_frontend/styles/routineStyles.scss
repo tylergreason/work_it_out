@@ -51,7 +51,7 @@ $newRoutineMuscleBGC : #e05661;
     border-bottom: 5px solid white;
     padding: 5px;
     transition: 0.15s; 
-    &:hover {
+    &:hover, &:focus {
         background: white; 
         border-bottom: 5px solid #fcbf49;
     }
@@ -122,7 +122,7 @@ $newRoutineMuscleBGC : #e05661;
             .workout__warning {
                 background: red; 
                 &::before {
-                    content: "Remove";
+                    content: "Remove from Routine";
                 }
             }
         }
@@ -137,7 +137,7 @@ $newRoutineMuscleBGC : #e05661;
             .workout__warning {
                 background: lightblue;
                 &::before {
-                    content: "Add";
+                    content: "Add To Routine";
                 }
             }
         }

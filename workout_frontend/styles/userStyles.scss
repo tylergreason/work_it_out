@@ -26,7 +26,6 @@ $userRoutineDeleteC: #e76f51;
 .userRoutine__details {
     background-color: white;
     text-align: center;
-    min-height: 10%;
 
     .userRoutine__name {
         text-align: center;
@@ -76,7 +75,11 @@ $userRoutineDeleteC: #e76f51;
 .userRoutine__workouts {
     display: flex; 
     flex-flow: row wrap; 
-    justify-content: center;
+    align-items: center;
+
+    .workout {
+        flex-shrink: 5; 
+    }
 }
 
 .userRoutines__header {

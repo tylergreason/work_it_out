@@ -65,7 +65,7 @@
   transition: 0.15s;
 }
 
-.newRoutine__details .newRoutine__name:hover, .newRoutine__details .newRoutine__date:hover, .newRoutine__details .newRoutine__submit:hover, .newRoutine__details .newRoutine__desc:hover {
+.newRoutine__details .newRoutine__name:hover, .newRoutine__details .newRoutine__name:focus, .newRoutine__details .newRoutine__date:hover, .newRoutine__details .newRoutine__date:focus, .newRoutine__details .newRoutine__submit:hover, .newRoutine__details .newRoutine__submit:focus, .newRoutine__details .newRoutine__desc:hover, .newRoutine__details .newRoutine__desc:focus {
   background: white;
   border-bottom: 5px solid #fcbf49;
 }
@@ -130,7 +130,7 @@
 }
 
 #newRoutineWorkoutsList .workout:hover .workout__warning::before {
-  content: "Remove";
+  content: "Remove from Routine";
 }
 
 .muscle__workouts .workout:hover {
@@ -154,6 +154,6 @@
 }
 
 .muscle__workouts .workout:hover .workout__warning::before {
-  content: "Add";
+  content: "Add To Routine";
 }
 /*# sourceMappingURL=routineStyles.css.map */
