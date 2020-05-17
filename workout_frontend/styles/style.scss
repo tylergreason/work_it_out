@@ -207,6 +207,9 @@ body {
                 outline: 0; 
             }
         }
+        .newWorkout__desc {
+            min-height: 150px;
+        }
     }
     
     .newWorkout__desc {
@@ -386,7 +389,7 @@ nav {
     font-style: italic;
     font-weight: bold;
     font-size: 3rem; 
-    padding: auto; 
+    padding: 5px; 
     width: 20%; 
     text-align: center;
 }
