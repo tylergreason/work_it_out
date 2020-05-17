@@ -1,6 +1,9 @@
 # Work It Out
 _A single page application to make tracking workout routines easy._
 
+![screenshot](WIOscreenshot.png)
+
+
 ## Background
 Work It Out was made for my third project for Flatiron School’s Immersive Software Engineering program. The goal of this project was to show our understanding of JavaScript by writing a single page application using functional or object oriented programming. I had the least experience with functional programming and decided to challenge myself by using functional programming to develop my application. 
 
