@@ -93,12 +93,17 @@ function login_button_listener(button){
 }
 
 function render_main_page(){
+    // find body 
+    const bodyElement = document.getElementsByTagName('body')[0]
+    // add header before the main element 
+    bodyElement.insertBefore(renderHeader(), main)
     // render the elements that should be on the main page 
     newRoutineDiv.appendChild(newRoutineForm());
     newWorkoutDiv.appendChild(newWorkoutForm());
     renderUserContainer(userObject); 
     // render navbar 
-    navbarButtons(); 
+    navbarButtons();    
+
 }
 
 

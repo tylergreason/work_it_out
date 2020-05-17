@@ -254,15 +254,27 @@ body {
   padding: 5px;
   margin: 5px;
   background-color: grey;
+  color: white;
+  border: 2px solid black;
   border-radius: 10px;
+  -webkit-transition: 0.15s;
+  transition: 0.15s;
+}
+
+.newWorkout .newWorkout__muscle:hover {
+  background: lightgray;
 }
 
 .newWorkout .newWorkout__muscle--selected {
+  font-size: 1.7rem;
+  color: black;
   background-color: white;
+  -webkit-box-shadow: 0px 5px 5px black;
+          box-shadow: 0px 5px 5px black;
 }
 
 .newWorkout .newWorkout__difficultySelectContainer {
-  width: 70%;
+  width: auto;
   margin: auto;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -311,17 +323,17 @@ body {
           transform: scale(1);
 }
 
-.newWorkout .newWorkout__difficultySelectContainer .newWorkout__difficulty__option .fa-dumbbell {
-  font-size: 3rem;
-  -webkit-transition: 0.5s;
-  transition: 0.5s;
-}
-
-.newWorkout .newWorkout__difficultySelectContainer .newWorkout__difficulty__option .fa-dumbbell:hover {
+.newWorkout .newWorkout__difficultySelectContainer .newWorkout__difficulty__option:hover .fa-dumbbell {
   -webkit-transition: 0.2s;
   transition: 0.2s;
   -webkit-transform: rotate(45deg);
           transform: rotate(45deg);
+}
+
+.newWorkout .newWorkout__difficultySelectContainer .newWorkout__difficulty__option .fa-dumbbell {
+  font-size: 3rem;
+  -webkit-transition: 0.1s;
+  transition: 0.1s;
 }
 
 .newWorkout .newWorkout__difficultySelectContainer .newWorkout__difficulty__option .newWorkout__difficulty__text {
@@ -371,13 +383,31 @@ nav .navbar__button--newRoutine {
 
 nav .navbar__button--newWorkout {
   background: #457b9d;
+  border-radius: 0px 10px 0px 0px;
 }
 
 nav .navbar__button--userRoutines {
   background: #3a86ff;
+  border-radius: 10px 0px 0px 0px;
 }
 
 .header {
   display: none;
+}
+
+#userRoutines, #newRoutine__container, .newWorkout {
+  border-radius: 0px 10px 10px 10px;
+}
+
+.header__main {
+  border: 3px solid black;
+  border-radius: 10px;
+  background: white;
+  font-style: italic;
+  font-weight: bold;
+  font-size: 3rem;
+  padding: auto;
+  width: 20%;
+  text-align: center;
 }
 /*# sourceMappingURL=style.css.map */

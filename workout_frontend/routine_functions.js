@@ -153,6 +153,7 @@ function copyRoutines(routine){
 
 function newRoutineForm(name,date,desc,workouts){
     const newRoutineContainer = document.createElement('div'); 
+    newRoutineContainer.id = 'newRoutine__container';
     addClass(newRoutineContainer, 'newRoutine__container')
     const newRoutineHeader = document.createElement('h2'); 
     newRoutineHeader.innerText = 'New Routine'
