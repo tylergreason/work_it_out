@@ -54,7 +54,7 @@
 
 .newRoutine__details .newRoutine__name, .newRoutine__details .newRoutine__date, .newRoutine__details .newRoutine__submit, .newRoutine__details .newRoutine__desc {
   height: 2rem;
-  font-size: 2rem;
+  font-size: 24px;
   margin-top: 10px;
   background: #fcbf49;
   border: none;
@@ -67,6 +67,7 @@
 
 .newRoutine__details .newRoutine__name:hover, .newRoutine__details .newRoutine__name:focus, .newRoutine__details .newRoutine__date:hover, .newRoutine__details .newRoutine__date:focus, .newRoutine__details .newRoutine__submit:hover, .newRoutine__details .newRoutine__submit:focus, .newRoutine__details .newRoutine__desc:hover, .newRoutine__details .newRoutine__desc:focus {
   background: white;
+  font-size: 24px;
   border-bottom: 5px solid #fcbf49;
 }
 

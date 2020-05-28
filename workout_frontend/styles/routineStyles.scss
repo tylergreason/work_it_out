@@ -43,7 +43,7 @@ $newRoutineMuscleBGC : #e05661;
 
 @mixin newRoutineDetails(){
     height: 2rem;   
-    font-size: 2rem;
+    font-size: 24px;
     margin-top: 10px;
     background: #fcbf49;
     border: none; 
@@ -53,7 +53,8 @@ $newRoutineMuscleBGC : #e05661;
     transition: 0.15s; 
     &:hover, &:focus {
         background: white; 
-        border-bottom: 5px solid #fcbf49;
+    font-size: 24px;
+    border-bottom: 5px solid #fcbf49;
     }
 }
 
